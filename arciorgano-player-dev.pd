@@ -1,4 +1,4 @@
-#N canvas 4 444 577 635 12;
+#N canvas -2 488 577 635 12;
 #X text 11 44 Studio31 / Johannes Keller;
 #N canvas 3580 173 692 809 osc-sender 0;
 #X obj 16 462 list prepend \$1;
@@ -272,7 +272,7 @@
 1;
 #X obj 913 450 tgl 11 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
-#X obj 465 273 tgl 60 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 465 273 tgl 60 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
 #X obj 406 276 tgl 57 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
@@ -1210,7 +1210,7 @@
 1;
 #X obj 88 403 tgl 25 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
-#X obj 116 403 tgl 25 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 116 403 tgl 25 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
 #X obj 144 403 tgl 25 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
@@ -4234,7 +4234,7 @@ f 121;
 0 1;
 #X obj 88 403 tgl 25 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
-#X obj 975 550 tgl 25 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 975 550 tgl 25 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
 #X obj 144 403 tgl 25 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
@@ -17832,7 +17832,7 @@ f 121;
 #X obj 78 142 outlet;
 #X obj 12 51 t l l;
 #X msg 45 77 set \$1 \$2;
-#X msg 78 117 146 0;
+#X msg 78 117 22 1;
 #X obj 121 78 r unique-trigger;
 #X obj 12 184 route 0 1 2 3 4 5 6 7 8 10 11 12 13 14 15 16 17 18 19
 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42
@@ -19029,3 +19029,150 @@ f 121;
 #X restore 5 4 pd sampling-cycle;
 #X restore 223 332 pd SamplingCycle;
 #X text 12 23 Version 1.15 (Feb 4 2021);
+#N canvas 1143 955 540 235 ToneGenerator 1;
+#N canvas 527 203 1362 942 tone-generator 0;
+#X floatatom 65 29 5 0 0 0 - - freq1;
+#X obj 110 29 hsl 128 18 0.01 1 1 1 level1 empty empty -2 -8 0 10 -262144
+-1 -1 4300 1;
+#X obj 246 29 tgl 18 0 mute1 empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 22 31 vsl 15 170 0.01 1 1 0 masterlevel empty empty 0 -9 0 10
+-262144 -1 -1 9700 1;
+#X floatatom 156 459 5 0 0 0 - masterlevel -;
+#X msg 158 485 \$1 20;
+#X obj 157 514 line~;
+#X obj 113 556 *~;
+#X obj 104 610 dac~;
+#X floatatom 65 51 5 0 0 0 - - freq2;
+#X obj 110 51 hsl 128 18 0.01 1 1 1 level2 empty empty -2 -8 0 10 -262144
+-1 -1 3900 1;
+#X obj 246 51 tgl 18 0 mute2 empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X floatatom 65 74 5 0 0 0 - - freq1;
+#X obj 110 74 hsl 128 18 0.01 1 1 1 level1 empty empty -2 -8 0 10 -262144
+-1 -1 5100 1;
+#X obj 246 74 tgl 18 0 mute1 empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X floatatom 65 97 5 0 0 0 - - freq1;
+#X obj 110 97 hsl 128 18 0.01 1 1 1 level1 empty empty -2 -8 0 10 -262144
+-1 -1 5100 1;
+#X obj 246 97 tgl 18 0 mute1 empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X floatatom 65 119 5 0 0 0 - - freq1;
+#X obj 110 119 hsl 128 18 0.01 1 1 1 level1 empty empty -2 -8 0 10
+-262144 -1 -1 5100 1;
+#X obj 246 119 tgl 18 0 mute1 empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X floatatom 65 141 5 0 0 0 - - freq1;
+#X obj 110 141 hsl 128 18 0.01 1 1 1 level1 empty empty -2 -8 0 10
+-262144 -1 -1 5100 1;
+#X obj 246 141 tgl 18 0 mute1 empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X floatatom 65 164 5 0 0 0 - - freq1;
+#X obj 110 164 hsl 128 18 0.01 1 1 1 level1 empty empty -2 -8 0 10
+-262144 -1 -1 5100 1;
+#X obj 246 164 tgl 18 0 mute1 empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X floatatom 65 187 5 0 0 0 - - freq1;
+#X obj 110 187 hsl 128 18 0.01 1 1 1 level1 empty empty -2 -8 0 10
+-262144 -1 -1 5100 1;
+#X obj 246 187 tgl 18 0 mute1 empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X floatatom 298 29 5 0 0 0 - - freq1;
+#X obj 343 29 hsl 128 18 0.01 1 1 1 level1 empty empty -2 -8 0 10 -262144
+-1 -1 5100 1;
+#X obj 479 29 tgl 18 0 mute1 empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X floatatom 298 51 5 0 0 0 - - freq1;
+#X obj 343 51 hsl 128 18 0.01 1 1 1 level1 empty empty -2 -8 0 10 -262144
+-1 -1 5100 1;
+#X obj 479 51 tgl 18 0 mute1 empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X floatatom 298 74 5 0 0 0 - - freq1;
+#X obj 343 74 hsl 128 18 0.01 1 1 1 level1 empty empty -2 -8 0 10 -262144
+-1 -1 5100 1;
+#X obj 479 74 tgl 18 0 mute1 empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X floatatom 298 97 5 0 0 0 - - freq1;
+#X obj 343 97 hsl 128 18 0.01 1 1 1 level1 empty empty -2 -8 0 10 -262144
+-1 -1 5100 1;
+#X obj 479 97 tgl 18 0 mute1 empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X floatatom 298 119 5 0 0 0 - - freq1;
+#X obj 343 119 hsl 128 18 0.01 1 1 1 level1 empty empty -2 -8 0 10
+-262144 -1 -1 5100 1;
+#X obj 479 119 tgl 18 0 mute1 empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X floatatom 298 141 5 0 0 0 - - freq1;
+#X obj 343 141 hsl 128 18 0.01 1 1 1 level1 empty empty -2 -8 0 10
+-262144 -1 -1 5100 1;
+#X obj 479 141 tgl 18 0 mute1 empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X floatatom 298 164 5 0 0 0 - - freq1;
+#X obj 343 164 hsl 128 18 0.01 1 1 1 level1 empty empty -2 -8 0 10
+-262144 -1 -1 5100 1;
+#X obj 479 164 tgl 18 0 mute1 empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X floatatom 298 187 5 0 0 0 - - freq1;
+#X obj 343 187 hsl 128 18 0.01 1 1 1 level1 empty empty -2 -8 0 10
+-262144 -1 -1 5100 1;
+#X obj 479 187 tgl 18 0 mute1 empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#N canvas 0 50 326 275 oscillator1 0;
+#X obj 40 89 osc~;
+#X floatatom 40 60 5 0 0 0 - freq1 -;
+#X floatatom 112 26 5 0 0 0 - level1 -;
+#X msg 109 57 \$1 20;
+#X obj 180 24 tgl 15 0 empty mute1 empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X msg 178 54 \$1 20;
+#X obj 39 119 *~;
+#X obj 109 88 line~;
+#X obj 181 87 line~;
+#X obj 54 156 *~;
+#X obj 51 203 outlet~;
+#X connect 0 0 6 0;
+#X connect 1 0 0 0;
+#X connect 2 0 3 0;
+#X connect 3 0 7 0;
+#X connect 4 0 5 0;
+#X connect 5 0 8 0;
+#X connect 6 0 9 0;
+#X connect 7 0 6 1;
+#X connect 8 0 9 1;
+#X connect 9 0 10 0;
+#X restore 54 344 pd oscillator1;
+#N canvas 0 50 326 275 oscillator2 0;
+#X obj 40 89 osc~;
+#X floatatom 40 60 5 0 0 0 - freq2 -;
+#X floatatom 112 26 5 0 0 0 - level2 -;
+#X msg 109 57 \$1 20;
+#X obj 180 24 tgl 15 0 empty mute2 empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X msg 178 54 \$1 20;
+#X obj 39 119 *~;
+#X obj 109 88 line~;
+#X obj 181 87 line~;
+#X obj 54 156 *~;
+#X obj 51 203 outlet~;
+#X connect 0 0 6 0;
+#X connect 1 0 0 0;
+#X connect 2 0 3 0;
+#X connect 3 0 7 0;
+#X connect 4 0 5 0;
+#X connect 5 0 8 0;
+#X connect 6 0 9 0;
+#X connect 7 0 6 1;
+#X connect 8 0 9 1;
+#X connect 9 0 10 0;
+#X restore 172 346 pd oscillator2;
+#X connect 4 0 5 0;
+#X connect 5 0 6 0;
+#X connect 6 0 7 1;
+#X connect 7 0 8 0;
+#X connect 7 0 8 1;
+#X connect 54 0 7 0;
+#X connect 55 0 7 0;
+#X coords 0 -1 1 1 500 210 1 10 10;
+#X restore 13 7 pd tone-generator;
+#X restore 351 383 pd ToneGenerator;
