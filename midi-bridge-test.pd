@@ -1,0 +1,11 @@
+#N canvas 272 655 534 474 12;
+#X obj 64 77 notein;
+#X obj 63 123 print in;
+#X obj 180 63 bendin;
+#X obj 175 108 print bend;
+#X obj 259 105 print bend2;
+#X obj 87 163 print channel;
+#X connect 0 0 1 0;
+#X connect 0 2 5 0;
+#X connect 2 0 3 0;
+#X connect 2 1 4 0;
