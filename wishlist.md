@@ -1,15 +1,17 @@
 # Feature requests
 
-Sampler capabilities
+- Sampler capabilities
+  - rudimentary implementation done
 
-Synth capabilities
+- Synth capabilities
 
-Sequencer capabilities
+- Sequencer capabilities
 
-MIDI bridge (receive MIDI from Sibelius)
+- MIDI bridge (receive MIDI from Sibelius)
+  - experimental
 
-Note name / frequency / ratio / accidental / tabulature output
+- Note name / frequency / ratio / accidental / tabulature output
 
-Interval genie: wish for an interval utopia, listen to next approximation
+- Interval genie: wish for an interval utopia, listen to next approximation
 
 
