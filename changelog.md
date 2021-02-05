@@ -16,4 +16,7 @@
 - sampler: introduced a function to avoid redundant key-on messages. This removes the bug that caused multiple playback of the same sample when connected to a MIDI keyboard while using the pedal function
 
 
+## changes for version 1.20 (5th of February 2021)
+
+- added feature: sine tone generator, with 16 oscillators and 6 input slots. Each input slot can hold a text file that defines the frequency, level and on/off of each oscillator.
 
