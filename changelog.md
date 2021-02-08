@@ -20,3 +20,7 @@
 
 - added feature: sine tone generator, with 16 oscillators and 6 input slots. Each input slot can hold a text file that defines the frequency, level and on/off of each oscillator.
 
+
+## changes for version 1.30 (8th of February 2021)
+
+- added feature: Sibelius bridge. This feature requires a Sibelius plugin that interprets a notation for Arciorgano and translates it into PitchBend-commands. When playing back a score within Sibelius, it sends out MIDI signals that can be caught by this Pd patch and sent to the organ (or the internal sampler) in real time.

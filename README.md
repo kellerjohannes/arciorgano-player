@@ -39,3 +39,29 @@ a player software capable of doing that, you might want to install VLC
 
 
 
+### Use the Sibelius bridge feature
+
+1. Download the Sibelius plugin file.
+
+2. Copy it into the plugin folder of your Sibelius installation. This depends on your operating 
+   system and your Sibelius version. You might find important informations here: 
+   http://www.sibelius.com/download/plugins/index.html?help=install
+
+3. Open a Sibelius score, select everything, run the plugin "Arciorgano Tabulature Conversion". If 
+   Sibelius is configured to show hidden text, you should be able to see a PitchBend-command for each note
+   in the score.
+
+4. Make sure that Sibelius uses a virtual MIDI device for its MIDI output (see "Play" tab -> Configuration). 
+   On Windows you might need to install a tool for that, for example "loopMIDI". 
+
+5. Open the PureData patch. Connect to the Arciorgano or switch on the sampler. Choose the virtual MIDI device
+   as MIDI input (Media -> MIDI settings). Switch on the "Sibelius Bridge" module.
+
+6. Start the playback of the score in Sibelius. The PureData patch should receive MIDI messages from Sibelius
+   and interpret the PitchBend-commands correctly. 
+
+
+Please note: MIDI can only send PitchBend commands per channel. Therefore, you can't notate more than one note
+at a time per staff. Use separate staffs for each individual voice. Only 16 channels are supported, you can't
+create chords involving more than 16 keys simultaneously. Use the quartertone tabulature for your scores. 
+
