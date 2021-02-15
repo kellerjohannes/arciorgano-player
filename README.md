@@ -1,13 +1,14 @@
-# arcicaster
-_Remote accces to the Arciorgano_
+# Arciorgano Player Patch
+_Remote access to the Arciorgano_
 
-Arcicaster is a collection of tools to remotely play and monitor the Arciorgano, located
-at the Campus of the Musik-Akademie Basel (FHNW). 
+The Arciorgano Player Patch is a collection of tools to remotely play and monitor the Arciorgano, 
+located at the Campus of the Musik-Akademie Basel (FHNW). 
 
 This document describes a rudimentary setup which can be extended easily. The player
 interface of the organ is listening to OSC messages that can be sent from any software
 that supports OSC. Simultaneously there is a live audio stream available to listen to the
 organ. 
+
 
 ## Quick start
 
