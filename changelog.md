@@ -30,3 +30,7 @@
 
 - added samples quick load for mode 1, 2, 3, 7 and 8.
 
+
+## changes for version 1.32 (17th of February 2021)
+
+- bug fix in sampler: key number 9 was ignored by the redundancy module, this error is now corrected.
