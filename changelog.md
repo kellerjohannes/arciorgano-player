@@ -34,3 +34,7 @@
 ## changes for version 1.32 (17th of February 2021)
 
 - bug fix in sampler: key number 9 was ignored by the redundancy module, this error is now corrected.
+
+## changes for version 1.33 (15th of April 2021)
+
+- added Reaper bridge: it listenes to incoming MIDI messages and translates them to organ messages. On channel one, the keys on the lower manual are numbered from 0 to 75, on channel two, the keys of the upper manual are numberes from 0 to 61.
