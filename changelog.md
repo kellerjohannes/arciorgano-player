@@ -42,3 +42,9 @@
 ## changes for version 1.34 (10th of May 2021)
 
 - added serial communication for direct connection between computer (running the Pd patch) and the organ module. This is intended to be an alternative to OSC messages, primarily for concert situations.
+
+## changes for version 1.40 (10th of May 2021)
+
+- rearranged GUI, no added features, no bug fixes
+
+
