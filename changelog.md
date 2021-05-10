@@ -38,3 +38,7 @@
 ## changes for version 1.33 (15th of April 2021)
 
 - added Reaper bridge: it listenes to incoming MIDI messages and translates them to organ messages. On channel one, the keys on the lower manual are numbered from 0 to 75, on channel two, the keys of the upper manual are numberes from 0 to 61.
+
+## changes for version 1.34 (10th of May 2021)
+
+- added serial communication for direct connection between computer (running the Pd patch) and the organ module. This is intended to be an alternative to OSC messages, primarily for concert situations.
