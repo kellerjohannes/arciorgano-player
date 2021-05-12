@@ -12,6 +12,9 @@
 - Interval genie: wish for an interval utopia, listen to next approximation
 
 
-
 - MIDI bridge (receive MIDI from Sibelius)
   - working
+
+- serial communication
+  - working
+
