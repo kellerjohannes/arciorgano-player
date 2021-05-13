@@ -47,4 +47,6 @@
 
 - rearranged GUI, no added features, no bug fixes
 
+## changes vor version 1.41 (13th of May 2021)
 
+- added "Velocity bridge", to read MIDI information where alterations are encoded in velocity values of NoteOn AND NoteOff messages. 
