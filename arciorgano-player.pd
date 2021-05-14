@@ -1,5 +1,6 @@
 #N canvas 583 184 1609 1107 12;
 #X declare -lib cyclone;
+#X declare -lib cyclone;
 #X text 13 52 Studio31 / Johannes Keller;
 #N canvas 951 484 692 809 osc-sender 0;
 #X obj 16 462 list prepend \$1;
@@ -140,7 +141,7 @@
 1;
 #X text 243 66 raw osc;
 #X obj 25 139 spigot;
-#X obj 227 86 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#X obj 227 86 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X obj 25 229 spigot;
 #X obj 25 258 print key number;
@@ -4482,7 +4483,7 @@ f 121;
 #X connect 7 0 9 0;
 #X coords 0 -1 1 1 386 30 2 0 96;
 #X restore 180 236 pd pedal;
-#N canvas -112 224 2519 848 sampler 0;
+#N canvas 290 188 2519 848 sampler 0;
 #X symbolatom 107 197 50 0 0 0 - rsamplepath samplepath;
 #X text 74 197 path;
 #X symbolatom 106 218 50 0 0 0 - rsamplename samplename;
@@ -4637,7 +4638,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode1/mode1-export-wav-neumann/mode1-64.wav
+#X msg 168 570 open samples/mode1/mode1-export-wav-neumann/mode1-41.wav
 ;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
@@ -4736,7 +4737,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode1/mode1-export-wav-neumann/mode1-79.wav
+#X msg 168 570 open samples/mode1/mode1-export-wav-neumann/mode1-45.wav
 ;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
@@ -4835,7 +4836,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode1/mode1-export-wav-neumann/mode1-58.wav
+#X msg 168 570 open samples/mode1/mode1-export-wav-neumann/mode1-41.wav
 ;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
@@ -4934,7 +4935,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode1/mode1-export-wav-neumann/mode1-73.wav
+#X msg 168 570 open samples/mode1/mode1-export-wav-neumann/mode1-41.wav
 ;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
@@ -5033,7 +5034,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode1/mode1-export-wav-neumann/mode1-64.wav
+#X msg 168 570 open samples/mode1/mode1-export-wav-neumann/mode1-49.wav
 ;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
@@ -5132,7 +5133,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode1/mode1-export-wav-neumann/mode1-79.wav
+#X msg 168 570 open samples/mode1/mode1-export-wav-neumann/mode1-51.wav
 ;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
@@ -5231,7 +5232,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode1/mode1-export-wav-neumann/mode1-49.wav
+#X msg 168 570 open samples/mode1/mode1-export-wav-neumann/mode1-41.wav
 ;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
@@ -5330,7 +5331,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode1/mode1-export-wav-neumann/mode1-52.wav
+#X msg 168 570 open samples/mode1/mode1-export-wav-neumann/mode1-49.wav
 ;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
@@ -5429,7 +5430,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode1/mode1-export-wav-neumann/mode1-70.wav
+#X msg 168 570 open samples/mode1/mode1-export-wav-neumann/mode1-45.wav
 ;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
@@ -5528,7 +5529,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode1/mode1-export-wav-neumann/mode1-73.wav
+#X msg 168 570 open samples/mode1/mode1-export-wav-neumann/mode1-45.wav
 ;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
@@ -5627,7 +5628,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode1/mode1-export-wav-neumann/mode1-70.wav
+#X msg 168 570 open samples/mode1/mode1-export-wav-neumann/mode1-85.wav
 ;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
@@ -5726,7 +5727,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode1/mode1-export-wav-neumann/mode1-73.wav
+#X msg 168 570 open samples/mode1/mode1-export-wav-neumann/mode1-58.wav
 ;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
@@ -5825,7 +5826,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode1/mode1-export-wav-neumann/mode1-49.wav
+#X msg 168 570 open samples/mode1/mode1-export-wav-neumann/mode1-58.wav
 ;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
@@ -5924,7 +5925,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode1/mode1-export-wav-neumann/mode1-52.wav
+#X msg 168 570 open samples/mode1/mode1-export-wav-neumann/mode1-22.wav
 ;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
@@ -6023,7 +6024,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode1/mode1-export-wav-neumann/mode1-22.wav
+#X msg 168 570 open samples/mode1/mode1-export-wav-neumann/mode1-34.wav
 ;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
@@ -6122,7 +6123,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode1/mode1-export-wav-neumann/mode1-34.wav
+#X msg 168 570 open samples/mode1/mode1-export-wav-neumann/mode1-58.wav
 ;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
@@ -6221,7 +6222,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode1/mode1-export-wav-neumann/mode1-58.wav
+#X msg 168 570 open samples/mode1/mode1-export-wav-neumann/mode1-70.wav
 ;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
@@ -6320,7 +6321,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode1/mode1-export-wav-neumann/mode1-70.wav
+#X msg 168 570 open samples/mode1/mode1-export-wav-neumann/mode1-73.wav
 ;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
@@ -6419,7 +6420,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode1/mode1-export-wav-neumann/mode1-73.wav
+#X msg 168 570 open samples/mode1/mode1-export-wav-neumann/mode1-79.wav
 ;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
@@ -6518,7 +6519,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode1/mode1-export-wav-neumann/mode1-79.wav
+#X msg 168 570 open samples/mode1/mode1-export-wav-neumann/mode1-73.wav
 ;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
@@ -6617,7 +6618,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode1/mode1-export-wav-neumann/mode1-1.wav
+#X msg 168 570 open samples/mode1/mode1-export-wav-neumann/mode1-79.wav
 ;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
@@ -6716,7 +6717,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode1/mode1-export-wav-neumann/mode1-7.wav
+#X msg 168 570 open samples/mode1/mode1-export-wav-neumann/mode1-37.wav
 ;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
@@ -6815,7 +6816,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode1/mode1-export-wav-neumann/mode1-28.wav
+#X msg 168 570 open samples/mode1/mode1-export-wav-neumann/mode1-43.wav
 ;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
@@ -6914,7 +6915,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode1/mode1-export-wav-neumann/mode1-34.wav
+#X msg 168 570 open samples/mode1/mode1-export-wav-neumann/mode1-28.wav
 ;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
@@ -7013,7 +7014,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode1/mode1-export-wav-neumann/mode1-28.wav
+#X msg 168 570 open samples/mode1/mode1-export-wav-neumann/mode1-34.wav
 ;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
@@ -7112,7 +7113,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode1/mode1-export-wav-neumann/mode1-34.wav
+#X msg 168 570 open samples/mode1/mode1-export-wav-neumann/mode1-49.wav
 ;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
@@ -7211,7 +7212,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode1/mode1-export-wav-neumann/mode1-28.wav
+#X msg 168 570 open samples/mode1/mode1-export-wav-neumann/mode1-58.wav
 ;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
@@ -7310,7 +7311,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode1/mode1-export-wav-neumann/mode1-34.wav
+#X msg 168 570 open samples/mode1/mode1-export-wav-neumann/mode1-70.wav
 ;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
@@ -7409,7 +7410,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode1/mode1-export-wav-neumann/mode1-28.wav
+#X msg 168 570 open samples/mode1/mode1-export-wav-neumann/mode1-79.wav
 ;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
@@ -7508,7 +7509,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode1/mode1-export-wav-neumann/mode1-34.wav
+#X msg 168 570 open samples/mode1/mode1-export-wav-neumann/mode1-52.wav
 ;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
@@ -7607,7 +7608,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode1/mode1-export-wav-neumann/mode1-13.wav
+#X msg 168 570 open samples/mode1/mode1-export-wav-neumann/mode1-64.wav
 ;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
@@ -7706,8 +7707,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode1/mode1-export-wav-neumann/mode1-22.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -7805,8 +7805,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode1/mode1-export-wav-neumann/mode1-13.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -7904,8 +7903,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode1/mode1-export-wav-neumann/mode1-22.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -8003,8 +8001,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode1/mode1-export-wav-neumann/mode1-70.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -8102,8 +8099,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode1/mode1-export-wav-neumann/mode1-79.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -17106,7 +17102,7 @@ f 121;
 #X obj 78 142 outlet;
 #X obj 12 51 t l l;
 #X msg 45 77 set \$1 \$2;
-#X msg 78 117 79 0;
+#X msg 78 117 64 0;
 #X obj 121 78 r unique-trigger;
 #X obj 12 223 change;
 #X obj 12 265 s unique-trigger;
@@ -18271,7 +18267,6 @@ f 121;
 #X connect 98 0 90 0;
 #X restore 509 218 pd construct-path;
 #X f 33;
-#X obj 287 724 print debug;
 #X text 55 74 sampler (rudimentary implementation);
 #X connect 6 0 18 0;
 #X connect 7 0 154 0;
@@ -18283,7 +18278,6 @@ f 121;
 #X connect 16 0 17 0;
 #X connect 17 0 6 0;
 #X connect 17 1 6 1;
-#X connect 17 1 181 0;
 #X connect 17 2 6 2;
 #X connect 18 0 26 0;
 #X connect 18 1 27 0;
@@ -19366,8 +19360,8 @@ f 121;
 #X connect 12 0 11 1;
 #X coords 0 -1 1 1 150 45 2 0 0;
 #X restore 9 259 pd sibelius-bridge;
-#N canvas 1485 142 891 595 eartrainer 0;
-#N canvas 0 50 2092 1245 eartrainger-container 0;
+#N canvas 670 506 891 595 eartrainer 1;
+#N canvas 264 68 2092 1245 eartrainger-container 1;
 #X msg 466 664 read eartraining/vicentino-interval-names.txt;
 #X obj 466 689 text define -k interval-names;
 #A set 0 comma \; 1 diesis-enarmonico-minore \; 2 diesis-enarmonico-maggiore
@@ -19410,8 +19404,7 @@ di voce \;;
 #X obj 109 1025 text search interval-names 0;
 #X obj 109 1048 text get interval-names 1;
 #X obj 105 1151 text define -k current-dictionary;
-#A set 7 16 \; 13 22 \; 28 1 \; 34 7 \;;
-#X obj 106 1116 prepend read;
+#A set 1 13 \; 16 28 \; 22 34 \;;
 #X obj 106 1081 makefilename eartraining/%s.txt;
 #X obj 402 903 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
@@ -19432,9 +19425,7 @@ di voce \;;
 #X connect 3 0 5 0;
 #X connect 5 0 0 0;
 #X restore 429 1087 pd lookup-key-name;
-#X obj 424 1123 prepend set;
-#X obj 518 1121 prepend set;
-#X msg 426 1154 tasto di B mi;
+#X msg 426 1154 tasto di F fa ut;
 #N canvas 370 45 1497 993 lookup-key-name 0;
 #X obj 15 83 text search key-names 0;
 #X obj 15 114 text get key-names;
@@ -19454,16 +19445,13 @@ di voce \;;
 -1 -1;
 #X obj 110 924 t b b;
 #X obj 109 976 random;
-#X obj 46 1185 prepend set;
-#X msg 45 1217 terza-minore-accidentale;
+#X msg 45 1217 terza-maggiore-naturale;
 #X text 47 874 pick random interval and open dictionary;
 #X floatatom 1162 1007 5 0 0 0 - - -;
 #X floatatom 1211 1007 5 0 0 0 - - -;
 #X obj 1020 732 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
 #X text 38 493 playback simultaneous;
-#X obj 1119 969 prepend set;
-#X obj 1215 966 prepend set;
 #X obj 1270 1065 pack 0 0;
 #X obj 1270 1095 s nkeyactive;
 #X msg 1305 1025 1;
@@ -19528,12 +19516,12 @@ di voce \;;
 #X obj 143 947 text size interval-pool;
 #X obj 109 1001 text get interval-pool;
 #X obj 369 502 hsl 180 10 1 146 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 0 1;
+-1 -1 1852 1;
 #X obj 885 446 loadbang;
 #X msg 885 472 16;
 #X msg 929 471 121;
 #X obj 369 514 hsl 180 10 1 146 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 17900 1;
+-1 -1 14814 1;
 #N canvas 0 50 942 1092 resolve-octave 0;
 #X floatatom 97 105 5 0 0 0 - - -;
 #X floatatom 150 106 5 0 0 0 - - -;
@@ -19796,13 +19784,13 @@ di voce \;;
 #X msg 242 464 46;
 #X msg 254 510 50;
 #X obj 336 688 list prepend 0;
-#X obj 284 403 tgl 25 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 284 403 tgl 25 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
 #X obj 312 403 tgl 25 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
-#X obj 340 403 tgl 25 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 340 403 tgl 25 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
-#X obj 368 403 tgl 25 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#X obj 368 403 tgl 25 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X obj 284 337 tgl 25 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
@@ -19840,7 +19828,7 @@ di voce \;;
 1;
 #X obj 396 403 tgl 25 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
-#X obj 424 403 tgl 25 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#X obj 424 403 tgl 25 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X obj 452 403 tgl 25 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
@@ -20694,21 +20682,17 @@ f 121;
 #X obj 12 470 bng 20 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
 #X obj 988 586 t b b b b b;
-#X msg 512 1187 tasto di D sol re;
+#X msg 512 1187 tasto di A re la;
 #X obj 12 494 vradio 20 1 0 3 empty empty empty 0 -8 0 10 -262144 -1
 -1 1;
 #X obj 1301 648 route 0 1 2;
 #X obj 1321 610 t f b;
-#X obj 1034 639 print "new quiz";
 #X obj 206 486 cnv 15 100 30 empty solution correct 10 15 0 14 -261682
 -260097 0;
 #X obj 1412 1539 s solution;
-#X obj 1412 1515 prepend label;
 #X msg 1409 1482 correct;
-#X obj 1814 1124 prepend label;
 #X obj 1811 1151 s solution;
 #X obj 1302 1542 s solution;
-#X obj 1302 1518 prepend label;
 #X msg 1299 1485 incorrect;
 #X msg 1812 1092 play!;
 #X text 38 470 new quiz;
@@ -21110,158 +21094,167 @@ f 121;
 #X obj 886 514 loadbang;
 #X msg 884 538 1000;
 #X obj 1476 696 * 2;
+#X obj 874 361 declare -lib cyclone;
+#X obj 46 1185 prepend set;
+#X obj 106 1116 prepend read;
+#X obj 424 1123 prepend set;
+#X obj 518 1121 prepend set;
+#X obj 1119 969 prepend set;
+#X obj 1215 966 prepend set;
+#X obj 1302 1518 prepend label;
+#X obj 1412 1515 prepend label;
+#X obj 1814 1124 prepend label;
 #X connect 0 0 1 0;
 #X connect 2 0 0 0;
 #X connect 2 0 3 0;
 #X connect 3 0 4 0;
 #X connect 5 0 6 0;
-#X connect 6 0 9 0;
-#X connect 6 0 25 0;
-#X connect 8 0 7 0;
-#X connect 9 0 8 0;
-#X connect 10 0 13 0;
-#X connect 11 0 12 1;
-#X connect 12 0 14 0;
-#X connect 13 0 12 0;
-#X connect 13 1 11 0;
-#X connect 14 0 20 0;
-#X connect 14 0 74 0;
-#X connect 15 0 16 0;
-#X connect 16 0 18 0;
-#X connect 17 0 102 0;
-#X connect 18 0 124 0;
-#X connect 19 0 17 0;
-#X connect 20 0 15 0;
-#X connect 20 1 19 0;
-#X connect 22 0 23 0;
-#X connect 23 0 24 0;
-#X connect 23 1 67 0;
-#X connect 24 0 68 0;
-#X connect 25 0 26 0;
-#X connect 26 0 120 0;
-#X connect 28 0 34 0;
-#X connect 29 0 34 0;
-#X connect 30 0 46 0;
-#X connect 32 0 28 0;
-#X connect 32 0 77 0;
-#X connect 32 0 89 0;
-#X connect 33 0 29 0;
-#X connect 33 0 85 0;
-#X connect 33 0 90 0;
-#X connect 34 0 35 0;
-#X connect 36 0 34 1;
-#X connect 37 0 34 1;
-#X connect 38 0 42 0;
-#X connect 39 0 43 0;
-#X connect 40 0 44 0;
-#X connect 41 0 45 0;
-#X connect 42 0 28 0;
-#X connect 42 1 36 0;
-#X connect 43 0 28 0;
-#X connect 43 1 37 0;
-#X connect 44 0 29 0;
-#X connect 44 1 36 0;
-#X connect 45 0 29 0;
-#X connect 45 1 37 0;
-#X connect 46 0 38 0;
-#X connect 46 0 40 0;
-#X connect 46 0 78 0;
-#X connect 46 1 47 0;
-#X connect 47 0 39 0;
-#X connect 47 0 41 0;
-#X connect 48 0 49 0;
-#X connect 49 0 51 0;
-#X connect 49 1 50 0;
-#X connect 49 2 38 0;
-#X connect 49 2 78 0;
-#X connect 50 0 39 0;
-#X connect 50 0 40 0;
-#X connect 51 0 41 0;
-#X connect 56 0 57 0;
-#X connect 57 0 59 0;
-#X connect 57 1 58 0;
-#X connect 57 2 40 0;
-#X connect 57 2 86 0;
-#X connect 58 0 41 0;
-#X connect 58 0 38 0;
-#X connect 59 0 39 0;
-#X connect 65 0 66 0;
-#X connect 66 0 64 0;
-#X connect 66 1 63 0;
-#X connect 67 0 24 1;
-#X connect 68 0 5 0;
-#X connect 69 0 75 2;
-#X connect 70 0 71 0;
-#X connect 70 0 72 0;
-#X connect 71 0 69 0;
-#X connect 72 0 73 0;
-#X connect 73 0 75 3;
-#X connect 74 0 75 0;
-#X connect 74 1 75 1;
-#X connect 75 0 32 0;
-#X connect 75 1 33 0;
-#X connect 77 0 80 0;
-#X connect 78 0 77 0;
-#X connect 78 0 90 0;
+#X connect 6 0 8 0;
+#X connect 6 0 124 0;
+#X connect 8 0 125 0;
+#X connect 9 0 12 0;
+#X connect 10 0 11 1;
+#X connect 11 0 13 0;
+#X connect 12 0 11 0;
+#X connect 12 1 10 0;
+#X connect 13 0 17 0;
+#X connect 13 0 68 0;
+#X connect 14 0 126 0;
+#X connect 15 0 114 0;
+#X connect 16 0 127 0;
+#X connect 17 0 14 0;
+#X connect 17 1 16 0;
+#X connect 19 0 20 0;
+#X connect 20 0 21 0;
+#X connect 20 1 61 0;
+#X connect 21 0 62 0;
+#X connect 22 0 110 0;
+#X connect 24 0 28 0;
+#X connect 25 0 28 0;
+#X connect 26 0 40 0;
+#X connect 28 0 29 0;
+#X connect 30 0 28 1;
+#X connect 31 0 28 1;
+#X connect 32 0 36 0;
+#X connect 33 0 37 0;
+#X connect 34 0 38 0;
+#X connect 35 0 39 0;
+#X connect 36 0 24 0;
+#X connect 36 1 30 0;
+#X connect 37 0 24 0;
+#X connect 37 1 31 0;
+#X connect 38 0 25 0;
+#X connect 38 1 30 0;
+#X connect 39 0 25 0;
+#X connect 39 1 31 0;
+#X connect 40 0 32 0;
+#X connect 40 0 34 0;
+#X connect 40 0 72 0;
+#X connect 40 1 41 0;
+#X connect 41 0 33 0;
+#X connect 41 0 35 0;
+#X connect 42 0 43 0;
+#X connect 43 0 45 0;
+#X connect 43 1 44 0;
+#X connect 43 2 32 0;
+#X connect 43 2 72 0;
+#X connect 44 0 33 0;
+#X connect 44 0 34 0;
+#X connect 45 0 35 0;
+#X connect 50 0 51 0;
+#X connect 51 0 53 0;
+#X connect 51 1 52 0;
+#X connect 51 2 34 0;
+#X connect 51 2 80 0;
+#X connect 52 0 35 0;
+#X connect 52 0 32 0;
+#X connect 53 0 33 0;
+#X connect 59 0 60 0;
+#X connect 60 0 58 0;
+#X connect 60 1 57 0;
+#X connect 61 0 21 1;
+#X connect 62 0 5 0;
+#X connect 63 0 69 2;
+#X connect 64 0 65 0;
+#X connect 64 0 66 0;
+#X connect 65 0 63 0;
+#X connect 66 0 67 0;
+#X connect 67 0 69 3;
+#X connect 68 0 69 0;
+#X connect 68 1 69 1;
+#X connect 69 0 128 0;
+#X connect 69 1 129 0;
+#X connect 71 0 74 0;
+#X connect 72 0 71 0;
+#X connect 72 0 84 0;
+#X connect 74 0 73 0;
+#X connect 75 0 76 0;
+#X connect 76 0 74 1;
+#X connect 77 0 78 0;
+#X connect 78 0 81 0;
+#X connect 79 0 74 0;
 #X connect 80 0 79 0;
+#X connect 80 0 83 0;
 #X connect 81 0 82 0;
-#X connect 82 0 80 1;
-#X connect 83 0 84 0;
-#X connect 84 0 87 0;
-#X connect 85 0 80 0;
+#X connect 82 0 105 0;
+#X connect 82 1 102 0;
+#X connect 83 0 81 1;
+#X connect 84 0 81 1;
+#X connect 85 0 89 0;
+#X connect 85 1 88 0;
+#X connect 85 1 106 0;
 #X connect 86 0 85 0;
-#X connect 86 0 89 0;
-#X connect 87 0 88 0;
-#X connect 88 0 115 0;
-#X connect 88 1 110 0;
-#X connect 89 0 87 1;
-#X connect 90 0 87 1;
-#X connect 91 0 95 0;
-#X connect 91 1 94 0;
-#X connect 91 1 116 0;
-#X connect 92 0 91 0;
-#X connect 93 0 96 0;
-#X connect 94 0 96 1;
-#X connect 94 0 98 1;
-#X connect 95 0 93 0;
-#X connect 96 0 97 0;
-#X connect 97 0 98 0;
-#X connect 97 0 96 1;
-#X connect 98 0 99 0;
-#X connect 100 0 101 0;
-#X connect 101 1 103 0;
-#X connect 101 2 10 0;
-#X connect 101 3 22 0;
-#X connect 101 4 106 0;
-#X connect 102 0 125 0;
-#X connect 103 0 105 0;
-#X connect 104 0 30 0;
-#X connect 104 1 48 0;
-#X connect 104 2 56 0;
-#X connect 105 0 104 0;
-#X connect 105 1 92 0;
-#X connect 109 0 108 0;
-#X connect 110 0 109 0;
-#X connect 111 0 112 0;
-#X connect 114 0 113 0;
-#X connect 115 0 114 0;
-#X connect 116 0 111 0;
-#X connect 118 0 121 0;
-#X connect 121 0 102 0;
-#X connect 121 1 18 0;
-#X connect 121 2 26 0;
-#X connect 121 3 122 0;
-#X connect 121 3 78 0;
-#X connect 121 3 86 0;
-#X connect 122 0 123 0;
-#X connect 128 0 47 1;
-#X connect 128 0 50 1;
-#X connect 128 0 58 1;
-#X connect 128 0 132 0;
-#X connect 130 0 131 0;
-#X connect 131 0 128 0;
-#X connect 132 0 51 1;
-#X connect 132 0 59 1;
+#X connect 87 0 90 0;
+#X connect 88 0 90 1;
+#X connect 88 0 92 1;
+#X connect 89 0 87 0;
+#X connect 90 0 91 0;
+#X connect 91 0 92 0;
+#X connect 91 0 90 1;
+#X connect 92 0 93 0;
+#X connect 94 0 95 0;
+#X connect 95 1 97 0;
+#X connect 95 2 9 0;
+#X connect 95 3 19 0;
+#X connect 96 0 115 0;
+#X connect 97 0 99 0;
+#X connect 98 0 26 0;
+#X connect 98 1 42 0;
+#X connect 98 2 50 0;
+#X connect 99 0 98 0;
+#X connect 99 1 86 0;
+#X connect 102 0 131 0;
+#X connect 105 0 130 0;
+#X connect 106 0 132 0;
+#X connect 108 0 111 0;
+#X connect 111 0 96 0;
+#X connect 111 1 15 0;
+#X connect 111 2 22 0;
+#X connect 111 3 112 0;
+#X connect 111 3 72 0;
+#X connect 111 3 80 0;
+#X connect 112 0 113 0;
+#X connect 118 0 41 1;
+#X connect 118 0 44 1;
+#X connect 118 0 52 1;
+#X connect 118 0 122 0;
+#X connect 120 0 121 0;
+#X connect 121 0 118 0;
+#X connect 122 0 45 1;
+#X connect 122 0 53 1;
+#X connect 124 0 22 0;
+#X connect 125 0 7 0;
+#X connect 126 0 15 0;
+#X connect 127 0 96 0;
+#X connect 128 0 24 0;
+#X connect 128 0 71 0;
+#X connect 128 0 83 0;
+#X connect 129 0 25 0;
+#X connect 129 0 79 0;
+#X connect 129 0 84 0;
+#X connect 130 0 104 0;
+#X connect 131 0 101 0;
+#X connect 132 0 103 0;
 #X coords 0 -1 1 1 850 570 2 0 0;
 #X restore 8 -557 pd eartrainger-container;
 #X coords 0 595 1 594 250 120 0;
