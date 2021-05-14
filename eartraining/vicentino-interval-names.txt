@@ -26,4 +26,4 @@
 25 salto-piu-di-quinta-imperfetta;
 26 quinta-naturale;
 27 quinta-accidentale;
-28 salto-piu-di-quinta;
+28 salto-piu-che-di-quinta;
