@@ -1,4 +1,4 @@
-#N canvas 12 79 1609 1061 12;
+#N canvas 18 26 1609 1061 12;
 #X declare -lib cyclone;
 #X text 13 52 Studio31 / Johannes Keller;
 #N canvas 951 484 692 809 osc-sender 0;
@@ -17069,7 +17069,7 @@ f 121;
 #X obj 78 142 outlet;
 #X obj 12 51 t l l;
 #X msg 45 77 set \$1 \$2;
-#X msg 78 117 38 0;
+#X msg 78 117 121 0;
 #X obj 121 78 r unique-trigger;
 #X obj 12 223 change;
 #X obj 12 265 s unique-trigger;
@@ -19296,7 +19296,7 @@ f 121;
 #X coords 0 -1 1 1 480 240 2 10 580;
 #X restore 1073 361 pd tone-generator;
 #N canvas 480 116 1374 1060 sibelius-bridge 0;
-#X obj 9 22 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1 1
+#X obj 9 22 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0 1
 ;
 #X text 27 20 active;
 #X text 7 4 Velocity bridge;
@@ -19330,4 +19330,368 @@ f 121;
 #X coords 0 -1 1 1 150 45 2 0 0;
 #X restore 9 259 pd sibelius-bridge;
 #X text 13 33 Version 1.41 (May 13 2021);
+#N canvas 195 74 2463 1242 eartrainer 1;
+#X obj 16 17 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1 1
+;
+#X text 35 15 tono naturale;
+#X msg 443 151 read eartraining/vicentino-interval-names.txt;
+#X obj 443 176 text define -k interval-names;
+#A set 0 comma \; 1 diesis-enarmonico-minore \; 2 diesis-enarmonico-maggiore
+\; 3 semitono-minore \; 4 semitono-maggiore-naturale \; 5 semitono-maggiore-accidentale
+\; 6 tono-minore \; 7 tono-naturale \; 8 tono-accidentale \; 9 tono-maggiore
+\; 10 terza-minima \; 11 terza-minore-naturale \; 12 terza-minore-accidentale
+\; 13 terza-piu-di-minore \; 14 terza-maggiore-naturale \; 15 terza-maggiore-accidentale
+\; 16 terza-piu-di-maggiore \; 17 quarta-minima \; 18 quarta-naturale
+\; 19 quarta-accidentale \; 20 salto-piu-che-di-quarta \; 21 tritono-naturale
+\; 22 tritono-accidentale \; 23 quinta-imperfetta-naturale \; 24 quinta-imperfetta-accidentale
+\; 25 salto-piu-di-quinta-imperfetta \; 26 quinta-naturale \; 27 quinta-accidentale
+\; 28 salto-piu-di-quinta \;;
+#X obj 443 123 loadbang;
+#X msg 458 201 read eartraining/vicentino-key-names.txt;
+#X obj 458 223 text define -k key-names;
+#A set 0 tasto di B mi con il segno di ♯ \; 1 tasto di C fa ut \;
+2 tasto di C fa ut con il punto di augmentatione di voce \; 3 tasto
+di C fa ut con il segno di ♯ \; 4 [no name] \; 5 tasto di D sol re
+con il segno di ♭ \; 6 tasto di D sol re con il segno di ♭ ed il
+punto di augmentatione di voce \; 7 tasto di D sol re \; 8 tasto di
+D sol re con il punto di augmentatione di voce \; 9 tasto di D sol
+re con il segno di ♯ \; 10 [no name] \; 11 tasto di E la mi con il
+segno di ♭ \; 12 tasto di E la mi con il segno di ♭ ed il punto
+di augmentatione di voce \; 13 tasto di E la mi \; 14 tasto di E la
+mi con il punto di augmentatione di voce \; 15 tasto di E la mi con
+il segno di ♯ \; 16 tasto di F fa ut \; 17 tasto di F fa ut con il
+punto di augmentatione di voce \; 18 tasto di F fa ut con il segno
+di ♯ \; 19 [no name] \; 20 tasto di G sol re ut con il segno di ♭
+\; 21 tasto di G sol re ut con il segno di ♭ ed il punto di augmentatione
+di voce \; 22 tasto di G sol re ut \; 23 tasto di G sol re ut con il
+punto di augmentatione di voce \; 24 tasto di G sol re ut con il segno
+di ♯ \; 25 [no name] \; 26 tasto di A re la con il segno di ♭ \;
+27 tasto di A re la con il segno di ♭ ed il punto di augmentatione
+di voce \; 28 tasto di A re la \; 29 tasto di A re la con il punto
+di augmentatione di voce \; 30 tasto di A re la con il segno di ♯
+\; 31 [no name] \; 32 tasto di B mi con il segno di ♭ \; 33 tasto
+di B mi con il segno di ♭ ed il punto di augmentatione di voce \;
+34 tasto di B mi \; 35 tasto di B mi con il punto di augmentatione
+di voce \;;
+#X obj 86 512 text search interval-names 0;
+#X obj 86 535 text get interval-names 1;
+#X obj 82 638 text define -k current-dictionary;
+#A set 13 16 \; 34 1 \;;
+#X obj 83 603 prepend read;
+#X obj 83 568 makefilename eartraining/%s.txt;
+#X obj 379 390 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 403 435 text size current-dictionary;
+#X obj 408 473 random;
+#X obj 371 411 t b b;
+#X obj 408 500 text get current-dictionary;
+#N canvas 0 50 1497 993 lookup-key-name 0;
+#X obj 15 83 text search key-names 0;
+#X obj 15 114 text get key-names;
+#X obj 14 141 list split 1;
+#X obj 15 24 inlet;
+#X obj 54 175 outlet;
+#X obj 15 53 mod 36;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X connect 2 1 4 0;
+#X connect 3 0 5 0;
+#X connect 5 0 0 0;
+#X restore 406 574 pd lookup-key-name;
+#X obj 401 610 prepend set;
+#X obj 495 608 prepend set;
+#X msg 403 641 tasto di B mi;
+#X msg 494 665 tasto di C fa ut;
+#N canvas 370 45 1497 993 lookup-key-name 0;
+#X obj 15 83 text search key-names 0;
+#X obj 15 114 text get key-names;
+#X obj 14 141 list split 1;
+#X obj 15 24 inlet;
+#X obj 54 173 outlet;
+#X obj 15 53 mod 36;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X connect 2 1 4 0;
+#X connect 3 0 5 0;
+#X connect 5 0 0 0;
+#X restore 551 574 pd lookup-key-name;
+#X obj 407 538 unpack f f;
+#X text 372 361 get random instance from dictionary;
+#X obj 113 383 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 87 411 t b b;
+#X obj 86 463 random;
+#X obj 23 672 prepend set;
+#X msg 22 704 semitono-maggiore-naturale;
+#X text 24 361 pick random interval and open dictionary;
+#X floatatom 1139 494 5 0 0 0 - - -;
+#X floatatom 1188 494 5 0 0 0 - - -;
+#X obj 997 219 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X text 1015 217 playback simultaneous;
+#X obj 1096 456 prepend set;
+#X obj 1192 453 prepend set;
+#X obj 1247 552 pack 0 0;
+#X obj 1247 582 s nkeyactive;
+#X msg 1282 512 1;
+#X msg 1320 510 0;
+#X obj 1066 373 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 1132 376 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 1224 377 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 1290 380 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 1066 394 t b b;
+#X obj 1132 395 t b b;
+#X obj 1224 397 t b b;
+#X obj 1290 399 t b b;
+#X obj 994 240 t b b;
+#X obj 1026 264 delay 1000;
+#X obj 1201 218 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 1198 236 t b b b;
+#X obj 1219 265 delay 1000;
+#X obj 1198 287 delay 2000;
+#X text 1088 373 I on;
+#X text 1154 374 I off;
+#X text 1244 377 II on;
+#X text 1310 381 II off;
+#X obj 1366 220 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 1363 238 t b b b;
+#X obj 1384 267 delay 1000;
+#X obj 1363 289 delay 2000;
+#X text 1219 215 playback I-II;
+#X text 1384 217 playback II-I;
+#X obj 183 184 text define -k interval-pool;
+#A set 7 \; 4 \;;
+#N canvas 0 50 659 481 push-number 0;
+#X obj 13 13 inlet;
+#X obj 45 64 text search interval-pool 0;
+#X obj 45 89 == -1;
+#X obj 13 141 text insert interval-pool;
+#X obj 13 117 spigot;
+#X obj 13 37 t f f;
+#X connect 0 0 5 0;
+#X connect 1 0 2 0;
+#X connect 2 0 4 1;
+#X connect 4 0 3 0;
+#X connect 5 0 4 0;
+#X connect 5 1 1 0;
+#X restore 57 232 pd push-number;
+#N canvas 0 50 450 300 remove-number 0;
+#X obj 6 9 inlet;
+#X obj 6 33 text search interval-pool 0;
+#X obj 6 63 text delete interval-pool;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X restore 27 255 pd remove-number;
+#X msg 48 59 7;
+#X obj 16 84 pack f f;
+#X obj 16 107 s select-pool;
+#X obj 27 183 r select-pool;
+#X obj 27 207 route 0 1;
+#X obj 16 36 t f b;
+#X obj 156 18 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
+#X obj 156 85 pack f f;
+#X obj 156 108 s select-pool;
+#X obj 156 37 t f b;
+#X text 175 16 semitono maggiore naturale;
+#X msg 188 60 4;
+#X obj 120 434 text size interval-pool;
+#X obj 86 488 text get interval-pool;
+#X obj 881 452 hsl 180 10 1 146 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 3704 1;
+#X obj 878 401 loadbang;
+#X msg 878 427 16;
+#X msg 922 426 121;
+#X obj 881 464 hsl 180 10 1 146 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 29628 1;
+#N canvas 0 50 942 1092 resolve-octave 0;
+#X floatatom 97 105 5 0 0 0 - - -;
+#X floatatom 150 106 5 0 0 0 - - -;
+#X obj 91 135 >;
+#X obj 92 162 route 0 1;
+#X msg 89 197 0;
+#X msg 128 194 36;
+#X obj 84 236 + 0;
+#X obj 96 77 unpack f f;
+#X obj 49 40 t l l;
+#X obj 16 76 unpack f f;
+#X obj 50 13 inlet;
+#X obj 84 266 outlet;
+#X obj 16 265 outlet;
+#X connect 0 0 2 0;
+#X connect 1 0 2 1;
+#X connect 2 0 3 0;
+#X connect 3 0 4 0;
+#X connect 3 1 5 0;
+#X connect 4 0 6 1;
+#X connect 5 0 6 1;
+#X connect 6 0 11 0;
+#X connect 7 0 0 0;
+#X connect 7 1 1 0;
+#X connect 8 0 9 0;
+#X connect 8 1 7 0;
+#X connect 9 0 12 0;
+#X connect 9 1 6 0;
+#X connect 10 0 8 0;
+#X restore 725 429 pd resolve-octave;
+#N canvas 58 167 948 1066 randomize-octave 1;
+#X obj 19 10 inlet;
+#X obj 60 10 inlet;
+#X obj 137 12 inlet;
+#X obj 182 12 inlet;
+#X floatatom 68 382 5 0 0 0 - - -;
+#X floatatom 111 382 5 0 0 0 - - -;
+#X obj 115 92 until 4;
+#X obj 115 121 f;
+#X obj 130 145 <;
+#X obj 134 171 route 0 1;
+#X obj 113 200 f;
+#X obj 148 227 + 36;
+#X obj 73 230 spigot;
+#X obj 19 54 t b b b f;
+#X msg 67 190 1;
+#X msg 76 165 0;
+#X obj 276 102 f;
+#X obj 243 103 f;
+#X obj 253 49 t b b f;
+#X obj 279 151 -;
+#X obj 216 303 f;
+#X text 247 302 difference;
+#X obj 173 303 f;
+#X obj 185 339 +;
+#X obj 94 266 t f b b f;
+#X connect 0 0 13 0;
+#X connect 1 0 17 1;
+#X connect 2 0 8 1;
+#X connect 6 0 7 0;
+#X connect 7 0 8 0;
+#X connect 8 0 9 0;
+#X connect 9 0 6 1;
+#X connect 9 1 10 0;
+#X connect 10 0 11 0;
+#X connect 10 0 12 0;
+#X connect 11 0 7 1;
+#X connect 11 0 10 1;
+#X connect 12 0 24 0;
+#X connect 13 0 10 0;
+#X connect 13 1 14 0;
+#X connect 13 2 6 0;
+#X connect 13 3 7 1;
+#X connect 13 3 10 1;
+#X connect 13 3 15 0;
+#X connect 13 3 18 0;
+#X connect 14 0 12 1;
+#X connect 15 0 12 1;
+#X connect 16 0 19 1;
+#X connect 17 0 19 0;
+#X connect 18 0 17 0;
+#X connect 18 1 16 0;
+#X connect 18 2 16 1;
+#X connect 19 0 20 1;
+#X connect 20 0 23 1;
+#X connect 22 0 23 0;
+#X connect 23 0 5 0;
+#X connect 24 0 4 0;
+#X connect 24 1 22 0;
+#X connect 24 2 20 0;
+#X connect 24 3 22 1;
+#X restore 725 492 pd randomize-octave;
+#X msg 724 381 5 7;
+#X connect 0 0 73 0;
+#X connect 2 0 3 0;
+#X connect 4 0 2 0;
+#X connect 4 0 5 0;
+#X connect 5 0 6 0;
+#X connect 7 0 8 0;
+#X connect 8 0 11 0;
+#X connect 8 0 28 0;
+#X connect 10 0 9 0;
+#X connect 11 0 10 0;
+#X connect 12 0 15 0;
+#X connect 13 0 14 1;
+#X connect 14 0 16 0;
+#X connect 15 0 14 0;
+#X connect 15 1 13 0;
+#X connect 16 0 23 0;
+#X connect 16 0 87 0;
+#X connect 17 0 18 0;
+#X connect 18 0 20 0;
+#X connect 19 0 21 0;
+#X connect 22 0 19 0;
+#X connect 23 0 17 0;
+#X connect 23 1 22 0;
+#X connect 25 0 26 0;
+#X connect 26 0 27 0;
+#X connect 26 1 80 0;
+#X connect 27 0 81 0;
+#X connect 28 0 29 0;
+#X connect 31 0 37 0;
+#X connect 32 0 37 0;
+#X connect 33 0 49 0;
+#X connect 35 0 31 0;
+#X connect 36 0 32 0;
+#X connect 37 0 38 0;
+#X connect 39 0 37 1;
+#X connect 40 0 37 1;
+#X connect 41 0 45 0;
+#X connect 42 0 46 0;
+#X connect 43 0 47 0;
+#X connect 44 0 48 0;
+#X connect 45 0 31 0;
+#X connect 45 1 39 0;
+#X connect 46 0 31 0;
+#X connect 46 1 40 0;
+#X connect 47 0 32 0;
+#X connect 47 1 39 0;
+#X connect 48 0 32 0;
+#X connect 48 1 40 0;
+#X connect 49 0 41 0;
+#X connect 49 0 43 0;
+#X connect 49 1 50 0;
+#X connect 50 0 42 0;
+#X connect 50 0 44 0;
+#X connect 51 0 52 0;
+#X connect 52 0 54 0;
+#X connect 52 1 53 0;
+#X connect 52 2 41 0;
+#X connect 53 0 42 0;
+#X connect 53 0 43 0;
+#X connect 54 0 44 0;
+#X connect 59 0 60 0;
+#X connect 60 0 62 0;
+#X connect 60 1 61 0;
+#X connect 60 2 43 0;
+#X connect 61 0 44 0;
+#X connect 61 0 41 0;
+#X connect 62 0 42 0;
+#X connect 68 0 69 1;
+#X connect 69 0 70 0;
+#X connect 71 0 72 0;
+#X connect 72 0 67 0;
+#X connect 72 1 66 0;
+#X connect 73 0 69 0;
+#X connect 73 1 68 0;
+#X connect 74 0 77 0;
+#X connect 75 0 76 0;
+#X connect 77 0 75 0;
+#X connect 77 1 79 0;
+#X connect 79 0 75 1;
+#X connect 80 0 27 1;
+#X connect 81 0 7 0;
+#X connect 82 0 88 2;
+#X connect 83 0 84 0;
+#X connect 83 0 85 0;
+#X connect 84 0 82 0;
+#X connect 85 0 86 0;
+#X connect 86 0 88 3;
+#X connect 87 0 88 0;
+#X connect 87 1 88 1;
+#X connect 89 0 87 0;
+#X restore 1160 182 pd eartrainer;
 #X coords 0 0 1 1 85 60 0;
