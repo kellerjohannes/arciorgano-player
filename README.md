@@ -58,6 +58,8 @@ In case you have physical access to the Arciorgano, you can use the USB connecti
 
 Follow the steps above to install the PureData software, the Arciorgano Player Patch and the sample set 'mode1'.
 
+![Setting up the Eartrainer](/doc/screenshot-eartraining-preparation.png)
+
 1. Open the Arciorgano Player Patch in PureData.
 
 2. Switch on "DSP" in the PureData main window. (You might want to check the audio device settings, see menu -> Media -> Audio Settings).
@@ -78,7 +80,7 @@ Follow the steps above to install the PureData software, the Arciorgano Player P
 
    - In the main Patch window, you will always see the notes that are currently played. Hide this window to avoid seeing the solution by accident. You can play the organ by clicking on the keyboard in the main Patch window without interfering with the quiz process. You can use this possibility to compare different intervals while looking for the right answer to the quiz.
    
-![Setting up the Eartrainer](/doc/screenshot-eartraining-preparation.png)
+![Using the Eartrainer](/doc/eartraining-window.png)
 
 ## Use MIDI keyboards to play the Patch
 
