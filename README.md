@@ -20,7 +20,16 @@ The Arciorgano Player Patch is run on PureData (Pd) on the user's computer. It c
 
 The Player Patch doesn't include the sample libraries of the Arciorgano. These need to be downloaded and installed manually. There are samples available with different tuning systems. Choose the system you intend to use and download the .zip file.
 
-https://drive.google.com/drive/folders/1-_Qdcfk2Jj2KsEpL1hfWtcqbkEynKAOY?usp=sharing
+- "mode1" (Vicentino's enharmonic system, based on a meantone chain of fifths): https://drive.google.com/file/d/1Rk9sq8aGRtnBpBI20V9piY4cyc1Wcq-F/view?usp=sharing
+
+- "mode2" (Vicentino's 'adaptive-just' system. The upper manual is providing pure fifths and minor thirds to the meantone lower manual):https://drive.google.com/file/d/1RwbwqGZj4EcBwztgxwGcjCKDKOUcyJKc/view?usp=sharing
+
+- "mode3" (Johannes Walter's 'pseudorein', based on pure fifths, where the Pythagorean diminished fourths is used as a pseudopure major third): https://drive.google.com/file/d/19md4GUvS_xAUaLa_51cxX_VGOw_bjDyF/view?usp=sharing
+
+- "mode7" (a limit5-Tonnetz inspired by Salina's 24-division system): https://drive.google.com/file/d/1qx5avr9LAlDW6shJgt6_xfhyKvIF8W19/view?usp=sharing
+
+- "mode8" (a complex limit-7 Tonnetz): https://drive.google.com/file/d/1afSW9_2PTBl1o_7PqfBw__OOvRECXmWS/view?usp=sharing
+
 
 Create a subfolder in the Arciorgano Player Patch named 'samples'. Unzip the downloaded sample collections into this subfolder. Don't change the folder structure within the .zip-file. 
 
