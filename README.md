@@ -9,26 +9,33 @@ The Arciorgano Player Patch is run on PureData (Pd) on the user's computer. It c
 
 ## Set up the Player Patch
 
-1. Download and install PureData: https://puredata.info/downloads (Please use the "vanilla" version)
+1. Download and install PureData: [PureData](https://puredata.info/downloads) (Please use the "vanilla" version)
 
-2. Download the latest version of the Player Patch: https://gitlab.fhnw.ch/johannes.keller/arciorgano-pd-sender/-/releases
+2. Download the latest version of the Player Patch: [Gitlab](https://gitlab.fhnw.ch/johannes.keller/arciorgano-pd-sender/-/releases)
 
 3. Unzip all the files into a folder of your choice. 
 
+4. Open the Patch by double clicking the file "arciorgano-player.pd".
+
+5. Certain features of the Player Patch need additional packages for the PureData software. It's recommended that you use PureData's built-in package manager to install them: 
+   - Open menu -> Help -> Find Externals. 
+   - Type in the search field "cyclone" and click on the first search result (the latest version of the package found under this name). Confirm to install the package.
+   - Repeat the same process for the package "comport".
+   
 
 ## Install the sample files
 
 The Player Patch doesn't include the sample libraries of the Arciorgano. These need to be downloaded and installed manually. There are samples available with different tuning systems. Choose the system you intend to use and download the .zip file.
 
-- "mode1" (Vicentino's enharmonic system, based on a meantone chain of fifths): https://drive.google.com/file/d/1Rk9sq8aGRtnBpBI20V9piY4cyc1Wcq-F/view?usp=sharing
+- "mode1" (Vicentino's enharmonic system, based on a meantone chain of fifths): [mode1](https://drive.google.com/file/d/1Rk9sq8aGRtnBpBI20V9piY4cyc1Wcq-F/view?usp=sharing)
 
-- "mode2" (Vicentino's 'adaptive-just' system. The upper manual is providing pure fifths and minor thirds to the meantone lower manual):https://drive.google.com/file/d/1RwbwqGZj4EcBwztgxwGcjCKDKOUcyJKc/view?usp=sharing
+- "mode2" (Vicentino's 'adaptive-just' system. The upper manual is providing pure fifths and minor thirds to the meantone lower manual): [mode2](https://drive.google.com/file/d/1RwbwqGZj4EcBwztgxwGcjCKDKOUcyJKc/view?usp=sharing)
 
-- "mode3" (Johannes Walter's 'pseudorein', based on pure fifths, where the Pythagorean diminished fourths is used as a pseudopure major third): https://drive.google.com/file/d/19md4GUvS_xAUaLa_51cxX_VGOw_bjDyF/view?usp=sharing
+- "mode3" (Johannes Walter's 'pseudorein', based on pure fifths, where the Pythagorean diminished fourths is used as a pseudopure major third): [mode3](https://drive.google.com/file/d/19md4GUvS_xAUaLa_51cxX_VGOw_bjDyF/view?usp=sharing)
 
-- "mode7" (a limit5-Tonnetz inspired by Salina's 24-division system): https://drive.google.com/file/d/1qx5avr9LAlDW6shJgt6_xfhyKvIF8W19/view?usp=sharing
+- "mode7" (a limit5-Tonnetz inspired by Salina's 24-division system): [mode7](https://drive.google.com/file/d/1qx5avr9LAlDW6shJgt6_xfhyKvIF8W19/view?usp=sharing)
 
-- "mode8" (a complex limit-7 Tonnetz): https://drive.google.com/file/d/1afSW9_2PTBl1o_7PqfBw__OOvRECXmWS/view?usp=sharing
+- "mode8" (a complex limit-7 Tonnetz): [mode8](https://drive.google.com/file/d/1afSW9_2PTBl1o_7PqfBw__OOvRECXmWS/view?usp=sharing)
 
 
 Create a subfolder in the Arciorgano Player Patch named 'samples'. Unzip the downloaded sample collections into this subfolder. Don't change the folder structure within the .zip-file. 
@@ -114,7 +121,7 @@ It is possible to play the Patch from software like Sibelius or Reaper. You need
 2. Check the MIDI settings: menu -> Media -> MIDI settings. Select your virtual MIDI device as "Input Device".
 
 3. Toggle on "active" in one of the "bridge" boxes in the main patch window:
-   - "Sibelius bridge" uses PitchBend commands to encode enharmonic alterations. To add these commands to a score you need to install the Sibelius Plugin "studio31-ReadTabulature.plg" that is located in the Patch folder (see "sibelius-plugin" subfolder). Check the Sibelius online documentation how to install a plugin locally on your system http://www.sibelius.com/download/plugins/index.html?help=install
+   - "Sibelius bridge" uses PitchBend commands to encode enharmonic alterations. To add these commands to a score you need to install the Sibelius Plugin "studio31-ReadTabulature.plg" that is located in the Patch folder (see "sibelius-plugin" subfolder). Check the Sibelius online documentation how to install a plugin locally on your system [Sibelius Help](http://www.sibelius.com/download/plugins/index.html?help=install)
    - "Reaper bridge" uses MIDI channels 1 and 2 to encode the two manuals separately. 
    - "Vicentino bridge" is under construction, don't use it.
    - "Velocity bridge" uses Velocity values to encode enharmonic alterations. It is the recommended way to transfer MIDI data between Sibelius, Reaper and the Patch. To encode a Sibelius score for this "bridge", please install the Sibelius plugin "arciorganoVelocityPlayback.plg". 
@@ -128,9 +135,9 @@ It is possible to play the Patch from software like Sibelius or Reaper. You need
 
 ## Listen to the organ
 
-For remote work sessions, the organ can be monitored via an audio livestream. The live audio stream is generated by an Icecast 2 server, at 10.209.132.109:8080. To access it, you could type this address into your browser address bar: http://10.209.132.109:8080. You need an active VPN connection (vpn.fhnw.ch) to access the audio server. 
+For remote work sessions, the organ can be monitored via an audio livestream. The live audio stream is generated by an Icecast 2 server, at 10.209.132.109:8080. To access it, you could type this address into your browser address bar: [Streaming server](http://10.209.132.109:8080). You need an active VPN connection (vpn.fhnw.ch) to access the audio server. 
 
-If the server is active, you should see the details of "Mount Point /pandora.mp3". Click on the M3U symbol, top right. The browser should start playing the stream, or offer you options to open the stream with an application. If you don't have a player software capable of doing that, you might want to install VLC (https://www.videolan.org/vlc/).
+If the server is active, you should see the details of "Mount Point /pandora.mp3". Click on the M3U symbol, top right. The browser should start playing the stream, or offer you options to open the stream with an application. If you don't have a player software capable of doing that, you might want to install VLC ([VLC](https://www.videolan.org/vlc/)).
 
 
 
