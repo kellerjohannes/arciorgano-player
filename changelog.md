@@ -55,3 +55,16 @@
 
 - new feature: ear training quiz for Vicentino's intervals in mode1, as a subpatch in a detached window.
 
+## changes for version 1.43 (31th of May 2021)
+
+- added more intervals and functionality to the ear training quiz subpatch.
+
+
+
+## changes for version 1.44 [no date yet]
+
+- added support for pressing the 'p'-key to trigger panic (all notes off)
+
+- adapted the mapping for MIDI values to suit a piece by Anna Sowa
+
+
