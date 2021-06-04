@@ -221,6 +221,13 @@
 #X floatatom 132 94 5 0 0 0 - - -;
 #X msg 207 32 2;
 #X text 172 92 spread;
+#X obj 230 94 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X text 248 94 'p' key;
+#X obj 197 148 key;
+#X obj 196 177 sel 112;
+#X obj 195 246 spigot;
+#X msg 198 209 0;
 #X connect 1 0 8 0;
 #X connect 2 0 5 0;
 #X connect 3 0 8 0;
@@ -238,7 +245,12 @@
 #X connect 13 0 6 0;
 #X connect 14 0 12 1;
 #X connect 15 0 14 0;
-#X coords 0 -1 1 1 230 35 2 0 85;
+#X connect 17 0 21 1;
+#X connect 19 0 20 0;
+#X connect 20 0 22 0;
+#X connect 21 0 8 0;
+#X connect 22 0 21 0;
+#X coords 0 -1 1 1 310 35 2 0 85;
 #X restore 334 61 pd all-off;
 #X text 13 15 Arciorgano Player;
 #N canvas 692 177 1100 847 serial-out 0;
@@ -21141,5 +21153,5 @@ f 121;
 #X restore 10 10 pd eartrainger-container;
 #X coords 0 626 1 625 250 120 0;
 #X restore 1076 870 pd eartrainer;
-#X text 14 33 Version 1.43 (May 31 2021);
+#X text 14 33 Version 1.43 (June 4 2021);
 #X coords 0 0 1 1 85 60 0;
