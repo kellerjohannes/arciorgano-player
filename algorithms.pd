@@ -1,4 +1,4 @@
-#N canvas 111 436 1269 827 12;
+#N canvas 111 436 495 340 12;
 #N canvas 840 0 1640 1388 random-cloud 0;
 #X obj 79 296 random 147;
 #X obj 70 232 metro 30;
@@ -17,7 +17,7 @@
 #X obj 83 560 hsl 400 15 0 2000 0 0 empty empty empty -2 -8 0 10 -262144
 -1 -1 0 1;
 #X obj 82 579 hsl 400 15 0 2000 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 6882 1;
+-1 -1 3591 1;
 #X obj 77 342 + 0;
 #X obj 556 286 random 147;
 #X obj 547 222 metro 30;
@@ -35,7 +35,7 @@
 #X obj 82 633 hsl 400 15 0 2000 0 0 empty empty empty -2 -8 0 10 -262144
 -1 -1 0 1;
 #X obj 82 652 hsl 400 15 0 2000 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 7282 1;
+-1 -1 3591 1;
 #X obj 554 332 + 0;
 #X obj 557 377 pack 0 0;
 #X floatatom 228 384 5 0 0 0 - - -;
@@ -98,10 +98,10 @@
 #X obj 179 113 uzi 146;
 #X obj 208 178 pack 0 0;
 #X obj 171 421 hsl 128 15 0 146 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 2400 1;
+-1 -1 0 1;
 #X obj 105 153 + 0;
 #X obj 171 440 hsl 128 15 1 146 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 25500 1;
+-1 -1 0 1;
 #X obj 88 310 int;
 #X obj 23 376 int;
 #X obj 42 230 - 0;
@@ -144,9 +144,9 @@
 #X floatatom 170 94 5 0 0 0 - - -;
 #X floatatom 171 71 5 0 0 0 - - -;
 #X obj 35 95 hsl 128 15 1 1000 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 3000 1;
+-1 -1 0 1;
 #X obj 34 71 hsl 128 15 10 2000 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 7100 1;
+-1 -1 0 1;
 #X obj 241 238 delay 1200 1 msec;
 #X text 29 15 Swipe;
 #X text 46 39 run;
