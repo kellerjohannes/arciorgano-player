@@ -59,12 +59,16 @@
 
 - added more intervals and functionality to the ear training quiz subpatch.
 
-
-
 ## changes for version 1.44 [no date yet]
 
 - added support for pressing the 'p'-key to trigger panic (all notes off)
 
 - adapted the mapping for MIDI values to suit a piece by Anna Sowa
 
+- added the 'korobkova bridge', using a key numbering system suitable for 'implanted memories' by polina korobkova
 
+- added the feature 'insist' to the COM output module, triggering a reconnect in regular time intervals. Useful if the cable connection is arbitrarily established and disconnected.
+
+- added 'algorithms' subpatch for simple generative patterns. to be used in the 'illuminationen v' concert.
+
+- added 'pozzi' algorithm, a simple 4-part ostinato in arciorgano tuning mode 3 ('walter pseudorein'), used in the theatre show 'senza ora' at Gare du Nord Basel.
