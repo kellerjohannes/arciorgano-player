@@ -1,4 +1,4 @@
-#N canvas 37 23 1617 1005 12;
+#N canvas 697 92 1061 771 12;
 #X declare -lib cyclone;
 #X declare -lib cyclone;
 #X text 13 52 Studio31 / Johannes Keller;
@@ -60,7 +60,7 @@
 #X obj 402 79 netsend -u -b;
 #X symbolatom 36 150 30 0 0 0 - - -;
 #X msg 338 182 set connect \$1 \$2;
-#X msg 334 208 connect 10.209.132.109 5900;
+#X msg 334 208 connect localhost 5900;
 #X obj 91 60 loadbang;
 #X obj 233 58 loadbang;
 #X text 12 150 IP;
@@ -221,7 +221,7 @@
 #X floatatom 132 94 5 0 0 0 - - -;
 #X msg 207 32 2;
 #X text 172 92 spread;
-#X obj 230 94 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 230 94 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
 #X text 248 94 'p' key;
 #X obj 197 148 key;
@@ -275,7 +275,7 @@
 #X msg 200 433 200;
 #X obj 69 437 - 0;
 #X obj 148 343 moses 147;
-#X obj 12 31 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0 1
+#X obj 12 31 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1 1
 ;
 #X text 35 29 active;
 #X obj 27 255 spigot;
@@ -287,7 +287,7 @@
 #X obj 148 29 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
 #X text 167 29 (re)connect;
-#X obj 80 227 r oscnkey;
+#X obj 29 208 r oscnkey;
 #X obj 454 236 r oscauxa;
 #X obj 540 235 r oscauxb;
 #X obj 417 339 route 0 1;
@@ -298,7 +298,7 @@
 #X msg 614 375 201 200;
 #X obj 452 302 spigot;
 #X obj 571 309 spigot;
-#X obj 148 51 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 148 51 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
 #X text 167 48 insist;
 #X obj 299 87 metro 1000;
@@ -327,6 +327,7 @@
 #X connect 15 0 14 0;
 #X connect 18 0 19 0;
 #X connect 19 0 15 0;
+#X connect 21 0 13 0;
 #X connect 22 0 30 0;
 #X connect 23 0 31 0;
 #X connect 24 0 25 0;
@@ -343,7 +344,6 @@
 #X connect 34 0 36 0;
 #X connect 35 0 34 1;
 #X connect 36 0 15 0;
-#X connect 37 0 13 0;
 #X coords 0 -1 1 1 280 100 2 0 0;
 #X restore 469 920 pd serial-out;
 #N canvas 2738 124 1373 1046 pipes 0;
@@ -2489,7 +2489,7 @@ f 121;
 #X connect 23 0 16 0;
 #X coords 0 -1 1 1 150 45 2 0 0;
 #X restore 8 159 pd reaper-bridge;
-#N canvas 577 183 1103 845 vicentino-bridge 1;
+#N canvas 577 183 1103 845 vicentino-bridge 0;
 #X obj 21 118 notein;
 #X obj 39 529 + 0;
 #X msg 89 520 0;
@@ -19458,8 +19458,8 @@ f 121;
 #X connect 140 6 139 0;
 #X coords 0 -1 1 1 480 240 2 10 580;
 #X restore 1073 361 pd tone-generator;
-#N canvas 70 608 668 480 sibelius-bridge 0;
-#X obj 9 22 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0 1
+#N canvas 70 548 668 480 sibelius-bridge 0;
+#X obj 9 22 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1 1
 ;
 #X text 27 20 active;
 #X text 7 4 Velocity bridge;
