@@ -1,0 +1,6 @@
+(require 'incudine)
+(in-package :scratch)
+
+(defparameter *osc-out* (osc:open :port 5900 :direction :output))
+
+(osc:message *osc-out* "/incudine-bridge" "ii" 17 0)

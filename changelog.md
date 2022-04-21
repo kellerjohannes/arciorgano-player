@@ -72,3 +72,5 @@
 - added 'algorithms' subpatch for simple generative patterns. to be used in the 'illuminationen v' concert.
 
 - added 'pozzi' algorithm, a simple 4-part ostinato in arciorgano tuning mode 3 ('walter pseudorein'), used in the theatre show 'senza ora' at Gare du Nord Basel.
+
+- added 'incudine bridge', to receive OSC messages locally
