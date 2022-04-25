@@ -4,13 +4,16 @@
 (defparameter *osc-out* (osc:open :port 5900 :direction :output))
 
 
+
+;; session 1, erste Probe, Selbstspieler-Skizzen
+
 (defparameter *scale-names* '(c c. cis des des. d d. dis es es. e e. eis f f. fis ges ges. g g. gis as as. a a. ais bes bes. b b. bis))
 
 (defparameter *dict-name-pitch* (loop for name in *scale-names*
 				      for i from 1
 				      collect (cons name i)))
 
-(defparameter *dict-pitch-key* '((1 . 1) (2 . 2) (3 . 3) (4 . 4) (5 . 6) (6 . 7) (7 . 8) (8 . 9) (9 . 10) (10 . 12) (11 . 13) (12 . 14) (13 . 15) (14 . 16) (15 . 17) (16 . 18) (17 . 20) (18 . 21) (19 . 22) (20 . 23) (21 . 24) (22 . 26) (23 . 27) (24 . 28) (25 . 29) (26 . 30) (27 . 31) (28 . 33) (29 . 34) (30 . 35) (31 . 36)))
+(defparameter *dict-pitch-key* '((1 . 1) (2 . 2) (3 . 3) (4 . 4) (5 . 6) (6 . 7) (7 . 8) (8 . 9) (9 . 11) (10 . 12) (11 . 13) (12 . 14) (13 . 15) (14 . 16) (15 . 17) (16 . 18) (17 . 20) (18 . 21) (19 . 22) (20 . 23) (21 . 24) (22 . 26) (23 . 27) (24 . 28) (25 . 29) (26 . 30) (27 . 31) (28 . 33) (29 . 34) (30 . 35) (31 . 36)))
 
 (defparameter *dict-interval-pitch* '((unisono . 0) (diesis . 1) (diesis-maggiore . 2) (semitono-minore . 2) (semitono-maggiore . 3) (tono-minore . 4) (tono . 5) (tono-maggiore . 6) (terza-minima . 7) (terza-minore . 8) (terza-piu-di-minore . 9) (terza-maggiore . 10) (terza-piu-di-maggiore . 11) (quarta-minima . 12) (quarta . 13) (piu-di-quarta . 14) (tritono . 15) (quinta-imperfetta . 16) (quinta-piu-di-imperfetta . 17) (quinta . 18) (piu-di-quinta . 19) (settima-naturale . 26) (sesta-maggiore . 27)))
 
@@ -184,3 +187,41 @@
 	#'play-random-chords
 	(1- number-of-chords)
 	:duration duration)))
+
+
+
+;; Session 2, Versuch einer Kontrapunkt-Maschine
+;;
+;; Baut teilweise auf Code von Session 1 auf
+
+
+
+(defparameter *tetrachord* '(tono tono semitono-maggiore))
+(defparameter *tetrachord-dur-on* 1)
+(defparameter *tetrachord-articulation* 1.1)
+(defparameter *tetrachord-running* t)
+(defparameter *fundament-name* 'g)
+(defparameter *tetrachord-octave* 2)
+
+
+(defun tet-toggle (onp)
+  (if onp
+      (setf *tetrachord-running* t)
+      (setf *tetrachord-running* nil)))
+
+(defun tet-fundament (name)
+  (setf *fundament-name* name))
+
+(defun play-tetrachord (current-name &optional rest-tetrachord)
+  (when *tetrachord-running*
+    (play-note current-name :duration *tetrachord-dur-on* :octave *tetrachord-octave*)
+    (at (+ (now) #[(* *tetrachord-dur-on* *tetrachord-articulation*) sec])
+	#'play-tetrachord
+	(if rest-tetrachord
+	    (apply-interval current-name (first rest-tetrachord) :direction :discendente)
+	    *fundament-name*)
+	(if rest-tetrachord
+	    (rest rest-tetrachord)
+	    *tetrachord*))))
+
+
