@@ -335,7 +335,7 @@
 
 (defparameter *dict-pitch-key* '((0 . 0) (1 . 1) (2 . 2) (3 . 3) (4 . 4) (5 . 6) (6 . 7) (7 . 8) (8 . 9) (9 . 11) (10 . 12) (11 . 13) (12 . 14) (13 . 15) (14 . 16) (15 . 17) (16 . 18) (17 . 20) (18 . 21) (19 . 22) (20 . 23) (21 . 24) (22 . 26) (23 . 27) (24 . 28) (25 . 29) (26 . 30) (27 . 31) (28 . 33) (29 . 34) (30 . 35) (31 . 0)))
 
-(defparameter *dict-interval-pitch* '((unisono . 0) (diesis . 1) (diesis-maggiore . 2) (semitono-minore . 2) (semitono-maggiore . 3) (tono-minore . 4) (tono . 5) (tono-maggiore . 6) (terza-minima . 7) (terza-minore . 8) (terza-piu-di-minore . 9) (terza-maggiore . 10) (terza-piu-di-maggiore . 11) (quarta-minima . 12) (quarta . 13) (piu-di-quarta . 14) (tritono . 15) (quinta-imperfetta . 16) (quinta-piu-di-imperfetta . 17) (quinta . 18) (piu-di-quinta . 19) (settima-naturale . 26) (sesta-minore . 23) (sesta-maggiore . 25) (ottava . 31)))
+(defparameter *dict-interval-pitch* '((unisono . 0) (diesis . 1) (diesis-minore . 1) (diesis-maggiore . 2) (semitono-minore . 2) (semitono-maggiore . 3) (tono-minore . 4) (tono . 5) (tono-maggiore . 6) (terza-minima . 7) (terza-minore . 8) (terza-piu-di-minore . 9) (terza-maggiore . 10) (terza-piu-di-maggiore . 11) (quarta-minima . 12) (quarta . 13) (piu-di-quarta . 14) (tritono . 15) (quinta-imperfetta . 16) (quinta-piu-di-imperfetta . 17) (quinta . 18) (piu-di-quinta . 19) (settima-naturale . 26) (sesta-minore . 21) (sesta-maggiore . 23) (ottava . 31)))
 
 (defun unify-pitch (pitch)
   (cond ((< pitch 1) (unify-pitch (+ pitch 31)))
@@ -383,8 +383,6 @@
       (at (+ (now) #[duration-in-sec sec]) #'key-off index))))
 
 (defun panic ()
-  (setf *perforation-panic* t)
-  (format t "*perforation-panic* set to T. ")
   (loop for i from 0 to 146 do
     (key-off i)))
 
@@ -396,9 +394,20 @@
 
 (defparameter *score* '(() () ()))
 
+(defparameter *multiplexer* nil)
+
+(defun multi (val)
+  (if (zerop val)
+      (setf *multiplexer* nil)
+      (setf *multiplexer* val)))
+
 (defun play-latest-keyframe (score duration)
   (mapc (lambda (voice)
-	  (play-pitch (first voice) duration))
+	  (play-pitch (first voice) duration)
+	  (when *multiplexer*
+	    (let ((bottom (- 0 (floor *multiplexer* 2))))
+	      (loop for i from bottom to (+ bottom *multiplexer*) do
+		(play-pitch (+ (first voice) (* i 31)) duration)))))
 	score))
 
 (defun make-harmony-server (interval-list)
@@ -422,15 +431,18 @@
 	(t (cons (cons (car value-list) (car score))
 		 (write-to-score (rest value-list) (rest score))))))
 
-(defun compose-keyframe (tetrachord-position tetrachord model-position model score &optional start-harmony)
-  (let ((current-pitch (nth tetrachord-position tetrachord)))
+(defun compose-keyframe (tetrachord-position tetrachord origin model-position model score &optional start-harmony)
+  (let ((current-pitch (nth tetrachord-position (parse-tetrachord
+						 (car origin)
+						 (cdr origin)
+						 (funcall *tetrachord-generator*)))))
     (when start-harmony
       (setf score (write-to-score (cons current-pitch
 					(mapcar (lambda (interval)
 						  (+ current-pitch (interval->pitch interval)))
 						start-harmony))
 				  score)))
-    (let ((get-harmony-options (make-harmony-server (nth model-position model))))
+    (let ((get-harmony-options (make-harmony-server (nth model-position (funcall *model-generator*)))))
       (write-to-score (cons current-pitch
 			    (mapcar (lambda (voice)
 				      (find-voiceleading current-pitch
@@ -444,34 +456,152 @@
 (defun start () (setf *playing* t))
 (defun stop () (setf *playing* nil))
 
-(defun loop-tetrachord (position tetrachord model score duration)
+(defun loop-tetrachord (position tetrachord origin model score duration-old)
   (when *playing*
-    (cond ((>= position 4) (loop-tetrachord 0 tetrachord model score duration))
-	  (t (play-latest-keyframe score duration)
-	     (at (+ (now) #[duration sec])
-		 #'loop-tetrachord
-		 (1+ position)
-		 tetrachord
-		 model
-		 (compose-keyframe position tetrachord position model score)
-		 duration)))))
+    (let ((duration (funcall *duration-generator*)))
+      (cond ((>= position 4) (loop-tetrachord 0 tetrachord origin model score duration))
+	    (t (play-latest-keyframe score duration)
+	       (at (+ (now) #[duration sec])
+		   #'loop-tetrachord
+		   (1+ position)
+		   tetrachord
+		   origin
+		   model
+		   (compose-keyframe position tetrachord origin position model score)
+		   duration))))))
+
+(defun permutate (lst)
+  (append (rest lst) (list (first lst))))
+
+(defmacro make-rotator (data)
+  `(let ((lst ,data))
+     #'(lambda ()
+	 (setf lst (permutate lst))
+	 (first lst))))
+
+(defparameter *limit-rotator* (make-rotator '(limit-2 limit-3 limit-5 limit-7)))
+(defparameter *limit* (funcall *limit-rotator*))
+
+(defun next-limit ()
+  (setf *limit* (funcall *limit-rotator*)))
+
+(defparameter *quality-rotator* (make-rotator '(consonant dissonant)))
+
+(defparameter *quality* (funcall *quality-rotator*))
+
+(defun next-quality ()
+  (setf *quality* (funcall *quality-rotator*)))
+
+(defparameter *model-generator*
+  (let ((counter 0))
+    #'(lambda (&optional next)
+	(let* ((models '((limit-2
+			  (consonant
+			   ((ottava)
+			    (ottava)
+			    (ottava)
+			    (ottava)))
+			  (dissonant
+			   ((tritono ottava))))
+			 (limit-3
+			  (consonant
+			   ((quinta ottava)
+			    (quinta ottava)
+			    (quinta ottava)
+			    (quinta ottava))
+			   ((quarta ottava)
+			    (quarta ottava)
+			    (quarta ottava)
+			    (quarta ottava))
+			   ((quinta ottava)
+			    (quarta ottava)
+			    (quinta ottava)
+			    (quarta ottava)))
+			  (dissonant
+			   ((tritono settima-naturale)
+			    (tritono settima-naturale)
+			    (tritono settima-naturale)
+			    (tritono settima-naturale))))
+			 (limit-5
+			  (consonant
+			   ((terza-minore quinta ottava)
+			    (terza-maggiore sesta-maggiore ottava)
+			    (terza-maggiore sesta-maggiore)
+			    (terza-maggiore quinta ottava))
+			   ((terza-maggiore quinta ottava)
+			    (terza-minore sesta-minore ottava)
+			    (terza-maggiore sesta-maggiore ottava)
+			    (terza-minore quinta ottava)))
+			  (dissonant
+			   ((tono-maggiore terza-piu-di-minore quinta-imperfetta)
+			    (tono-maggiore terza-piu-di-minore quinta-imperfetta)
+			    (tono-maggiore terza-piu-di-minore quinta-imperfetta)
+			    (tono-maggiore terza-piu-di-minore quinta-imperfetta))))
+			 (limit-7
+			  (consonant
+			   ((terza-maggiore quinta settima-naturale ottava)
+			    (terza-maggiore quinta settima-naturale ottava)
+			    (terza-maggiore quinta settima-naturale ottava)
+			    (terza-maggiore quinta settima-naturale ottava)))
+			  (dissonant
+			   ((tono-minore tono-maggiore quarta-minima)
+			    (tono-minore tono-maggiore quarta-minima)
+			    (tono-minore tono-maggiore quarta-minima)
+			    (tono-minore tono-maggiore quarta-minima))))))
+	       (pick (cdr (assoc *quality* (cdr (assoc *limit* models)))))
+	       (len (length pick)))
+	  (when next (incf counter))
+	  (when (>= counter len) (setf counter 0))
+	  (nth counter pick)))))
+
+(defun next-model ()
+  (funcall *model-generator* t))
+
+(defparameter *genere-rotator* (make-rotator '(diatonico cromatico enarmonico)))
+
+(defparameter *quarta-rotator* (make-rotator '(prima seconda terza)))
+
+(defun next-genus ()
+  (setf *genere* (funcall *genere-rotator*)))
+
+(defun next-quarta ()
+  (setf *quarta* (funcall *quarta-rotator*)))
+
+(defparameter *genere* (next-genus))
+
+(defparameter *quarta* (next-quarta))
+
+
+(defparameter *tetrachord-generator*
+  #'(lambda ()
+      (let ((quarte '((diatonico
+		       (prima . (tono semitono-maggiore tono))
+		       (seconda . (tono tono semitono-maggiore))
+		       (terza . (semitono-maggiore tono tono)))
+		      (cromatico
+		       (prima . (semitono-minore terza-minore semitono-maggiore))
+		       (seconda . (semitono-maggiore semitono-minore terza-minore))
+		       (terza . (terza-minore semitono-minore semitono-maggiore)))
+		      (enarmonico
+		       (prima . (diesis-maggiore terza-maggiore diesis-minore))
+		       (seconda . (diesis-minore terza-maggiore diesis-maggiore))
+		       (terza . (terza-maggiore diesis-maggiore diesis-minore))))))
+	(cdr (assoc *quarta* (cdr (assoc *genere* quarte)))))))
+
+(defparameter *duration-generator* (let ((counter 1))
+				     #'(lambda (&optional reset)
+					 (when reset (setf counter reset))
+					 (setf counter (* counter 1))
+					 counter)))
+
+(defun reset-speed (&optional (val 2))
+  (funcall *duration-generator* val))
 
 (defun play-loop ()
   (loop-tetrachord 0
-		   (parse-tetrachord 'g 2 '(semitono-minore semitono-maggiore terza-minore))
-		   '((terza-minore)
-		     (terza-maggiore)
-		     (terza-minore)
-		     (terza-maggiore))
-		   '((81) (89))
-		   2))
+		   *tetrachord-generator*
+		   '(g . 1)
+		   *model-generator*
+		   '((50) (58) (68))
+		   1))
 
-(defun play-loop ()
-  (loop-tetrachord 0
-		   (parse-tetrachord 'g 2 '(tono tono semitono-maggiore))
-		   '((terza-minore quinta)
-		     (terza-maggiore sesta-minore)
-		     (terza-maggiore sesta-minore)
-		     (terza-maggiore quinta))
-		   '((81) (89) (99))
-		   2))
