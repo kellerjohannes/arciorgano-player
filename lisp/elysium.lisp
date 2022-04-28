@@ -372,13 +372,13 @@
 
 (defun key-off (index)
   (when (< 0 index 147)
-    (format t "~a:off " index)
+    ;(format t "~a:off " index)
     (osc:message *osc-out* "/incudine-bridge" "ii" index 0)))
 
 (defun key-on (index &optional duration-in-sec)
   (when (< 0 index 147)
     (osc:message *osc-out* "/incudine-bridge" "ii" index 1)
-    (format t "~a:on " index)
+    ;(format t "~a:on " index)
     (when duration-in-sec
       (at (+ (now) #[duration-in-sec sec]) #'key-off index))))
 
@@ -470,8 +470,13 @@
 		   (compose-keyframe position tetrachord origin position model score)
 		   duration))))))
 
+(defun without-last (lst)
+    (reverse (cdr (reverse lst))))
+
 (defun permutate (lst)
-  (append (rest lst) (list (first lst))))
+  (cons (car (last lst)) (without-last lst))
+  ;(append (rest lst) (list (first lst)))
+  )
 
 (defmacro make-rotator (data)
   `(let ((lst ,data))
@@ -588,14 +593,26 @@
 		       (terza . (terza-maggiore diesis-maggiore diesis-minore))))))
 	(cdr (assoc *quarta* (cdr (assoc *genere* quarte)))))))
 
-(defparameter *duration-generator* (let ((counter 1))
-				     #'(lambda (&optional reset)
-					 (when reset (setf counter reset))
-					 (setf counter (* counter 1))
-					 counter)))
+(defparameter *duration-generator*
+  (let ((counter 1)
+	(internal-factor 1)
+	(random-on 0))
+    #'(lambda (&key (reset nil) (factor nil) (rand nil))
+	(when reset (setf counter reset))
+	(when factor (setf internal-factor factor))
+	(cond ((null rand)
+	       (setf counter (* counter internal-factor))
+	       counter)
+	      (t (+ 1/10 (random 2.0)))))))
 
 (defun reset-speed (&optional (val 2))
-  (funcall *duration-generator* val))
+  (funcall *duration-generator* :reset val))
+
+(defun speed-factor (val)
+  (funcall *duration-generator* :factor val))
+
+(defun speed-random (toggle)
+  (funcall *duration-generator* :rand toggle))
 
 (defun play-loop ()
   (loop-tetrachord 0
@@ -605,3 +622,17 @@
 		   '((50) (58) (68))
 		   1))
 
+
+
+
+
+
+(osc:close *oscin*)
+
+(defparameter *oscin* (osc:open :port 5800 :host "localhost" :protocol :udp :direction :input))
+
+(recv-start *oscin*)
+
+(make-osc-responder *oscin* "incudine" "i" 
+                             (lambda (genus)
+			       (msg warn "~a" genus)))
