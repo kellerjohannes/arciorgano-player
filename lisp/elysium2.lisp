@@ -76,7 +76,7 @@
 	(t (cons (cons (car value-list) (car score))
 		 (write-to-score (rest value-list) (rest score))))))
 
-(defun compose-keyframe (tetrachord-position tetrachord origin model-position model score &optional start-harmony)
+(defun compose-keyframe (tetrachord-position origin model-position score &optional start-harmony)
   (let ((current-pitch (nth tetrachord-position (parse-tetrachord
 						 (car origin)
 						 (cdr origin)
@@ -98,13 +98,13 @@
 
 (defparameter *playing* t)
 
-(defun start () (setf *playing* t))
-(defun stop () (setf *playing* nil))
+(defun my-start () (setf *playing* t))
+(defun my-stop () (setf *playing* nil))
 
-(defun loop-tetrachord (position tetrachord origin model score duration-old)
+(defun loop-tetrachord (position tetrachord origin model score)
   (when *playing*
     (let ((duration (funcall *duration-generator*)))
-      (cond ((>= position 4) (loop-tetrachord 0 tetrachord origin model score duration))
+      (cond ((>= position 4) (loop-tetrachord 0 tetrachord origin model score))
 	    (t (play-latest-keyframe score duration)
 	       (at (+ (now) #[duration sec])
 		   #'loop-tetrachord
@@ -112,8 +112,7 @@
 		   tetrachord
 		   origin
 		   model
-		   (compose-keyframe position tetrachord origin position model score)
-		   duration))))))
+		   (compose-keyframe position origin position score)))))))
 
 
 
@@ -136,7 +135,7 @@
 		   (if (> counter (cdr random-range))
 		       (cdr random-range)
 		       counter)))
-	      (t (+ (car random-range) (random (cdr random-range))))))))
+	      (t (+ (car random-range) (random (* 1.0 (cdr random-range)))))))))
 
 (defun speed-reset (&optional (val 2))
   (funcall *duration-generator* :reset val))
@@ -157,11 +156,10 @@
 		   *tetrachord-generator*
 		   '(g . 1)
 		   *model-generator*
-		   '((50) (58) (68))
-		   1))
+		   '((50) (58) (68))))
 
 (defun panic ()
-  (stop)
+  (my-stop)
   (loop for i from 0 to 146 do
     (key-off i)))
 
@@ -169,7 +167,7 @@
 
 
 (defun cern ()
-  (start)
+  (my-start)
   (speed-factor 1)
   (speed-reset 1/10)
   (speed-random 0.6)
@@ -208,3 +206,31 @@
 (make-osc-responder *oscin* "/incudine/multi" "i" 
                              (lambda (id)
 			       (multi id)))
+
+
+
+
+
+(defun swipe (&key (start 1) (end 146) (delta 1/4) (duration 1/4))
+  (cond ((>= start end) nil)
+	(t (key-on start duration)
+	   (at (+ (now) #[delta sec])
+	       #'swipe
+	       :start (1+ start)
+	       :end end
+	       :delta delta
+	       :duration duration))))
+
+
+(defun burst-swipe ()
+  (swipe :start 50 :end 70 :delta 1/10 :duration 1/5)
+  (swipe :start 55 :end 80 :delta 2/10 :duration 2/5)
+  (swipe :start 20 :end 30 :delta 1/2 :duration 1/3)
+  (swipe :start 100 :end 130 :delta 1/10 :duration 2/5)
+  (swipe :start 110 :end 146 :delta 1/3 :duration 1/3))
+
+
+(defun burst-random (&key (duration 10) (density 100))
+  (loop repeat density do
+    (at (+ (now) #[(random (* 1.0 duration)) s])
+	#'key-on (random 146) (random (* 0.5 duration)))))
