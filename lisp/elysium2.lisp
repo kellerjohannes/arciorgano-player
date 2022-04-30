@@ -234,3 +234,19 @@
   (loop repeat density do
     (at (+ (now) #[(random (* 1.0 duration)) s])
 	#'key-on (random 146) (random (* 0.5 duration)))))
+
+
+
+(defun motor (toggle)
+    (osc:message *osc-out* "/incudine-bridge-motor" "i" toggle))
+
+
+(defun burst (id)
+  (case id
+    (0 (burst-random :duration 1 :density 1000))
+    (1 (burst-random :duration 3 :density 5000))
+    (2 (burst-random :duration 5 :density 10000))
+    (3 (burst-random :duration 8 :density 15000))
+    (4 (burst-random :duration 10 :density 30000))
+    (5 (burst-random :duration 30 :density 80000))))
+
