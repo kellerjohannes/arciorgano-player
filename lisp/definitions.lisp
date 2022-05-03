@@ -1,3 +1,5 @@
+(in-package :scratch)
+
 (defparameter *scale-names* '(c c. cis des des. d d. dis es es. e e. eis f f. fis ges ges. g g. gis as as. a a. ais bes bes. b b. bis))
 
 (defparameter *dict-name-pitch* (loop for name in *scale-names*
@@ -44,24 +46,32 @@
   ;(append (rest lst) (list (first lst)))
   )
 
+(defun rearrange-list (lst selector)
+  (let ((index (position selector lst)))
+    (if index
+	(append (nthcdr index lst) (subseq lst 0 index))
+	lst)))
+
 (defmacro make-rotator (data)
   `(let ((lst ,data))
-     #'(lambda ()
-	 (setf lst (permutate lst))
+     #'(lambda (&optional selector)
+	 (if selector
+	     (setf lst (rearrange-list lst selector)) 
+	     (setf lst (permutate lst)))
 	 (first lst))))
 
 (defparameter *limit-rotator* (make-rotator '(limit-2 limit-3 limit-5 limit-7)))
 (defparameter *limit* (funcall *limit-rotator*))
 
-(defun next-limit ()
-  (setf *limit* (funcall *limit-rotator*)))
+(defun next-limit (&optional selector)
+  (setf *limit* (funcall *limit-rotator* selector)))
 
 (defparameter *quality-rotator* (make-rotator '(consonant dissonant)))
 
 (defparameter *quality* (funcall *quality-rotator*))
 
-(defun next-quality ()
-  (setf *quality* (funcall *quality-rotator*)))
+(defun next-quality (&optional selector)
+  (setf *quality* (funcall *quality-rotator* selector)))
 
 (defparameter *model-generator*
   (let ((counter 0))
@@ -132,11 +142,11 @@
 
 (defparameter *quarta-rotator* (make-rotator '(prima seconda terza)))
 
-(defun next-genus ()
-  (setf *genere* (funcall *genere-rotator*)))
+(defun next-genus (&optional selector)
+  (setf *genere* (funcall *genere-rotator* selector)))
 
-(defun next-quarta ()
-  (setf *quarta* (funcall *quarta-rotator*)))
+(defun next-quarta (&optional selector)
+  (setf *quarta* (funcall *quarta-rotator* selector)))
 
 (defparameter *genere* (next-genus))
 

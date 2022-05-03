@@ -253,7 +253,7 @@
 #X coords 0 -1 1 1 310 35 2 0 85;
 #X restore 334 61 pd all-off;
 #X text 13 15 Arciorgano Player;
-#N canvas 0 23 1680 1005 serial-out 0;
+#N canvas 0 23 1680 1005 serial-out 1;
 #X obj 91 315 unpack 0 0;
 #X obj 165 406 route 0 1;
 #X obj 100 471 pack;
@@ -283,7 +283,7 @@
 #X symbolatom 13 73 35 0 0 0 - - - 0;
 #X text 11 6 serial output;
 #X text 10 52 device name:;
-#X obj 321 17 loadbang;
+#X obj 381 1 loadbang;
 #X obj 148 29 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc #000000
 #000000;
 #X text 167 29 (re)connect;
@@ -306,6 +306,8 @@
 #X obj 299 116 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc
 #000000 #000000;
 #X obj 99 518 comport 0;
+#X obj 406 34 t b b;
+#X msg 428 70 set /dev/ttyACM0;
 #X connect 0 0 5 0;
 #X connect 0 1 1 0;
 #X connect 1 0 3 0;
@@ -325,7 +327,7 @@
 #X connect 13 0 0 0;
 #X connect 14 0 37 0;
 #X connect 15 0 14 0;
-#X connect 18 0 19 0;
+#X connect 18 0 38 0;
 #X connect 19 0 15 0;
 #X connect 21 0 13 0;
 #X connect 22 0 30 0;
@@ -344,6 +346,9 @@
 #X connect 34 0 36 0;
 #X connect 35 0 34 1;
 #X connect 36 0 15 0;
+#X connect 38 0 19 0;
+#X connect 38 1 39 0;
+#X connect 39 0 15 0;
 #X coords 0 -1 1 1 280 100 2 0 0;
 #X restore 469 920 pd serial-out;
 #N canvas 933 222 1373 1046 pipes 0;
@@ -17234,7 +17239,7 @@ f 121;
 #X obj 78 142 outlet;
 #X obj 12 51 t l l;
 #X msg 45 77 set \$1 \$2;
-#X msg 78 117 1 0;
+#X msg 78 117 73 1;
 #X obj 121 78 r unique-trigger;
 #X obj 12 223 change;
 #X obj 12 265 s unique-trigger;

@@ -20,7 +20,7 @@
 
 (defun key-off (index)
   (when (< 0 index 147)
-    ;(format t "~a:off " index)
+					;(format t "~a:off " index)
     (osc:message *osc-out* "/incudine-bridge" "ii" index 0)))
 
 (defun key-on (index &optional duration-in-sec)
@@ -64,10 +64,10 @@
 
 (defun find-voiceleading (origin last-note consonance-options)
   (let ((choice (first (sort (mapcar (lambda (interval)
-			      (cons interval (+ origin (interval->pitch interval))))
-			    (funcall consonance-options))
-		    #'< :key (lambda (pitch-candidate)
-			       (abs (- last-note (cdr pitch-candidate))))))))
+				       (cons interval (+ origin (interval->pitch interval))))
+				     (funcall consonance-options))
+			     #'< :key (lambda (pitch-candidate)
+					(abs (- last-note (cdr pitch-candidate))))))))
     (funcall consonance-options (car choice))
     (cdr choice)))
 
@@ -101,6 +101,51 @@
 (defun my-start () (setf *playing* t))
 (defun my-stop () (setf *playing* nil))
 
+(defun bpm->sec (bpm)
+  (/ 60.0 bpm))
+
+;; simple and safe, for lamento, hard coded BPM
+
+(defparameter *duration-generator*
+    #'(lambda (&key (reset nil) (factor nil) (rand nil) (rand-range nil))
+	(declare (ignore reset factor rand rand-range))
+	(bpm->sec 45)))
+
+;; compatible with cern complexity, still simple and safe
+
+(defparameter *duration-generator*
+  (let ((internal-speed 45))
+    #'(lambda (&key (reset nil) (factor nil) (rand nil) (rand-range nil))
+	(declare (ignore factor rand rand-range))
+	(when reset (setf internal-speed reset))
+	(bpm->sec internal-speed))))
+
+;; complex and unreliable (debugging required)
+
+(defparameter *duration-generator*
+  (let ((counter (bpm->sec 45))
+	(internal-factor 1)
+	(random-on 0)
+	(random-range '(1/10 . 1)))
+    #'(lambda (&key (reset nil) (factor nil) (rand nil) (rand-range nil))
+	(when reset (setf counter (bpm->sec reset)))
+	(when factor (setf internal-factor factor))
+	(when rand (setf random-on rand))
+	(when (consp rand-range) (setf random-range rand-range))
+	(let ((result (cond ((zerop random-on)
+			     (setf counter (* counter internal-factor))
+			     (if (not (= internal-factor 1))
+				 (if (< counter (car random-range))
+				     (car random-range)
+				     (if (> counter (cdr random-range))
+					 (cdr random-range)
+					 counter))
+				 counter))
+			    (t (+ (car random-range) (random (* 1.0 (cdr random-range))))))))
+	  (cond ((< result 1/20) (format t "~&min correction") 1/20)
+		((> result 10) (format t "~&max correction") 10)
+		(t result))))))
+
 (defun loop-tetrachord (position tetrachord origin model score)
   (when *playing*
     (let ((duration (funcall *duration-generator*)))
@@ -118,26 +163,7 @@
 
 
 
-(defparameter *duration-generator*
-  (let ((counter 1)
-	(internal-factor 1)
-	(random-on 0)
-	(random-range '(1/10 . 1)))
-    #'(lambda (&key (reset nil) (factor nil) (rand nil) (rand-range nil))
-	(when reset (setf counter reset))
-	(when factor (setf internal-factor factor))
-	(when rand (setf random-on rand))
-	(when (consp rand-range) (setf random-range rand-range))
-	(cond ((zerop random-on)
-	       (setf counter (* counter internal-factor))
-	       (if (< counter (car random-range))
-		   (car random-range)
-		   (if (> counter (cdr random-range))
-		       (cdr random-range)
-		       counter)))
-	      (t (+ (car random-range) (random (* 1.0 (cdr random-range)))))))))
-
-(defun speed-reset (&optional (val 2))
+(defun speed-reset (&optional (val 45))
   (funcall *duration-generator* :reset val))
 
 (defun speed-factor (val)
@@ -146,9 +172,10 @@
 (defun speed-random (toggle)
   (funcall *duration-generator* :rand toggle))
 
-(defun speed-random-range (range)
-  (funcall *duration-generator* :rand-range range))
-
+(defun speed-random-range (min-bpm max-bpm)
+  (let ((rand-range (cons (bpm->sec max-bpm) (bpm->sec min-bpm))))
+    (funcall *duration-generator* :rand-range rand-range)
+    rand-range))
 
 
 (defun play-loop ()
@@ -175,37 +202,50 @@
 
 
 
+(defun cern-init ()
+  (next-genus 'enarmonico)
+  (next-quality 'dissonant)
+  (next-quarta 'prima)
+  (multi 4)
+  (speed-random 1)
+  (speed-random-range 500 1200))
 
-(defun bpm->sec (bpm)
-  (/ 60.0 bpm))
+(defun lamento-init ()
+  (next-genus 'diatonico)
+  (next-quality 'consonant)
+  (next-quarta 'seconda)
+  (multi 0)
+  (speed-reset 50)
+  (speed-random 0))
 
 
-(defparameter *oscin* (osc:open :port 5800 :host "127.0.0.1" :protocol :udp :direction :input))
 
-(recv-start *oscin*)
+;; (defparameter *oscin* (osc:open :port 5800 :host "127.0.0.1" :protocol :udp :direction :input))
 
-(make-osc-responder *oscin* "/incudine/genere" "i" 
-                             (lambda (genus)
-			       (msg warn "~a" genus)))
+;; (recv-start *oscin*)
+
+;; (make-osc-responder *oscin* "/incudine/genere" "i" 
+;;                              (lambda (genus)
+;; 			       (msg warn "~a" genus)))
 
 
-(make-osc-responder *oscin*
-		    "/incudine/timer/range" "ii" 
-                    (lambda (min max)
-		      (speed-random-range (cons (bpm->sec min)
-						(bpm->sec max)))))
+;; (make-osc-responder *oscin*
+;; 		    "/incudine/timer/range" "ii" 
+;;                     (lambda (min max)
+;; 		      (speed-random-range (cons (bpm->sec min)
+;; 						(bpm->sec max)))))
 
-(make-osc-responder *oscin* "/incudine/timer/factor" "f" 
-                             (lambda (factor)
-			       (speed-factor factor)))
+;; (make-osc-responder *oscin* "/incudine/timer/factor" "f" 
+;;                              (lambda (factor)
+;; 			       (speed-factor factor)))
 
-(make-osc-responder *oscin* "/incudine/timer/rand" "i" 
-                             (lambda (toggle)
-			       (speed-random toggle)))
+;; (make-osc-responder *oscin* "/incudine/timer/rand" "i" 
+;;                              (lambda (toggle)
+;; 			       (speed-random toggle)))
 
-(make-osc-responder *oscin* "/incudine/multi" "i" 
-                             (lambda (id)
-			       (multi id)))
+;; (make-osc-responder *oscin* "/incudine/multi" "i" 
+;;                              (lambda (id)
+;; 			       (multi id)))
 
 
 
@@ -249,4 +289,5 @@
     (3 (burst-random :duration 8 :density 15000))
     (4 (burst-random :duration 10 :density 30000))
     (5 (burst-random :duration 30 :density 80000))))
+
 
