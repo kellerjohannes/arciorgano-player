@@ -109,7 +109,7 @@
 (defparameter *duration-generator*
     #'(lambda (&key (reset nil) (factor nil) (rand nil) (rand-range nil))
 	(declare (ignore reset factor rand rand-range))
-	(bpm->sec 45)))
+	(bpm->sec 42)))
 
 ;; compatible with cern complexity, still simple and safe
 
