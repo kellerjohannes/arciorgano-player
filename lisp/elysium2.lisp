@@ -20,7 +20,7 @@
 
 (defun key-off (index)
   (when (< 0 index 147)
-					;(format t "~a:off " index)
+    (format t "~a:off " index)
     (osc:message *osc-out* "/incudine-bridge" "ii" index 0)))
 
 (defun key-on (index &optional duration-in-sec)
