@@ -111,6 +111,13 @@
 	(declare (ignore reset factor rand rand-range))
 	(bpm->sec 42)))
 
+(defparameter *model-generator*
+  #'(lambda (&optional next)
+      (declare (ignore next))
+      '((terza-minore quinta ottava)
+	(terza-maggiore sesta-maggiore ottava)
+	(terza-maggiore sesta-maggiore)
+	(terza-maggiore quinta ottava))))
 ;; compatible with cern complexity, still simple and safe
 
 (defparameter *duration-generator*
@@ -208,7 +215,7 @@
   (next-quarta 'prima)
   (multi 4)
   (speed-random 1)
-  (speed-random-range 500 1200))
+  (speed-random-range 180 600))
 
 (defun lamento-init ()
   (next-genus 'diatonico)
