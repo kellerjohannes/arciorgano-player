@@ -104,12 +104,17 @@
 (defun bpm->sec (bpm)
   (/ 60.0 bpm))
 
-;; simple and safe, for lamento, hard coded BPM
+
+
+;; performance override, safeguard for good tempo
 
 (defparameter *duration-generator*
     #'(lambda (&key (reset nil) (factor nil) (rand nil) (rand-range nil))
 	(declare (ignore reset factor rand rand-range))
 	(bpm->sec 42)))
+
+
+;; performance override, safeguard for ninfa ostinato model
 
 (defparameter *model-generator*
   #'(lambda (&optional next)
@@ -118,7 +123,12 @@
 	(terza-maggiore sesta-maggiore ottava)
 	(terza-maggiore sesta-maggiore)
 	(terza-maggiore quinta ottava))))
-;; compatible with cern complexity, still simple and safe
+
+
+
+
+
+;; simplified duration generator, in case original version creates damaging behaviour
 
 (defparameter *duration-generator*
   (let ((internal-speed 45))
@@ -127,7 +137,9 @@
 	(when reset (setf internal-speed reset))
 	(bpm->sec internal-speed))))
 
-;; complex and unreliable (debugging required)
+
+
+;; complex and risky
 
 (defparameter *duration-generator*
   (let ((counter (bpm->sec 45))
