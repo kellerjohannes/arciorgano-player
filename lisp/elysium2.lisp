@@ -1,3 +1,38 @@
+;;;; arciorgano code for "Tochter aus Elysium"
+;;;; theater play by Joël László
+
+;;;; this code describes a counterpoint generator based on
+;;;; tetrachords. the following parameters are intended to be
+;;;; manipulated in real time: genus (diatonic/chromatic/enharmonic),
+;;;; tetrachord permutations (prima/seconda/terza), limit
+;;;; (limit-7/limit-5/limit-3/limit-2), model (succession of legal
+;;;; consonances/dissonances), quality (dissonant/consonant), speed
+
+;;;; depends on
+;;;; - incudine (common lisp package)
+;;;; - Jack audio server, for incudine scheduler, no audio output required
+;;;; - PureData, with the patch arciorgano for the interface to the organ
+
+;;;; Jack <--> Incudine/Lisp --OSC--> PureData --ttyACM0--> Arciorgano
+
+;;;; set up before performances:
+;;;; 1. start Jack
+;;;; 2. in REPL:
+;;;;    - (require :incudine)
+;;;;    - (in-package :scratch)
+;;;;    - (rt-start)
+;;;; 3. load definitions.lisp
+;;;; 4. compile rest of elysium2.lisp
+
+;;;; 5. in REPL:
+;;;;    - (cern-init)
+;;;;    - (motor 1)
+
+;;;; live-commands: (burst n) [0 <= n < 7], (cern), (next-quarta),
+;;;; (next-model), (next-genus), (next-limit), (speed-random-range a
+;;;; b) [a, b: BPM, (< a b)], (panic)
+
+
 (require 'incudine)
 (in-package :scratch)
 

@@ -1,3 +1,15 @@
+;;;; arciorgano code for "Tochter aus Elysium"
+;;;; theater play by Joël László
+
+;;;; elysium.lisp, sketches developed during during rehearsals,
+;;;; obsolete, replaced by elysium2.lisp and definitions.lisp
+
+;;;; depends on incudine, Jack audio server, PureData patch for the
+;;;; arciorgano interface
+
+;;;; Jack <--> Incudine/Lisp -- OSC --> PureData -- ttyACM0 --> Arciorgano
+
+
 (require 'incudine)
 (in-package :scratch)
 
