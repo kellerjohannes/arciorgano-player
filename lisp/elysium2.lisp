@@ -334,6 +334,8 @@
 (defun motor (toggle)
     (osc:message *osc-out* "/incudine-bridge-motor" "i" toggle))
 
+(defun light (toggle)
+    (osc:message *osc-out* "/incudine-bridge-light" "i" toggle))
 
 (defun burst (id)
   (case id
@@ -345,3 +347,6 @@
     (5 (burst-random :duration 30 :density 80000))))
 
 
+(defun burst-first ()
+  (light 1)
+  (burst 0))
