@@ -350,3 +350,7 @@
 (defun burst-first ()
   (light 1)
   (burst 0))
+
+(defun lamento-panic ()
+  (panic)
+  (motor 0))
