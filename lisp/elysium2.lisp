@@ -1,24 +1,5 @@
 ;;;; arciorgano code for "Tochter aus Elysium"
-;;;; theater play by Joël László
-
-;;;; this code describes a counterpoint generator based on
-;;;; tetrachords. the following parameters are intended to be
-;;;; manipulated in real time: genus (diatonic/chromatic/enharmonic),
-;;;; tetrachord permutations (prima/seconda/terza), limit
-;;;; (limit-7/limit-5/limit-3/limit-2), model (succession of legal
-;;;; consonances/dissonances), quality (dissonant/consonant), speed
-
-;;;; depends on
-;;;; - incudine (common lisp package)
-;;;; - Jack audio server, for incudine scheduler, no audio output required
-;;;; - PureData, with the patch arciorgano for the interface to the organ
-
-;;;; Jack <--> Incudine/Lisp --OSC--> PureData --ttyACM0--> Arciorgano
-
-;;;; set up before performances:
-;;;; 1. start Jack
-;;;; 2. in REPL:
-;;;;    - (require :incudine)
+;;;; theater play by Joëdine)
 ;;;;    - (in-package :scratch)
 ;;;;    - (rt-start)
 ;;;; 3. load definitions.lisp
@@ -28,9 +9,10 @@
 ;;;;    - (cern-init)
 ;;;;    - (motor 1)
 
-;;;; live-commands: (burst n) [0 <= n < 7], (cern), (next-quarta),
-;;;; (next-model), (next-genus), (next-limit), (speed-random-range a
-;;;; b) [a, b: BPM, (< a b)], (panic)
+;;;; live-commands: (burst-first), (burst n) [0 <= n < 7], (cern),
+;;;; (next-quarta), (next-model), (next-genus), (next-limit),
+;;;; (speed-random-range a b) [a, b: BPM, (< a b)], (panic),
+;;;; (lamento-panic)
 
 
 (require 'incudine)
@@ -262,7 +244,7 @@
   (next-quarta 'prima)
   (multi 4)
   (speed-random 1)
-  (speed-random-range 180 600))
+  (speed-random-range 100 600))
 
 (defun lamento-init ()
   (next-genus 'diatonico)
@@ -334,6 +316,7 @@
 (defun motor (toggle)
     (osc:message *osc-out* "/incudine-bridge-motor" "i" toggle))
 
+;; not to be used in performance, risk of system breakdown
 (defun light (toggle)
     (osc:message *osc-out* "/incudine-bridge-light" "i" toggle))
 
@@ -347,9 +330,10 @@
     (5 (burst-random :duration 30 :density 80000))))
 
 
+;; redundant, light is not triggered remotely anymore
 (defun burst-first ()
   (light 1)
-  (burst 0))
+  (at (+ (now) #[0.5 s]) #'burst 0))
 
 (defun lamento-panic ()
   (panic)

@@ -1,0 +1,6 @@
+\documentclass[a4paper]{article}
+\usepackage{listings}
+
+\begin{document}
+\lstinputlisting[language=Lisp]{definitions.lisp}
+\end{document}
