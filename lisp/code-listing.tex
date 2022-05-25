@@ -2,8 +2,16 @@
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage{listings}
+\usepackage{inconsolata}
+
+
+\lstset{
+literate={á}{{\'a}}1 {ó}{{\'o}}1 {ë}{{\"e}}1
+}
+
 
 \begin{document}
-\lstinputlisting[language=Lisp]{elysium2.lisp}
-\lstinputlisting[language=Lisp]{definitions.lisp}
+\lstinputlisting[title=elysium2.lisp,numbers=left,extendedchars=true,inputencoding=utf8,language=Lisp]{elysium2.lisp}
+
+\lstinputlisting[title=definitions.lisp,numbers=left,inputencoding=utf8,language=Lisp]{definitions.lisp}
 \end{document}

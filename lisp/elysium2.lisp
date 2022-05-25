@@ -1,18 +1,43 @@
-;;;; arciorgano code for "Tochter aus Elysium"
-;;;; theater play by Joëdine)
+;;;; Arciorgano code for "Tochter aus Elysium",
+;;;; theater play by Joël László, produced at
+;;;; Neues Theater Dornach
+
+;;;; This code describes a counterpoint generator based on
+;;;; tetrachords. The following parameters are intended to be
+;;;; manipulated in real time: genus (diatonic/chromatic/enharmonic),
+;;;; tetrachord permutations (prima/seconda/terza), limit
+;;;; (limit-7/limit-5/limit-3/limit-2), model (succession of legal
+;;;; consonances/dissonances), quality (dissonant/consonant), speed.
+
+;;;; Depends on
+;;;; - incudine (common lisp package, https://github.com/titola/incudine/)
+;;;; - Jack audio server, for incudine scheduler, no audio output required
+;;;; - PureData, with the patch arciorgano for the interface to the organ
+
+;;;; Jack <--> Incudine/Lisp --OSC--> PureData --ttyACM0--> Arciorgano
+
+;;;; Set up before performances:
+;;;; 1. Start Jack.
+;;;; 2. in REPL:
+;;;;    - (require :incudine)
 ;;;;    - (in-package :scratch)
 ;;;;    - (rt-start)
-;;;; 3. load definitions.lisp
-;;;; 4. compile rest of elysium2.lisp
+;;;; 3. Load definitions.lisp
+;;;; 4. Compile rest of elysium2.lisp
 
-;;;; 5. in REPL:
+;;;; 5. In REPL:
 ;;;;    - (cern-init)
 ;;;;    - (motor 1)
 
-;;;; live-commands: (burst-first), (burst n) [0 <= n < 7], (cern),
-;;;; (next-quarta), (next-model), (next-genus), (next-limit),
-;;;; (speed-random-range a b) [a, b: BPM, (< a b)], (panic),
-;;;; (lamento-panic)
+;;;; Live-commands: (burst n) [0 <= n < 7], (cern), (next-quarta),
+;;;; (next-model), (next-genus), (next-limit), (speed-random-range a
+;;;; b) [a, b: BPM, (< a b)], (panic), (lamento-panic)
+
+;;;; To activate safety algorithms for the lamento ostinato, recompile the
+;;;; anonymous functions for *duration-generator* and *model-generator* in
+;;;; this file. This overwrites the less secure algorithms needed for higher
+;;;; complexity.
+
 
 
 (require 'incudine)
@@ -256,32 +281,6 @@
 
 
 
-;; (defparameter *oscin* (osc:open :port 5800 :host "127.0.0.1" :protocol :udp :direction :input))
-
-;; (recv-start *oscin*)
-
-;; (make-osc-responder *oscin* "/incudine/genere" "i" 
-;;                              (lambda (genus)
-;; 			       (msg warn "~a" genus)))
-
-
-;; (make-osc-responder *oscin*
-;; 		    "/incudine/timer/range" "ii" 
-;;                     (lambda (min max)
-;; 		      (speed-random-range (cons (bpm->sec min)
-;; 						(bpm->sec max)))))
-
-;; (make-osc-responder *oscin* "/incudine/timer/factor" "f" 
-;;                              (lambda (factor)
-;; 			       (speed-factor factor)))
-
-;; (make-osc-responder *oscin* "/incudine/timer/rand" "i" 
-;;                              (lambda (toggle)
-;; 			       (speed-random toggle)))
-
-;; (make-osc-responder *oscin* "/incudine/multi" "i" 
-;;                              (lambda (id)
-;; 			       (multi id)))
 
 
 
@@ -317,6 +316,7 @@
     (osc:message *osc-out* "/incudine-bridge-motor" "i" toggle))
 
 ;; not to be used in performance, risk of system breakdown
+
 (defun light (toggle)
     (osc:message *osc-out* "/incudine-bridge-light" "i" toggle))
 
@@ -331,6 +331,7 @@
 
 
 ;; redundant, light is not triggered remotely anymore
+
 (defun burst-first ()
   (light 1)
   (at (+ (now) #[0.5 s]) #'burst 0))
