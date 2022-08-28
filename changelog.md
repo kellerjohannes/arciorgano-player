@@ -121,3 +121,7 @@
 - feature in development: 'dreyblatt bridge'. Another MIDI mapping to
   be used with Ableton Live, set up by Arnold Dreyblatt. It uses a
   subset of the organ keys (only MIDI channel 1).
+- new feature (in development): 'presets'. A subpatch with slots to
+  store the state of the keyboard. The complete bank of presets can be
+  saved to a file and loaded from a file, therefore there is no
+  limitation concerning the number of banks.
