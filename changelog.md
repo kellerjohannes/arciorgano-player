@@ -104,10 +104,20 @@
 - new feature: 'incudine bridge'. This module receives OSC messages
   and interprets them as key/pipe on/off information. It was added
   establish a connection between 'incudine' (a Common Lisp live coding
-  package) and the Pd patch. 
+  package) and the Pd patch.
 - added 'mode3-navigator': this is a rough sketch of a Tonnetz
   navigation system written in Common Lisp using 'incudine'.
 - added 'elysium' code: a simple counterpoint generator for mode1
   written in Common Lisp, using 'incudine'. This was used on stage for
   the theater play "Tochter aus Elysium", produced by Neues Theater
   Dornach, spring 2022.
+
+## changes for version 1.50 (28th of August 2022)
+
+- new feature: 'dreyblatt-square'. A subpatch with an alternative
+  playing interface according to Arnold Dreyblatt's 'magic
+  square'. The interface is a rearrangement of the keyboard interface,
+  similar to 'mode3-tonnetz'. It requires mode3 to work.
+- feature in development: 'dreyblatt bridge'. Another MIDI mapping to
+  be used with Ableton Live, set up by Arnold Dreyblatt. It uses a
+  subset of the organ keys (only MIDI channel 1).
