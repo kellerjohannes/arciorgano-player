@@ -125,3 +125,6 @@
   store the state of the keyboard. The complete bank of presets can be
   saved to a file and loaded from a file, therefore there is no
   limitation concerning the number of banks.
+- appearance: new grouping concept for subpatches. In the main patch
+  only the keyboard and the pipes are visible. All other functionality
+  is hidden away in subpatches, which are grouped into topics.
