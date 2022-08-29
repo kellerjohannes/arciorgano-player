@@ -112,7 +112,7 @@
   the theater play "Tochter aus Elysium", produced by Neues Theater
   Dornach, spring 2022.
 
-## changes for version 1.50 (28th of August 2022)
+## changes for version 1.50 (29th of August 2022)
 
 - new feature: 'dreyblatt-square'. A subpatch with an alternative
   playing interface according to Arnold Dreyblatt's 'magic
@@ -121,10 +121,11 @@
 - feature in development: 'dreyblatt bridge'. Another MIDI mapping to
   be used with Ableton Live, set up by Arnold Dreyblatt. It uses a
   subset of the organ keys (only MIDI channel 1).
-- new feature (in development): 'presets'. A subpatch with slots to
-  store the state of the keyboard. The complete bank of presets can be
-  saved to a file and loaded from a file, therefore there is no
-  limitation concerning the number of banks.
+- new feature: 'presets'. A subpatch with slots to store the state of
+  the keyboard. The complete bank of presets can be saved to a text
+  file and loaded from a text file, therefore there is no limitation
+  concerning the number of banks. A stepper allows to step
+  consecutively through the slots.
 - appearance: new grouping concept for subpatches. In the main patch
   only the keyboard and the pipes are visible. All other functionality
   is hidden away in subpatches, which are grouped into topics.
