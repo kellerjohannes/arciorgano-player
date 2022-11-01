@@ -1,4 +1,4 @@
-<REAPER_PROJECT 0.1 "6.45/win64" 1642416335
+<REAPER_PROJECT 0.1 "6.45/win64" 1644488917
   <NOTES 0 2
   >
   RIPPLE 0
@@ -16,8 +16,8 @@
   TIMEMODE 1 5 -1 30 0 0 -1
   VIDEO_CONFIG 0 0 256
   PANMODE 3
-  CURSOR 0
-  ZOOM 100 24945 0
+  CURSOR 4.10175167555143
+  ZOOM 40.74780989457975 0 0
   VZOOMEX 6 0
   USE_REC_CFG 0
   RECMODE 1
@@ -82,12 +82,14 @@
   >
   <TEMPOENVEX
     EGUID {78B23087-D546-49EC-97AE-2AFA9E3FC441}
-    ACT 1 -1
+    ACT 0 -1
     VIS 1 0 1
     LANEHEIGHT 0 0
     ARM 0
     DEFSHAPE 1 -1 -1
   >
+  MARKER 1 4.10175167555143 "" 0 0 1 R {F0432F89-9F5E-4D7E-858B-6A4D7294073C}
+  MARKER 2 18.43770999075743 "" 0 0 1 R {74283A98-C452-41A2-A4FD-A7730925303F}
   <PROJBAY
   >
   <TRACK {26FA5023-AB96-45CA-9DC2-5D83881C5255}
@@ -106,7 +108,7 @@
     SEL 1
     REC 1 4096 1 0 0 0 0
     VU 2
-    TRACKHEIGHT 211 0 0 0 0 0
+    TRACKHEIGHT 904 0 0 0 0 0
     INQ 0 0 0 0.5 100 0 0 100
     NCHAN 2
     FX 1
@@ -123,7 +125,7 @@
       FADEIN 1 0 0 1 0 0 0
       FADEOUT 1 0 0 1 0 0 0
       MUTE 0 0
-      SEL 1
+      SEL 0
       IGUID {F0A68AAD-B168-4CF2-843F-20B8B50DB19E}
       IID 3
       NAME "01-Recorded MIDI"
@@ -175,16 +177,16 @@
         E 0 c0 00 00
         E 1 c0 00 00
         E 0 c0 00 00
+        E 0 c0 00 00
+        E 0 c0 00 00
+        E 0 c0 00 00
+        E 0 c0 00 00
+        E 0 c0 00 00
+        E 0 c0 00 00
+        E 0 c0 00 00
         E 0 90 46 67
-        E 0 c0 00 00
-        E 0 c0 00 00
         E 0 90 42 67
-        E 0 c0 00 00
-        E 0 c0 00 00
         E 0 90 47 64
-        E 0 c0 00 00
-        E 0 c0 00 00
-        E 0 c0 00 00
         E 1 c0 00 00
         E 0 c0 00 00
         E 0 c0 00 00
@@ -6730,9 +6732,9 @@
         E 0 bc 7b 00
         E 1 bd 7b 00
         E 0 be 7b 00
-        E 1 bf 7b 00
-        E 0 80 54 00
+        E 1 80 54 00
         E 0 80 41 00
+        E 0 bf 7b 00
         E 0 b0 79 00
         E 1 b1 79 00
         E 0 b2 79 00
@@ -6755,6 +6757,7 @@
         GUID {ECFDF2C5-F61D-4664-B420-B843B3124523}
         IGNTEMPO 0 120 4 4
         SRCCOLOR 6
+        VELLANE -1 100 0
       >
     >
   >
