@@ -1,12 +1,8 @@
-<<<<<<< HEAD
-#N canvas 921 261 1617 1107 12;
-=======
-#N canvas 101 328 1609 998 12;
->>>>>>> 5e72cffa46acf85b4b0ee8f50e5a14a07dee1602
+#N canvas 32 294 1617 631 12;
 #X declare -lib cyclone;
 #X declare -lib cyclone;
 #X text 13 52 Studio31 / Johannes Keller;
-#N canvas 1817 526 692 809 osc-sender 1;
+#N canvas 1817 526 692 809 osc-sender 0;
 #X obj 16 462 list prepend \$1;
 #X symbolatom 36 129 30 0 0 0 - - -;
 #X obj 129 835 list prepend send;
@@ -225,7 +221,7 @@
 #X floatatom 132 94 5 0 0 0 - - -;
 #X msg 207 32 2;
 #X text 172 92 spread;
-#X obj 230 94 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#X obj 230 94 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X text 248 94 'p' key;
 #X obj 197 148 key;
@@ -257,7 +253,7 @@
 #X coords 0 -1 1 1 310 35 2 0 85;
 #X restore 334 61 pd all-off;
 #X text 13 15 Arciorgano Player;
-#N canvas 519 117 1100 847 serial-out 0;
+#N canvas 446 224 1237 831 serial-out 0;
 #X obj 91 315 unpack 0 0;
 #X obj 165 406 route 0 1;
 #X obj 100 471 pack;
@@ -283,7 +279,6 @@
 ;
 #X text 35 29 active;
 #X obj 27 255 spigot;
-#X msg 269 479 devicename \$1;
 #X symbolatom 13 73 35 0 0 0 - - -;
 #X text 11 6 serial output;
 #X text 10 52 device name:;
@@ -291,17 +286,8 @@
 #X obj 148 29 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
 #X text 167 29 (re)connect;
-#X obj 80 227 r oscnkey;
+#X obj 18 203 r oscnkey;
 #X obj 99 518 comport 0;
-<<<<<<< HEAD
-#X obj 426 45 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
-1;
-#X obj 426 65 metro 1000;
-#X obj 413 127 print;
-#X msg 321 45 set COM4;
-#X obj 505 22 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
--1;
-=======
 #X obj 454 236 r oscauxa;
 #X obj 540 235 r oscauxb;
 #X obj 417 339 route 0 1;
@@ -312,12 +298,19 @@
 #X msg 614 375 201 200;
 #X obj 452 302 spigot;
 #X obj 571 309 spigot;
->>>>>>> 5e72cffa46acf85b4b0ee8f50e5a14a07dee1602
+#X obj 148 51 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
+#X text 167 48 insist;
+#X obj 299 87 metro 1000;
+#X floatatom 219 49 5 0 0 0 - - -;
+#X obj 299 116 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X msg 269 479 devicename /dev/tty.usbmodem14101;
 #X connect 0 0 5 0;
 #X connect 0 1 1 0;
 #X connect 1 0 3 0;
 #X connect 1 1 8 0;
-#X connect 2 0 22 0;
+#X connect 2 0 21 0;
 #X connect 3 0 2 1;
 #X connect 4 0 6 0;
 #X connect 5 1 10 0;
@@ -326,37 +319,31 @@
 #X connect 9 0 2 0;
 #X connect 10 0 4 0;
 #X connect 11 0 13 1;
-#X connect 11 0 32 1;
-#X connect 11 0 33 1;
+#X connect 11 0 31 1;
+#X connect 11 0 30 1;
+#X connect 11 0 18 0;
 #X connect 13 0 0 0;
-#X connect 14 0 22 0;
-#X connect 15 0 14 0;
-<<<<<<< HEAD
-#X connect 18 0 26 0;
-#X connect 21 0 13 0;
-#X connect 23 0 24 0;
+#X connect 14 0 37 0;
+#X connect 17 0 18 0;
+#X connect 18 0 14 0;
+#X connect 20 0 13 0;
+#X connect 22 0 30 0;
+#X connect 23 0 31 0;
 #X connect 24 0 25 0;
-#X connect 24 0 26 0;
-#X connect 24 0 27 0;
-#X connect 26 0 15 0;
-#X connect 27 0 15 0;
-=======
-#X connect 18 0 19 0;
-#X connect 19 0 15 0;
-#X connect 22 0 13 0;
-#X connect 24 0 32 0;
-#X connect 25 0 33 0;
-#X connect 26 0 27 0;
-#X connect 26 1 28 0;
-#X connect 27 0 23 0;
-#X connect 28 0 23 0;
-#X connect 29 0 30 0;
-#X connect 29 1 31 0;
-#X connect 30 0 23 0;
-#X connect 31 0 23 0;
-#X connect 32 0 26 0;
-#X connect 33 0 29 0;
->>>>>>> 5e72cffa46acf85b4b0ee8f50e5a14a07dee1602
+#X connect 24 1 26 0;
+#X connect 25 0 21 0;
+#X connect 26 0 21 0;
+#X connect 27 0 28 0;
+#X connect 27 1 29 0;
+#X connect 28 0 21 0;
+#X connect 29 0 21 0;
+#X connect 30 0 24 0;
+#X connect 31 0 27 0;
+#X connect 32 0 34 0;
+#X connect 34 0 36 0;
+#X connect 35 0 34 1;
+#X connect 36 0 14 0;
+#X connect 37 0 21 0;
 #X coords 0 -1 1 1 280 100 2 0 0;
 #X restore 469 920 pd serial-out;
 #N canvas 2738 124 1373 1046 pipes 0;
@@ -2502,7 +2489,7 @@ f 121;
 #X connect 23 0 16 0;
 #X coords 0 -1 1 1 150 45 2 0 0;
 #X restore 8 159 pd reaper-bridge;
-#N canvas 650 224 1103 845 vicentino-bridge 1;
+#N canvas 650 224 1103 845 vicentino-bridge 0;
 #X obj 21 118 notein;
 #X obj 39 529 + 0;
 #X msg 89 520 0;
@@ -2512,7 +2499,7 @@ f 121;
 #X obj 14 157 spigot;
 #X obj 67 157 spigot;
 #X obj 120 158 spigot;
-#X obj 9 22 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1 1
+#X obj 9 22 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0 1
 ;
 #X text 27 20 active;
 #X obj 37 625 s nkeyactive;
@@ -4676,7 +4663,7 @@ f 121;
 #X obj 2 212 loadbang;
 #X msg 13 241 0.7;
 #X text 65 259 level;
-#X obj 106 281 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#X obj 106 281 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X text 125 278 active (don't forget to also switch DSP on);
 #X obj 65 707 spigot;
@@ -4714,8 +4701,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode2/mode2-export-wav-neumann/mode2-9.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -4813,8 +4799,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode2/mode2-export-wav-neumann/mode2-9.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -4912,8 +4897,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode2/mode2-export-wav-neumann/mode2-9.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -5011,8 +4995,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode2/mode2-export-wav-neumann/mode2-9.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -5110,8 +5093,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode2/mode2-export-wav-neumann/mode2-9.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -5209,8 +5191,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode2/mode2-export-wav-neumann/mode2-18.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -5308,8 +5289,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode2/mode2-export-wav-neumann/mode2-18.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -5407,8 +5387,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode2/mode2-export-wav-neumann/mode2-18.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -5506,8 +5485,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode2/mode2-export-wav-neumann/mode2-18.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -5605,8 +5583,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode2/mode2-export-wav-neumann/mode2-18.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -5704,8 +5681,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode2/mode2-export-wav-neumann/mode2-18.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -5803,8 +5779,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode2/mode2-export-wav-neumann/mode2-18.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -5902,8 +5877,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode2/mode2-export-wav-neumann/mode2-18.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -6001,8 +5975,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode2/mode2-export-wav-neumann/mode2-18.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -6100,8 +6073,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode2/mode2-export-wav-neumann/mode2-18.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -6199,8 +6171,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode2/mode2-export-wav-neumann/mode2-9.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -6298,8 +6269,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode2/mode2-export-wav-neumann/mode2-44.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -6397,8 +6367,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode2/mode2-export-wav-neumann/mode2-45.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -6496,8 +6465,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode2/mode2-export-wav-neumann/mode2-46.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -6595,8 +6563,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode2/mode2-export-wav-neumann/mode2-47.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -6694,8 +6661,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode2/mode2-export-wav-neumann/mode2-48.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -6793,8 +6759,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode2/mode2-export-wav-neumann/mode2-49.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -6892,8 +6857,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode2/mode2-export-wav-neumann/mode2-50.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -6991,8 +6955,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode2/mode2-export-wav-neumann/mode2-51.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -7090,8 +7053,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode2/mode2-export-wav-neumann/mode2-52.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -7189,8 +7151,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode2/mode2-export-wav-neumann/mode2-53.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -7288,8 +7249,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode2/mode2-export-wav-neumann/mode2-54.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -7387,8 +7347,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode2/mode2-export-wav-neumann/mode2-55.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -7486,8 +7445,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode2/mode2-export-wav-neumann/mode2-56.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -7585,8 +7543,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode2/mode2-export-wav-neumann/mode2-57.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -7684,8 +7641,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode2/mode2-export-wav-neumann/mode2-58.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -7783,8 +7739,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode2/mode2-export-wav-neumann/mode2-59.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -7882,8 +7837,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode2/mode2-export-wav-neumann/mode2-60.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -7981,8 +7935,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode2/mode2-export-wav-neumann/mode2-61.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -8080,8 +8033,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode2/mode2-export-wav-neumann/mode2-62.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -8179,8 +8131,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode2/mode2-export-wav-neumann/mode2-63.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -8278,8 +8229,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode2/mode2-export-wav-neumann/mode2-64.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -8377,8 +8327,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode2/mode2-export-wav-neumann/mode2-65.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -8476,8 +8425,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode2/mode2-export-wav-neumann/mode2-66.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -8575,8 +8523,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode2/mode2-export-wav-neumann/mode2-67.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -8674,8 +8621,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode2/mode2-export-wav-neumann/mode2-68.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -8773,8 +8719,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode2/mode2-export-wav-neumann/mode2-69.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -8872,8 +8817,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode2/mode2-export-wav-neumann/mode2-70.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -8971,8 +8915,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode2/mode2-export-wav-neumann/mode2-71.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -9070,8 +9013,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode2/mode2-export-wav-neumann/mode2-72.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -9169,8 +9111,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode2/mode2-export-wav-neumann/mode2-73.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -9268,8 +9209,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode2/mode2-export-wav-neumann/mode2-74.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -9367,8 +9307,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode2/mode2-export-wav-neumann/mode2-75.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -9466,8 +9405,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode2/mode2-export-wav-neumann/mode2-76.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -9565,8 +9503,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode2/mode2-export-wav-neumann/mode2-77.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -9664,8 +9601,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode2/mode2-export-wav-neumann/mode2-78.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -9763,8 +9699,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode2/mode2-export-wav-neumann/mode2-79.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -9862,8 +9797,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode2/mode2-export-wav-neumann/mode2-80.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -9961,8 +9895,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode2/mode2-export-wav-neumann/mode2-81.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -10060,8 +9993,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode2/mode2-export-wav-neumann/mode2-82.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -10159,8 +10091,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode2/mode2-export-wav-neumann/mode2-83.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -10258,8 +10189,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode2/mode2-export-wav-neumann/mode2-84.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -10357,8 +10287,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode2/mode2-export-wav-neumann/mode2-85.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -10456,8 +10385,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode2/mode2-export-wav-neumann/mode2-86.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -10555,8 +10483,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode2/mode2-export-wav-neumann/mode2-87.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -10654,8 +10581,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode2/mode2-export-wav-neumann/mode2-88.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -10753,8 +10679,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode2/mode2-export-wav-neumann/mode2-89.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -10852,8 +10777,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode2/mode2-export-wav-neumann/mode2-90.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -10951,8 +10875,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode2/mode2-export-wav-neumann/mode2-91.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -11050,8 +10973,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode2/mode2-export-wav-neumann/mode2-92.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -11149,8 +11071,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode2/mode2-export-wav-neumann/mode2-93.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -11248,8 +11169,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode2/mode2-export-wav-neumann/mode2-94.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -11347,8 +11267,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode2/mode2-export-wav-neumann/mode2-95.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -11446,8 +11365,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode2/mode2-export-wav-neumann/mode2-96.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -11545,8 +11463,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode2/mode2-export-wav-neumann/mode2-97.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -11644,8 +11561,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode2/mode2-export-wav-neumann/mode2-98.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -11743,8 +11659,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode2/mode2-export-wav-neumann/mode2-99.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -11842,8 +11757,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode2/mode2-export-wav-neumann/mode2-100.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -11941,8 +11855,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode2/mode2-export-wav-neumann/mode2-101.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -12040,8 +11953,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode2/mode2-export-wav-neumann/mode2-102.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -12139,8 +12051,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode2/mode2-export-wav-neumann/mode2-103.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -12238,8 +12149,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode2/mode2-export-wav-neumann/mode2-104.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -12337,8 +12247,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode2/mode2-export-wav-neumann/mode2-105.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -12436,8 +12345,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode2/mode2-export-wav-neumann/mode2-106.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -12535,8 +12443,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode2/mode2-export-wav-neumann/mode2-107.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -12634,8 +12541,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode2/mode2-export-wav-neumann/mode2-108.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -12733,8 +12639,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode2/mode2-export-wav-neumann/mode2-109.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -12832,8 +12737,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode2/mode2-export-wav-neumann/mode2-110.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -12931,8 +12835,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode2/mode2-export-wav-neumann/mode2-111.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -13030,8 +12933,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode2/mode2-export-wav-neumann/mode2-112.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -13129,8 +13031,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode2/mode2-export-wav-neumann/mode2-113.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -13228,8 +13129,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode2/mode2-export-wav-neumann/mode2-114.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -13327,8 +13227,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode2/mode2-export-wav-neumann/mode2-124.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -13426,8 +13325,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode2/mode2-export-wav-neumann/mode2-115.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -13525,8 +13423,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode2/mode2-export-wav-neumann/mode2-116.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -13624,8 +13521,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode2/mode2-export-wav-neumann/mode2-117.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -13723,8 +13619,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode2/mode2-export-wav-neumann/mode2-118.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -13822,8 +13717,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode2/mode2-export-wav-neumann/mode2-119.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -13921,8 +13815,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode2/mode2-export-wav-neumann/mode2-120.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -14020,8 +13913,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode2/mode2-export-wav-neumann/mode2-121.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -14119,8 +14011,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode2/mode2-export-wav-neumann/mode2-122.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -14218,8 +14109,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode2/mode2-export-wav-neumann/mode2-123.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -14317,8 +14207,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode2/mode2-export-wav-neumann/mode2-125.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -14416,8 +14305,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode2/mode2-export-wav-neumann/mode2-126.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -14515,8 +14403,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode2/mode2-export-wav-neumann/mode2-127.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -14614,8 +14501,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode2/mode2-export-wav-neumann/mode2-128.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -14713,8 +14599,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode2/mode2-export-wav-neumann/mode2-129.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -14812,8 +14697,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode2/mode2-export-wav-neumann/mode2-130.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -14911,8 +14795,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode2/mode2-export-wav-neumann/mode2-131.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -15010,8 +14893,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode2/mode2-export-wav-neumann/mode2-132.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -15109,8 +14991,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode2/mode2-export-wav-neumann/mode2-133.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -15208,8 +15089,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode2/mode2-export-wav-neumann/mode2-134.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -15307,8 +15187,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode2/mode2-export-wav-neumann/mode2-135.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -15406,8 +15285,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode2/mode2-export-wav-neumann/mode2-136.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -15505,8 +15383,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode2/mode2-export-wav-neumann/mode2-137.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -15604,8 +15481,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode2/mode2-export-wav-neumann/mode2-138.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -15703,8 +15579,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode2/mode2-export-wav-neumann/mode2-139.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -15802,8 +15677,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode2/mode2-export-wav-neumann/mode2-140.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -15901,8 +15775,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode2/mode2-export-wav-neumann/mode2-141.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -16000,8 +15873,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode2/mode2-export-wav-neumann/mode2-142.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -16099,8 +15971,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode2/mode2-export-wav-neumann/mode2-143.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -16198,8 +16069,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode2/mode2-export-wav-neumann/mode2-145.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -16297,8 +16167,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode2/mode2-export-wav-neumann/mode2-146.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -16396,8 +16265,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode2/mode2-export-wav-neumann/mode2-38.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -16495,8 +16363,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode2/mode2-export-wav-neumann/mode2-38.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -16594,8 +16461,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode2/mode2-export-wav-neumann/mode2-38.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -16693,8 +16559,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode2/mode2-export-wav-neumann/mode2-38.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -16792,8 +16657,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode2/mode2-export-wav-neumann/mode2-38.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -16891,8 +16755,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode2/mode2-export-wav-neumann/mode2-38.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -16990,8 +16853,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode2/mode2-export-wav-neumann/mode2-38.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -17089,8 +16951,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode2/mode2-export-wav-neumann/mode2-38.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -17188,8 +17049,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode2/mode2-export-wav-neumann/mode2-38.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -17287,8 +17147,7 @@ f 121;
 #X obj 283 237 r samplename;
 #X obj 436 243 r samplesuffix;
 #X obj 198 347 makefilename %s%%s%%%%d.%%%%%%%%s;
-#X msg 168 570 open samples/mode2/mode2-export-wav-neumann/mode2-38.wav
-;
+#X msg 168 570 open unknown;
 #X obj 170 10 inlet;
 #X obj 170 34 unpack f f;
 #X obj 237 59 route 0;
@@ -17373,7 +17232,7 @@ f 121;
 #X obj 78 142 outlet;
 #X obj 12 51 t l l;
 #X msg 45 77 set \$1 \$2;
-#X msg 78 117 18 0;
+#X msg 78 117 23 0;
 #X obj 121 78 r unique-trigger;
 #X obj 12 223 change;
 #X obj 12 265 s unique-trigger;
@@ -21453,9 +21312,8 @@ augmentatione di voce;
 #X restore 10 10 pd eartrainger-container;
 #X coords 0 626 1 625 250 120 0;
 #X restore 1076 870 pd eartrainer;
-#X text 14 33 Version 1.43 (June 4 2021);
 #X obj 1077 899 algorithms;
-#N canvas -6 6 1169 484 pozzi 0;
+#N canvas 170 696 1169 484 pozzi 0;
 #X obj 92 179 metro 1 109.5 permin;
 #X msg 100 129 tempo \$1 permin;
 #X floatatom 97 83 5 0 0 0 - - -;
@@ -21727,5 +21585,6 @@ augmentatione di voce;
 #X connect 26 3 13 0;
 #X connect 26 4 15 0;
 #X connect 26 7 22 0;
-#X restore 1065 958 pd pozzi;
+#X restore 1075 929 pd pozzi;
+#X text 14 33 Version 1.44 (December 5 2021);
 #X coords 0 0 1 1 85 60 0;

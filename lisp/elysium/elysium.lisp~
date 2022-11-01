@@ -1,0 +1,25 @@
+(require 'incudine)
+(in-package :scratch)
+
+(defparameter *osc-out* (osc:open :port 5900 :direction :output))
+
+(defun key-on (index &optional duration)
+  (osc:message *osc-out* "/incudine-bridge" "ii" index 1)
+  (when duration
+    (at (+ (now) duration) #'key-off index)))
+
+(defun key-off (index)
+  (osc:message *osc-out* "/incudine-bridge" "ii" index 0))
+
+(defun panic ()
+  (loop for i from 0 to 146 do
+	(key-off i)))
+
+(defun cluster-on (lowest highest)
+  (loop for i from lowest to highest do
+	(key-on i)))
+
+(defun cluster-off (lowest highest)
+  (loop for i from lowest to highest do
+	(key-off i)))
+
