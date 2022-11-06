@@ -129,3 +129,19 @@
 - appearance: new grouping concept for subpatches. In the main patch
   only the keyboard and the pipes are visible. All other functionality
   is hidden away in subpatches, which are grouped into topics.
+
+
+## changes for version 1.60 (7th of November 2022)
+
+- debugging: changed the internal signal flow between the input interfaces 
+  (keyboard, pipes, mode3-tonnetz, dreyblatt-square). Processing the messages 
+  is now symmetrical, the only receiving element is nkeypassive, every 
+  interface output is routed through oscnkey (relevant for actual playing: 
+  OSC, serial, sampler) and nkeypassive. nkeyactive is processed separately, 
+  in the keyboard subpatch. kbdout is not in use anymore. This resolves the 
+  triplication of key trigger events. 
+- new feature: the Velocity Bridge has now the option 'panic trigger', which 
+  reacts to a NoteOff-velocity of any note to trigger panic. This is useful
+  when sending MIDI from Reaper, to stop all notes when pausing playback. 
+- the support of CTL messages in the Velocity bridge has been removed, it did
+  not work reliably.
