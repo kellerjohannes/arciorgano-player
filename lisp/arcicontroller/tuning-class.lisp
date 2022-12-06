@@ -54,4 +54,8 @@
 (defmethod get-frequency ((tuning linear-system)
                           (pitch-reference modern-pitch-name)
                           reference-frequency)
-  (* reference-frequency ...))
+  (declare (ignore tuning pitch-reference reference-frequency))
+  ;; TODO implement!
+  ;; change from `modern-pitch-name' to `vicentino-notation' or `vicentino-key-name'.
+  ;; (* reference-frequency ...)
+  )
