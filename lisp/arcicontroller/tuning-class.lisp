@@ -12,6 +12,8 @@
                 :documentation "Description of the tuning system."))
   (:documentation "Superclass for tuning definitions."))
 
+(defgeneric get-frequency (tuning pitch-reference reference-frequency)
+  (:documentation "Returns an absolute frequency based on the tuning system `tuning' and a pitch reference. Different implementations are required to meet the needs of specific types for `pitch-reference'. `reference-frequency' defines the 1/1 pitch."))
 
 
 (defclass linear-system (tuning)
@@ -33,7 +35,10 @@
                  :documentation "Number of iterations from the origin (1/1) upwards.")
    (pitch-list :initform (make-array 0 :fill-pointer 0 :adjustable t :element-type 'real)
                :accessor pitch-list
-               :documentation "Vector of pitches, ordered along the chain of generator intervals.")))
+               :documentation "Vector of pitches, ordered along the chain of generator intervals.")
+   (dictionary-modern-note-name :initform nil
+                                :accessor dictionary-modern-note-name
+                                :documentation "Contains an instance of `dictionary' that describes the relationship between indices for `pitch-list' and `modern-note-name'.")))
 
 (defmethod initialize-instance :after ((tuning linear-system) &key)
   (do ((index (left-border tuning) (1+ index))
@@ -45,3 +50,8 @@
 
 (defmethod get-pitch-list ((tuning linear-system))
   (pitch-list tuning))
+
+(defmethod get-frequency ((tuning linear-system)
+                          (pitch-reference modern-pitch-name)
+                          reference-frequency)
+  (* reference-frequency ...))
