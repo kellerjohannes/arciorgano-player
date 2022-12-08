@@ -187,7 +187,7 @@
           ((equal d '(-1 0)) 'west)
           (t nil))))
 
-(defun move (origin delta-x delta-y)
+(defun move-x-priority (origin delta-x delta-y)
   "Returns the pitchclass name of the neighbour of `origin' (also a pitchclass name) specified by the direction vector (`delta-x' `delta-y')."
   (cond ((null origin) nil)
         ((and (zerop delta-x) (zerop delta-y))
@@ -197,6 +197,23 @@
            (move (move-1 origin (lookup-direction 0 (- step))) 0 (+ delta-y step))))
         (t (let ((step (if (> delta-x 0) -1 1)))
              (move (move-1 origin (lookup-direction (- step) 0)) (+ delta-x step) delta-y)))))
+
+(defun move-y-priority (origin delta-x delta-y)
+  "Returns the pitchclass name of the neighbour of `origin' (also a pitchclass name) specified by the direction vector (`delta-x' `delta-y')."
+  (cond ((null origin) nil)
+        ((and (zerop delta-x) (zerop delta-y))
+         origin)
+        ((zerop delta-y)
+         (let ((step (if (> delta-x 0) -1 1)))
+           (move (move-1 origin (lookup-direction (- step) 0)) (+ delta-x step) 0)))
+        (t (let ((step (if (> delta-y 0) -1 1)))
+             (move (move-1 origin (lookup-direction 0 (- step))) delta-x (+ delta-y step))))))
+
+(defun move (origin delta-x delta-y)
+  "X and Y priority."
+  (or (move-x-priority origin delta-x delta-y)
+      (move-y-priority origin delta-x delta-y)))
+
 
 (defun generate-series (origin delta-x delta-y)
   "Returns a list of pitchclass names by moving recursively from `origin' by an interval described by the vector (`delta-x' `delta-y')."

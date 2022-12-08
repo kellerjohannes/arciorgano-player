@@ -43,9 +43,11 @@
                                 candidate))
                             (rest (get-shape-names origin shape-list)))))
 
-(defun all-candidates (origin shape-list &optional target-shape-list)
-
-  )
+(defun all-candidates (origin shape-list &optional (target-shape-list shape-list))
+  (mapcar (lambda (move)
+            (format t "~&Testing: ~a" (move origin (- (car move)) (- (cdr move))))
+            (candidates (move origin (- (car move)) (- (cdr move))) target-shape-list))
+          target-shape-list))
 
 (defun pick-next-origin-2 (origin shape-list &optional (safety-counter 0))
   "Omnidirectional."
