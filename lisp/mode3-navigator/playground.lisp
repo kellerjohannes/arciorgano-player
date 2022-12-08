@@ -3,6 +3,10 @@
 (connect-to-pd)
 
 (defparameter *maj7* '((1 . 0) (0 . 1) (2 . 2)))
+(defparameter *maj* '((1 . 0) (0 . 1)))
+(defparameter *min* '((-1 . 1) (0 . 1)))
+(defparameter *5* '((0 . 1)))
+(defparameter *3* '((1 . 0)))
 
 
 (defparameter *default-attack-spread* 15)
@@ -72,7 +76,14 @@
 (defun pick-next-origin-2 (origin shape-list &optional (safety-counter 0))
   "Omnidirectional."
   (when (< safety-counter 50)
-    (rand-nth (remove origin (mapcar #'first (remove-bad-candidates (list-all-candidates origin shape-list)))))))
+    (let ((result (rand-nth (remove origin
+                                    (mapcar #'first
+                                            (remove-bad-candidates
+                                             (list-all-candidates origin
+                                                                  shape-list)))))))
+      (format t "~&Picked new origin: ~a" result)
+      (unless result (stop-modulation))
+      result)))
 
 
 (defun test-chain (origin shape)
@@ -81,7 +92,16 @@
     (read)
     (test-chain new-origin shape)))
 
+(defparameter *play* t)
+
+(defun stop-modulation ()
+  (setf *play* nil))
+
+(defun start-modulation (shape)
+  (setf *play* t)
+  (play-modulation 'c shape))
 
 (defun play-modulation (origin shape)
-  (play-shape origin shape 10 2 :random 2 :random)
-  (at (+ (now) #[6 s]) #'crossfade (pick-next-origin-2 origin shape) shape))
+  (when *play*
+    (play-shape origin shape 1.2 .3 :random .3 :random)
+    (at (+ (now) #[1 s]) #'play-modulation (pick-next-origin-2 origin shape) shape)))
