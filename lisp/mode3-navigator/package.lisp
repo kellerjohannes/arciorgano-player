@@ -3,3 +3,5 @@
   (:use :cl))
 
 (in-package :mode3-navigator)
+
+(incudine:enable-sharp-square-bracket-syntax)

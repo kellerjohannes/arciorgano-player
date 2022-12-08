@@ -6,6 +6,8 @@
                     (elt sequence (1- i))))
   sequence)
 
+(defun rand-nth (sequence)
+  (nth (random (length sequence)) sequence))
 
 (defmacro when-let (bindings &body body)
   "Bind `bindings` in parallel and execute `body`, short-circuiting on `nil`.

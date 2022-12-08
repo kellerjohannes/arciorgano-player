@@ -1,6 +1,5 @@
 (in-package :mode3-navigator)
 
-
 (defparameter *network*
   '((e♭ b♭+ g a♭ nil)
     (g d+ b♮ c e♭)
@@ -89,34 +88,40 @@
 
 ;; tonnetz-based playing
 
-(defun calculate-time-delta (origin target number-of-notes note-id)
+(defun calculate-time-shift (origin target number-of-notes note-id)
   (+ origin (* note-id (/ (- target origin) number-of-notes))))
 
+(defun reorder-key-list (key-list shape)
+  (case shape
+    (:arpeggio-down (sort key-list #'>))
+    (:arpeggio-up (sort key-list #'<))
+    (:random (nshuffle key-list))
+    (otherwise key-list)))
+
 (defun fuzzy-trigger (origin-time target-time key-list trigger-fun shape)
-  (loop for key in (case shape
-                     (:arpeggio-up (sort key-list #'<))
-                     (:arpeggio-down (sort key-list #'>))
-                     (:random (nshuffle key-list))
-                     (otherwise key-list))
-        for note-counter from 0
-        do (at (calculate-time-delta origin-time target-time (length key-list) note-counter)
-               trigger-fun key)))
+  (format t "~&~a~&" (/ (- target-time origin-time)
+                      incudine.util:*sample-rate*))
+  (let ((ordered-key-list (reorder-key-list key-list shape)))
+    (format t "~&~a" ordered-key-list)
+    (loop for key in ordered-key-list
+          for note-counter from 0
+          do (at (calculate-time-shift origin-time target-time (length key-list) note-counter)
+                 trigger-fun key))))
 
 (defparameter *default-attack-spread* 1)
 (defparameter *default-attack-shape* :random)
 (defparameter *default-release-spread* 1)
 (defparameter *default-release-shape* :random)
 
-;; :random-regular, :random-irregular, :arpeggio-regular, :arpeggio-acc
 (defun play-key-list (key-list duration
                       &key (attack-spread *default-attack-spread*)
                         (attack-shape *default-attack-shape*)
                         (release-spread *default-release-spread*)
                         (release-shape *default-release-shape*))
   (let* ((attack-origin-time (now))
-         (attack-target-time (+ attack-origin-time (* attack-spread incudine.util:*sample-rate*)))
-         (release-origin-time (+ (now) (* duration incudine.util:*sample-rate*)))
-         (release-target-time (+ release-origin-time (* release-spread incudine.util:*sample-rate*))))
+         (attack-target-time (+ attack-origin-time #[attack-spread s]))
+         (release-origin-time (+ (now) #[duration s]))
+         (release-target-time (+ release-origin-time #[release-spread s])))
     (fuzzy-trigger attack-origin-time attack-target-time key-list #'key-on attack-shape)
     (fuzzy-trigger release-origin-time release-target-time key-list #'key-off release-shape)
     key-list))
@@ -132,8 +137,14 @@
             (play-key-list key-list duration)
             key-list)))))
 
+(defun get-shape-names (origin shape-list)
+  (loop for movement in (cons '(0 . 0) shape-list)
+        collect (move origin (car movement) (cdr movement))))
 
-(defun play-shape (origin shape-list &optional duration)
+(defun missing-notes-p (origin shape-list)
+  (member nil (get-shape-names origin shape-list)))
+
+(defun play-shape (origin shape-list &optional duration attack-spread attack-shape release-spread release-shape)
   "Plays a group of pitchclasses based on `origin' (a pitchclass name) and
    a list of directions, each of them a pair.
 
@@ -141,13 +152,16 @@
 
    When `duration' is nil a flattened list of keys is returned without
    triggering them."
-  (let* ((note-list (loop for movement in (cons '(0 . 0) shape-list)
-                          collect (move origin (car movement) (cdr movement))))
+  (let* ((note-list (get-shape-names origin shape-list))
          (key-list (alexandria:flatten (loop for note in note-list
                                              collect (play-note note)))))
-
     (if duration
-        (play-key-list key-list duration)
+        (play-key-list key-list
+                       duration
+                       :attack-spread attack-spread
+                       :attack-shape attack-shape
+                       :release-spread release-spread
+                       :release-shape release-shape)
         key-list)))
 
 
