@@ -92,41 +92,33 @@
 (defun calculate-time-delta (origin target number-of-notes note-id)
   (+ origin (* note-id (/ (- target origin) number-of-notes))))
 
+(defun fuzzy-trigger (origin-time target-time key-list trigger-fun shape)
+  (loop for key in (case shape
+                     (:arpeggio-up (sort key-list #'<))
+                     (:arpeggio-down (sort key-list #'>))
+                     (:random (nshuffle key-list))
+                     (otherwise key-list))
+        for note-counter from 0
+        do (at (calculate-time-delta origin-time target-time (length key-list) note-counter)
+               trigger-fun key)))
+
 (defparameter *default-attack-spread* 1)
-(defparameter *default-attack-order* :random)
+(defparameter *default-attack-shape* :random)
 (defparameter *default-release-spread* 1)
-(defparameter *default-release-order* :arpeggio-down)
+(defparameter *default-release-shape* :random)
 
 ;; :random-regular, :random-irregular, :arpeggio-regular, :arpeggio-acc
 (defun play-key-list (key-list duration
                       &key (attack-spread *default-attack-spread*)
-                        (attack-order *default-attack-order*)
+                        (attack-shape *default-attack-shape*)
                         (release-spread *default-release-spread*)
-                        (release-order *default-release-order*))
+                        (release-shape *default-release-shape*))
   (let* ((attack-origin-time (now))
          (attack-target-time (+ attack-origin-time (* attack-spread incudine.util:*sample-rate*)))
          (release-origin-time (+ (now) (* duration incudine.util:*sample-rate*)))
          (release-target-time (+ release-origin-time (* release-spread incudine.util:*sample-rate*))))
-    (loop for key in (if (eq attack-order :random)
-                         (nshuffle key-list)
-                         (sort key-list #'<))
-          for key-counter-up from 0
-          for key-counter-down downfrom (length key-list)
-          do (progn
-               (at (calculate-time-delta attack-origin-time
-                                         attack-target-time
-                                         (length key-list)
-                                         (if (eq attack-order :arpeggio-down)
-                                             key-counter-down
-                                             key-counter-up))
-                   #'key-on key)
-               (at (calculate-time-delta release-origin-time
-                                         release-target-time
-                                         (length key-list)
-                                         (if (eq release-order :arpeggio-down)
-                                             key-counter-down
-                                             key-counter-up))
-                   #'key-off key)))
+    (fuzzy-trigger attack-origin-time attack-target-time key-list #'key-on attack-shape)
+    (fuzzy-trigger release-origin-time release-target-time key-list #'key-off release-shape)
     key-list))
 
 (defun play-note (notename &optional duration)
