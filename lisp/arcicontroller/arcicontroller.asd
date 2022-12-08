@@ -6,6 +6,8 @@
   :serial t
   :components ((:file "package")
                (:file "helpers")
+               (:file "dictionary-class")
+               (:file "pitch-name-class")
                (:file "keyboard-class")
                (:file "sound-generator-class")
                (:file "tuning-class")
