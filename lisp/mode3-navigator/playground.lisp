@@ -43,12 +43,45 @@
                                 candidate))
                             (rest (get-shape-names origin shape-list)))))
 
-(defun all-candidates (origin shape-list &optional (target-shape-list shape-list))
-  (mapcar (lambda (move)
-            (format t "~&Testing: ~a" (move origin (- (car move)) (- (cdr move))))
-            (candidates (move origin (- (car move)) (- (cdr move))) target-shape-list))
-          target-shape-list))
+(defun list-all-candidates (origin shape-list &optional (target-shape-list shape-list))
+  (mapcar (lambda (local-origin)
+            (mapcar (lambda (move)
+                      ;;(format t "~&Testing: ~a" (move local-origin (- (car move)) (- (cdr move))))
+                      (get-shape-names (move local-origin (- (car move)) (- (cdr move)))
+                                       target-shape-list))
+                    target-shape-list))
+          (candidates origin (cons '(0 . 0) shape-list) target-shape-list)))
+
+(defparameter *result* nil)
+
+(defun flatten-candidates (candidates)
+  (cond ((null candidates) *result*)
+        ((atom (first (first candidates)))
+         (push (first candidates) *result*)
+         (flatten-candidates (rest candidates)))
+        (t (flatten-candidates (first candidates))
+           (flatten-candidates (rest candidates)))))
+
+(defun remove-bad-candidates (candidates)
+  (let ((*result* nil))
+    (flatten-candidates candidates)
+    (remove-if (lambda (chord-list)
+                 (member nil chord-list))
+               *result*)))
 
 (defun pick-next-origin-2 (origin shape-list &optional (safety-counter 0))
   "Omnidirectional."
-  ())
+  (when (< safety-counter 50)
+    (rand-nth (remove origin (mapcar #'first (remove-bad-candidates (list-all-candidates origin shape-list)))))))
+
+
+(defun test-chain (origin shape)
+  (let ((new-origin (pick-next-origin-2 origin shape)))
+    (format t "~&new origin: ~a" new-origin)
+    (read)
+    (test-chain new-origin shape)))
+
+
+(defun play-modulation (origin shape)
+  (play-shape origin shape 10 2 :random 2 :random)
+  (at (+ (now) #[6 s]) #'crossfade (pick-next-origin-2 origin shape) shape))
