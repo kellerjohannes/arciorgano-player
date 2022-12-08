@@ -5,6 +5,9 @@
   :licence "Public Domain"
   :serial t
   :components ((:file "package")
+               (:file "helpers")
+               (:file "arciorgano-interface")
                (:file "tonnetz")
-               (:file "progressions"))
+               (:file "progressions")
+               (:file "playground"))
   :depends-on (:incudine))
