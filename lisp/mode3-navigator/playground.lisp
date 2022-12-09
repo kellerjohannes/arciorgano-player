@@ -26,7 +26,7 @@
                        :random)
            (at (+ (now) #[6 s]) #'crossfade (rest chord-list)))))
 
-(crossfade `((c . ,*maj7*) (f♯ . ,*maj7*)))
+;;(crossfade `((c . ,*maj7*) (f♯ . ,*maj7*)))
 ;;(crossfade `((c . ,*maj7*)))
 
 

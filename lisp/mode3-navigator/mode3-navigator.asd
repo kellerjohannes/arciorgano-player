@@ -7,6 +7,7 @@
   :serial t
   :components ((:file "package")
                (:file "helpers")
+               (:file "painter")
                (:file "arciorgano-interface")
                (:file "tonnetz")
                (:file "progressions")
