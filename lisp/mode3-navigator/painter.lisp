@@ -94,18 +94,18 @@
                                              :stroke "gainsboro"
                                              :stroke-width 10)))))
 
-(defun draw-point (scene vec)
+(defun draw-point (scene vec &optional highlight)
   (svg:draw scene (:circle :cx (scale-x (get-x vec)) :cy (scale-y (get-y vec))
-                           :r 10
-                           :fill "black")))
+                           :r (if highlight 11 10)
+                           :fill (if highlight "purple" "black"))))
 
-(defun draw-chord-line (scene origin vector)
+(defun draw-chord-line (scene origin vector &optional highlight)
   (svg:draw scene (:line :x1 (scale-x (get-x origin))
                          :y1 (scale-y (get-y origin))
                          :x2 (scale-x (+ (get-x origin) (get-x vector)))
                          :y2 (scale-y (+ (get-y origin) (get-y vector)))
-                         :stroke "black"
-                         :stroke-width 2)))
+                         :stroke (if highlight "green" "black")
+                         :stroke-width (if highlight 7 2))))
 
 (defun draw-movement-line (scene origin target &optional highlight)
   (svg:draw scene (:line :x1 (scale-x (get-x origin))
@@ -116,6 +116,7 @@
                          :stroke-width (if highlight 7 5))))
 
 (defmethod draw ((canvas canvas))
+  (format t "~&Updating Tonnetz graph.")
   (multiple-value-bind (width height north east south west)
       (calculate-dimensions canvas)
     (declare (ignore north east))
@@ -133,13 +134,15 @@
         do (let ((origin (car movement))
               (vector (cdr movement)))
           (draw-movement-line scene origin vector (if (zerop i) t))))
-      (dolist (shape (shapes canvas))
-        (let ((origin (first shape)))
-          (dolist (vector (rest shape))
-            (draw-chord-line scene origin vector))
-          (dolist (vector (rest shape))
-            (draw-point scene (vec-add origin vector)))
-          (draw-point scene origin))))))
+      (loop for shape in (reverse (shapes canvas))
+            for i downfrom (1- (length (shapes canvas)))
+            do (let ((origin (first shape)))
+                 (dolist (vector (rest shape))
+                   (draw-chord-line scene origin vector (if (zerop i) t)))
+                 (dolist (vector (rest shape))
+                   (draw-point scene (vec-add origin vector)))
+                 (draw-point scene origin)))
+      (draw-point scene (make-vec 0 0) t))))
 
 
 

@@ -13,7 +13,7 @@
 (defparameter *3* '((1 . 0)))
 
 (defparameter *shape-selection* (list *maj7*))
-(defparameter *shape-selection* (list *maj7* *u-maj7* *maj* *min* *3* *u-maj7*))
+(defparameter *shape-selection* (list *maj7* *u-maj7* *maj* *min*))
 
 (defparameter *default-attack-spread* 15)
 (defparameter *default-release-spread* 15)
@@ -41,6 +41,7 @@
 (defun start-modulation ()
   (setf *play* t)
   (reset *painter*)
+  (reset *keyboard*)
   (play-modulation-2 'c (rand-nth *shape-selection*)))
 
 (defun play-modulation (origin shape)
@@ -50,11 +51,60 @@
 
 (defparameter *drawing* nil)
 
+(defclass timing-preset ()
+  ((duration :initform 25
+             :initarg :duration
+             :accessor duration)
+   (on-spread :initform 8
+              :initarg :on-spread
+              :accessor on-spread)
+   (off-spread :initform 8
+               :initarg :off-spread
+               :accessor off-spread)
+   (delta :initform 20
+          :initarg :delta
+          :accessor delta)))
+
+(defparameter *medium* (make-instance 'timing-preset :duration 35 :delta 30
+                                                     :on-spread 8 :off-spread 8))
+(defparameter *slow* (make-instance 'timing-preset :duration 45 :delta 45
+                                                   :on-spread 12 :off-spread 12))
+(defparameter *fast* (make-instance 'timing-preset :duration 12 :delta 10
+                                                   :on-spread 3 :off-spread 3))
+(defparameter *superfast* (make-instance 'timing-preset :duration 6 :delta 5
+                                                        :on-spread 2 :off-spread 1))
+(defparameter *insane* (make-instance 'timing-preset :duration 0.2 :delta 0.2
+                                                     :on-spread 0 :off-spread 0))
+
+(defparameter *current-preset* *superfast*)
+
+(defparameter *preset-selection* (list *superfast* *fast* *slow* *medium*))
+
+(defmethod check-times ((preset timing-preset))
+  (with-accessors ((out duration)
+                   (in delta)
+                   (dur-in on-spread)
+                   (dur-out off-spread))
+      preset
+    (format t "~&Complete crossfade: ~as~&Overlay sustain: ~as~&Single sustain: ~as"
+            (+ (- out in) dur-out)
+            (- out in dur-in)
+            (- (* 2 in) out dur-out))))
+
 (defun play-modulation-2 (origin shape)
+  (when (= 0 (rand-nth '(0 1 2 3 4)))
+    (setf *current-preset* (rand-nth *preset-selection*))
+    (format t "~&Timing preset changed to ~a." *current-preset*)
+    (check-times *current-preset*))
   (when *play*
-    (play-shape origin shape .09 0 :random 0 :random)
+    (play-shape origin shape
+                (duration *current-preset*)
+                (on-spread *current-preset*)
+                :random
+                (off-spread *current-preset*)
+                :random)
     (let ((new-shape (rand-nth *shape-selection*)))
-      (at (+ (now) #[.05 s])
+      (at (+ (now) #[(delta *current-preset*) s])
           #'play-modulation-2
           (pick-next-origin-3 origin shape new-shape)
           new-shape))))

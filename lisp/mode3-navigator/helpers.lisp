@@ -12,25 +12,40 @@
       nil))
 
 (defun make-vec (x y)
-  (cons x y))
+  (if (and (numberp x) (numberp y))
+      (cons x y)
+      (error "Can't create a vector with this.")))
+
+(defun vecp (vec)
+  (and (numberp (car vec)) (numberp (cdr vec))))
+
+(defun vec-op (vec1 vec2 fun)
+  (if (and (vecp vec1) (vecp vec2))
+      (cons (funcall fun (car vec1) (car vec2))
+            (funcall fun (cdr vec1) (cdr vec2)))
+      (error "Can't operate on non-vectors.")))
 
 (defun vec-add (vec1 vec2)
-  (cons (+ (car vec1) (car vec2))
-        (+ (cdr vec1) (cdr vec2))))
+  (vec-op vec1 vec2 #'+))
 
 (defun vec-sub (vec1 vec2)
-  (cons (- (car vec1) (car vec2))
-        (- (cdr vec1) (cdr vec2))))
+  (vec-op vec1 vec2 #'-))
 
 (defun vec-mul (vec1 factor)
-  (cons (* factor (car vec1))
-        (* factor (cdr vec1))))
+  (if (and (vecp vec1) (numberp factor))
+      (cons (* factor (car vec1))
+            (* factor (cdr vec1)))
+      (error "Can't multiply a non-vector with a non-number.")))
 
 (defun get-x (vec)
-  (car vec))
+  (if (vecp vec)
+      (car vec)
+      (error "Can't get x-coordinate of a non-vector.")))
 
 (defun get-y (vec)
-  (cdr vec))
+  (if (vecp vec)
+      (cdr vec)
+      (error "Can't get y-coordinate of a non-vector.")))
 
 (defmacro when-let (bindings &body body)
   "Bind `bindings` in parallel and execute `body`, short-circuiting on `nil`.
