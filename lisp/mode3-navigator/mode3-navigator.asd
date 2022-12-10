@@ -3,7 +3,7 @@
   :version "0.1"
   :author "Johannes Keller <johannkell@gmail.com>"
   :licence "Public Domain"
-  :depends-on (:incudine)
+  :depends-on (:incudine :cl-svg)
   :serial t
   :components ((:file "package")
                (:file "helpers")

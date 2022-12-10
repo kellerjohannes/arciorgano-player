@@ -2,6 +2,8 @@
 
 (connect-to-pd)
 
+
+(defparameter *sym* '((1 . 0) (0 . 1) (2 . 2) (-1 . 0) (0 . -1) (-2 . -2)))
 (defparameter *maj7* '((1 . 0) (0 . 1) (2 . 2)))
 (defparameter *maj* '((1 . 0) (0 . 1)))
 (defparameter *min* '((-1 . 1) (0 . 1)))
@@ -76,6 +78,7 @@
 (defun pick-next-origin-2 (origin shape-list &optional (safety-counter 0))
   "Omnidirectional."
   (when (< safety-counter 50)
+    (move-origin *painter* (random 3) (random 3))
     (let ((result (rand-nth (remove origin
                                     (mapcar #'first
                                             (remove-bad-candidates
@@ -85,6 +88,19 @@
       (unless result (stop-modulation))
       result)))
 
+
+(defun pick-next-origin-3 (origin shape &optional (target-shape shape))
+  (let ((result nil))
+    (dolist (shape-vector shape)
+      (dolist (target-shape-vector (cons '(0 . 0) target-shape))
+        (let ((test-x (- (car shape-vector) (car target-shape-vector)))
+              (test-y (- (cdr shape-vector) (cdr target-shape-vector))))
+          (unless (missing-notes-p (move origin test-x test-y) target-shape)
+            (push (cons test-x test-y) result)))))
+    (setf result (remove '(0 . 0) (remove-duplicates result :test #'equal) :test #'equal))
+    (let ((pick (rand-nth result)))
+      (move-origin *painter* (car pick) (cdr pick))
+      (move origin (car pick) (cdr pick)))))
 
 (defun test-chain (origin shape)
   (let ((new-origin (pick-next-origin-2 origin shape)))
@@ -97,11 +113,22 @@
 (defun stop-modulation ()
   (setf *play* nil))
 
-(defun start-modulation (shape)
+(defun start-modulation (shapes)
   (setf *play* t)
-  (play-modulation 'c shape))
+  (reset *painter*)
+  (play-modulation-2 'c (rand-nth shapes) shapes))
 
 (defun play-modulation (origin shape)
   (when *play*
-    (play-shape origin shape 1.2 .3 :random .3 :random)
-    (at (+ (now) #[1 s]) #'play-modulation (pick-next-origin-2 origin shape) shape)))
+    (play-shape origin shape 3.2 .3 :random .3 :random)
+    (at (+ (now) #[3 s]) #'play-modulation (pick-next-origin-3 origin shape) shape)))
+
+(defun play-modulation-2 (origin shape shape-selection)
+  (when *play*
+    (play-shape origin shape 3.2 .3 :random .3 :random)
+    (let ((new-shape (rand-nth shape-selection)))
+      (at (+ (now) #[3 s])
+          #'play-modulation-2
+          (pick-next-origin-3 origin shape new-shape)
+          new-shape
+          shape-selection))))

@@ -152,6 +152,10 @@
 
    When `duration' is nil a flattened list of keys is returned without
    triggering them."
+  (dolist (vector shape-list)
+    (add-vector-to-shape *painter* (car vector) (cdr vector)))
+  (push-shape *painter*)
+  (draw *painter*)
   (let* ((note-list (get-shape-names origin shape-list))
          (key-list (alexandria:flatten (loop for note in note-list
                                              collect (play-note note)))))
