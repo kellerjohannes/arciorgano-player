@@ -49,7 +49,7 @@
     (play-shape origin shape 3.2 .3 :random .3 :random)
     (at (+ (now) #[3 s]) #'play-modulation (pick-next-origin-3 origin shape) shape)))
 
-(defparameter *drawing* nil)
+(defparameter *drawing* t)
 
 (defclass timing-preset ()
   ((duration :initform 25
