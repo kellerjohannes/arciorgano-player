@@ -1,9 +1,6 @@
 (in-package :mode3-navigator)
 
-
-
-
-
+;; old and obsolete
 
 (defparameter *harmonies*
   '((major ((1 . 0) (0 . 1)))

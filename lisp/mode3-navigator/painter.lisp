@@ -149,32 +149,3 @@
 
 
 (defparameter *painter* (make-instance 'canvas))
-
-
-(defun test-fill ()
-  (add-vector-to-shape *painter* 1 0)
-  (add-vector-to-shape *painter* 0 1)
-  (add-vector-to-shape *painter* 2 2)
-  (push-shape *painter*)
-  (move-origin *painter* -1 2)
-  (add-vector-to-shape *painter* 1 0)
-  (add-vector-to-shape *painter* 0 1)
-  (add-vector-to-shape *painter* 2 2)
-  (push-shape *painter*)
-  (move-origin *painter* 3 -4)
-  (add-vector-to-shape *painter* 1 0)
-  (add-vector-to-shape *painter* 0 1)
-  (add-vector-to-shape *painter* 2 2)
-  (push-shape *painter*))
-
-(defun add-more ()
-  (move-origin *painter* -1 2)
-  (add-vector-to-shape *painter* 1 0)
-  (add-vector-to-shape *painter* 0 1)
-  (add-vector-to-shape *painter* 2 2)
-  (push-shape *painter*))
-
-(defun test ()
-  (reset *painter*)
-  (test-fill)
-  (draw *painter*))
