@@ -1,0 +1,236 @@
+<?xml version="1.0" standalone="no"?>
+<svg viewBox="-1600.0 -150.0 3200.0 1800" height="1800" width="3200.00"
+    version="1.2" id="toplevel" xmlns="http://www.w3.org/2000/svg"
+    xmlns:xlink="http://www.w3.org/1999/xlink">
+  <rect x="-1600.00" y="-150.00" width="3200.00" height="1800" fill="white"/>
+  <line x1="0" y1="0" x2="200" y2="100" stroke="blue" stroke-width="5"/>
+  <line x1="200" y1="100" x2="0" y2="200" stroke="blue" stroke-width="5"/>
+  <line x1="0" y1="200" x2="0" y2="300" stroke="blue" stroke-width="5"/>
+  <line x1="0" y1="300" x2="-100" y2="400" stroke="blue" stroke-width="5"/>
+  <line x1="-100" y1="400" x2="-300" y2="300" stroke="blue" stroke-width="5"/>
+  <line x1="-300" y1="300" x2="100" y2="700" stroke="blue" stroke-width="5"/>
+  <line x1="100" y1="700" x2="-100" y2="400" stroke="blue" stroke-width="5"/>
+  <line x1="-100" y1="400" x2="0" y2="300" stroke="blue" stroke-width="5"/>
+  <line x1="0" y1="300" x2="-100" y2="500" stroke="blue" stroke-width="5"/>
+  <line x1="-100" y1="500" x2="-400" y2="300" stroke="blue" stroke-width="5"/>
+  <line x1="-400" y1="300" x2="-300" y2="300" stroke="blue" stroke-width="5"/>
+  <line x1="-300" y1="300" x2="0" y2="500" stroke="blue" stroke-width="5"/>
+  <line x1="0" y1="500" x2="-200" y2="300" stroke="blue" stroke-width="5"/>
+  <line x1="-200" y1="300" x2="0" y2="400" stroke="blue" stroke-width="5"/>
+  <line x1="0" y1="400" x2="-100" y2="400" stroke="blue" stroke-width="5"/>
+  <line x1="-100" y1="400" x2="100" y2="700" stroke="blue" stroke-width="5"/>
+  <line x1="100" y1="700" x2="300" y2="800" stroke="blue" stroke-width="5"/>
+  <line x1="300" y1="800" x2="100" y2="800" stroke="blue" stroke-width="5"/>
+  <line x1="100" y1="800" x2="300" y2="900" stroke="blue" stroke-width="5"/>
+  <line x1="300" y1="900" x2="100" y2="800" stroke="blue" stroke-width="5"/>
+  <line x1="100" y1="800" x2="0" y2="900" stroke="blue" stroke-width="5"/>
+  <line x1="0" y1="900" x2="200" y2="1200" stroke="blue" stroke-width="5"/>
+  <line x1="200" y1="1200" x2="100" y2="1200" stroke="blue" stroke-width="5"/>
+  <line x1="100" y1="1200" x2="200" y2="1400" stroke="blue" stroke-width="5"/>
+  <line x1="200" y1="1400" x2="100" y2="1500" stroke="blue" stroke-width="5"/>
+  <line x1="100" y1="1500" x2="200" y2="1500" stroke="blue" stroke-width="5"/>
+  <line x1="200" y1="1500" x2="400" y2="1500" stroke="blue" stroke-width="5"/>
+  <line x1="400" y1="1500" x2="300" y2="1400" stroke="blue" stroke-width="5"/>
+  <line x1="300" y1="1400" x2="400" y2="1400" stroke="blue" stroke-width="5"/>
+  <line x1="400" y1="1400" x2="500" y2="1400" stroke="blue" stroke-width="5"/>
+  <line x1="500" y1="1400" x2="400" y2="1500" stroke="blue" stroke-width="5"/>
+  <line x1="400" y1="1500" x2="100" y2="1300" stroke="red" stroke-width="7"/>
+  <line x1="0" y1="0" x2="200" y2="200" stroke="black" stroke-width="2"/>
+  <line x1="0" y1="0" x2="0" y2="100" stroke="black" stroke-width="2"/>
+  <line x1="0" y1="0" x2="100" y2="0" stroke="black" stroke-width="2"/>
+  <circle cx="200" cy="200" r="10" fill="black"/>
+  <circle cx="0" cy="100" r="10" fill="black"/>
+  <circle cx="100" cy="0" r="10" fill="black"/>
+  <circle cx="0" cy="0" r="10" fill="black"/>
+  <line x1="200" y1="100" x2="200" y2="200" stroke="black" stroke-width="2"/>
+  <line x1="200" y1="100" x2="100" y2="200" stroke="black" stroke-width="2"/>
+  <circle cx="200" cy="200" r="10" fill="black"/>
+  <circle cx="100" cy="200" r="10" fill="black"/>
+  <circle cx="200" cy="100" r="10" fill="black"/>
+  <line x1="0" y1="200" x2="0" y2="300" stroke="black" stroke-width="2"/>
+  <line x1="0" y1="200" x2="100" y2="200" stroke="black" stroke-width="2"/>
+  <circle cx="0" cy="300" r="10" fill="black"/>
+  <circle cx="100" cy="200" r="10" fill="black"/>
+  <circle cx="0" cy="200" r="10" fill="black"/>
+  <line x1="0" y1="300" x2="0" y2="400" stroke="black" stroke-width="2"/>
+  <line x1="0" y1="300" x2="-100" y2="400" stroke="black" stroke-width="2"/>
+  <circle cx="0" cy="400" r="10" fill="black"/>
+  <circle cx="-100" cy="400" r="10" fill="black"/>
+  <circle cx="0" cy="300" r="10" fill="black"/>
+  <line x1="-100" y1="400" x2="-100" y2="500" stroke="black" stroke-width="2"/>
+  <line x1="-100" y1="400" x2="0" y2="400" stroke="black" stroke-width="2"/>
+  <circle cx="-100" cy="500" r="10" fill="black"/>
+  <circle cx="0" cy="400" r="10" fill="black"/>
+  <circle cx="-100" cy="400" r="10" fill="black"/>
+  <line x1="-300" y1="300" x2="-100" y2="500" stroke="black" stroke-width="2"/>
+  <line x1="-300" y1="300" x2="-300" y2="400" stroke="black" stroke-width="2"/>
+  <line x1="-300" y1="300" x2="-200" y2="300" stroke="black" stroke-width="2"/>
+  <circle cx="-100" cy="500" r="10" fill="black"/>
+  <circle cx="-300" cy="400" r="10" fill="black"/>
+  <circle cx="-200" cy="300" r="10" fill="black"/>
+  <circle cx="-300" cy="300" r="10" fill="black"/>
+  <line x1="100" y1="700" x2="-100" y2="500" stroke="black" stroke-width="2"/>
+  <line x1="100" y1="700" x2="100" y2="600" stroke="black" stroke-width="2"/>
+  <line x1="100" y1="700" x2="0" y2="700" stroke="black" stroke-width="2"/>
+  <circle cx="-100" cy="500" r="10" fill="black"/>
+  <circle cx="100" cy="600" r="10" fill="black"/>
+  <circle cx="0" cy="700" r="10" fill="black"/>
+  <circle cx="100" cy="700" r="10" fill="black"/>
+  <line x1="-100" y1="400" x2="-100" y2="500" stroke="black" stroke-width="2"/>
+  <line x1="-100" y1="400" x2="0" y2="400" stroke="black" stroke-width="2"/>
+  <circle cx="-100" cy="500" r="10" fill="black"/>
+  <circle cx="0" cy="400" r="10" fill="black"/>
+  <circle cx="-100" cy="400" r="10" fill="black"/>
+  <line x1="0" y1="300" x2="0" y2="400" stroke="black" stroke-width="2"/>
+  <line x1="0" y1="300" x2="-100" y2="400" stroke="black" stroke-width="2"/>
+  <circle cx="0" cy="400" r="10" fill="black"/>
+  <circle cx="-100" cy="400" r="10" fill="black"/>
+  <circle cx="0" cy="300" r="10" fill="black"/>
+  <line x1="-100" y1="500" x2="-300" y2="300" stroke="black" stroke-width="2"/>
+  <line x1="-100" y1="500" x2="-100" y2="400" stroke="black" stroke-width="2"/>
+  <line x1="-100" y1="500" x2="-200" y2="500" stroke="black" stroke-width="2"/>
+  <circle cx="-300" cy="300" r="10" fill="black"/>
+  <circle cx="-100" cy="400" r="10" fill="black"/>
+  <circle cx="-200" cy="500" r="10" fill="black"/>
+  <circle cx="-100" cy="500" r="10" fill="black"/>
+  <line x1="-400" y1="300" x2="-400" y2="400" stroke="black" stroke-width="2"/>
+  <line x1="-400" y1="300" x2="-300" y2="300" stroke="black" stroke-width="2"/>
+  <circle cx="-400" cy="400" r="10" fill="black"/>
+  <circle cx="-300" cy="300" r="10" fill="black"/>
+  <circle cx="-400" cy="300" r="10" fill="black"/>
+  <line x1="-300" y1="300" x2="-100" y2="500" stroke="black" stroke-width="2"/>
+  <line x1="-300" y1="300" x2="-300" y2="400" stroke="black" stroke-width="2"/>
+  <line x1="-300" y1="300" x2="-200" y2="300" stroke="black" stroke-width="2"/>
+  <circle cx="-100" cy="500" r="10" fill="black"/>
+  <circle cx="-300" cy="400" r="10" fill="black"/>
+  <circle cx="-200" cy="300" r="10" fill="black"/>
+  <circle cx="-300" cy="300" r="10" fill="black"/>
+  <line x1="0" y1="500" x2="-200" y2="300" stroke="black" stroke-width="2"/>
+  <line x1="0" y1="500" x2="0" y2="400" stroke="black" stroke-width="2"/>
+  <line x1="0" y1="500" x2="-100" y2="500" stroke="black" stroke-width="2"/>
+  <circle cx="-200" cy="300" r="10" fill="black"/>
+  <circle cx="0" cy="400" r="10" fill="black"/>
+  <circle cx="-100" cy="500" r="10" fill="black"/>
+  <circle cx="0" cy="500" r="10" fill="black"/>
+  <line x1="-200" y1="300" x2="0" y2="500" stroke="black" stroke-width="2"/>
+  <line x1="-200" y1="300" x2="-200" y2="400" stroke="black" stroke-width="2"/>
+  <line x1="-200" y1="300" x2="-100" y2="300" stroke="black" stroke-width="2"/>
+  <circle cx="0" cy="500" r="10" fill="black"/>
+  <circle cx="-200" cy="400" r="10" fill="black"/>
+  <circle cx="-100" cy="300" r="10" fill="black"/>
+  <circle cx="-200" cy="300" r="10" fill="black"/>
+  <line x1="0" y1="400" x2="0" y2="500" stroke="black" stroke-width="2"/>
+  <line x1="0" y1="400" x2="-100" y2="500" stroke="black" stroke-width="2"/>
+  <circle cx="0" cy="500" r="10" fill="black"/>
+  <circle cx="-100" cy="500" r="10" fill="black"/>
+  <circle cx="0" cy="400" r="10" fill="black"/>
+  <line x1="-100" y1="400" x2="-100" y2="500" stroke="black" stroke-width="2"/>
+  <line x1="-100" y1="400" x2="-200" y2="500" stroke="black" stroke-width="2"/>
+  <circle cx="-100" cy="500" r="10" fill="black"/>
+  <circle cx="-200" cy="500" r="10" fill="black"/>
+  <circle cx="-100" cy="400" r="10" fill="black"/>
+  <line x1="100" y1="700" x2="-100" y2="500" stroke="black" stroke-width="2"/>
+  <line x1="100" y1="700" x2="100" y2="600" stroke="black" stroke-width="2"/>
+  <line x1="100" y1="700" x2="0" y2="700" stroke="black" stroke-width="2"/>
+  <circle cx="-100" cy="500" r="10" fill="black"/>
+  <circle cx="100" cy="600" r="10" fill="black"/>
+  <circle cx="0" cy="700" r="10" fill="black"/>
+  <circle cx="100" cy="700" r="10" fill="black"/>
+  <line x1="300" y1="800" x2="100" y2="600" stroke="black" stroke-width="2"/>
+  <line x1="300" y1="800" x2="300" y2="700" stroke="black" stroke-width="2"/>
+  <line x1="300" y1="800" x2="200" y2="800" stroke="black" stroke-width="2"/>
+  <circle cx="100" cy="600" r="10" fill="black"/>
+  <circle cx="300" cy="700" r="10" fill="black"/>
+  <circle cx="200" cy="800" r="10" fill="black"/>
+  <circle cx="300" cy="800" r="10" fill="black"/>
+  <line x1="100" y1="800" x2="300" y2="1000" stroke="black" stroke-width="2"/>
+  <line x1="100" y1="800" x2="100" y2="900" stroke="black" stroke-width="2"/>
+  <line x1="100" y1="800" x2="200" y2="800" stroke="black" stroke-width="2"/>
+  <circle cx="300" cy="1000" r="10" fill="black"/>
+  <circle cx="100" cy="900" r="10" fill="black"/>
+  <circle cx="200" cy="800" r="10" fill="black"/>
+  <circle cx="100" cy="800" r="10" fill="black"/>
+  <line x1="300" y1="900" x2="300" y2="1000" stroke="black" stroke-width="2"/>
+  <line x1="300" y1="900" x2="200" y2="1000" stroke="black" stroke-width="2"/>
+  <circle cx="300" cy="1000" r="10" fill="black"/>
+  <circle cx="200" cy="1000" r="10" fill="black"/>
+  <circle cx="300" cy="900" r="10" fill="black"/>
+  <line x1="100" y1="800" x2="300" y2="1000" stroke="black" stroke-width="2"/>
+  <line x1="100" y1="800" x2="100" y2="900" stroke="black" stroke-width="2"/>
+  <line x1="100" y1="800" x2="200" y2="800" stroke="black" stroke-width="2"/>
+  <circle cx="300" cy="1000" r="10" fill="black"/>
+  <circle cx="100" cy="900" r="10" fill="black"/>
+  <circle cx="200" cy="800" r="10" fill="black"/>
+  <circle cx="100" cy="800" r="10" fill="black"/>
+  <line x1="0" y1="900" x2="200" y2="1100" stroke="black" stroke-width="2"/>
+  <line x1="0" y1="900" x2="0" y2="1000" stroke="black" stroke-width="2"/>
+  <line x1="0" y1="900" x2="100" y2="900" stroke="black" stroke-width="2"/>
+  <circle cx="200" cy="1100" r="10" fill="black"/>
+  <circle cx="0" cy="1000" r="10" fill="black"/>
+  <circle cx="100" cy="900" r="10" fill="black"/>
+  <circle cx="0" cy="900" r="10" fill="black"/>
+  <line x1="200" y1="1200" x2="0" y2="1000" stroke="black" stroke-width="2"/>
+  <line x1="200" y1="1200" x2="200" y2="1100" stroke="black" stroke-width="2"/>
+  <line x1="200" y1="1200" x2="100" y2="1200" stroke="black" stroke-width="2"/>
+  <circle cx="0" cy="1000" r="10" fill="black"/>
+  <circle cx="200" cy="1100" r="10" fill="black"/>
+  <circle cx="100" cy="1200" r="10" fill="black"/>
+  <circle cx="200" cy="1200" r="10" fill="black"/>
+  <line x1="100" y1="1200" x2="300" y2="1400" stroke="black" stroke-width="2"/>
+  <line x1="100" y1="1200" x2="100" y2="1300" stroke="black" stroke-width="2"/>
+  <line x1="100" y1="1200" x2="200" y2="1200" stroke="black" stroke-width="2"/>
+  <circle cx="300" cy="1400" r="10" fill="black"/>
+  <circle cx="100" cy="1300" r="10" fill="black"/>
+  <circle cx="200" cy="1200" r="10" fill="black"/>
+  <circle cx="100" cy="1200" r="10" fill="black"/>
+  <line x1="200" y1="1400" x2="200" y2="1500" stroke="black" stroke-width="2"/>
+  <line x1="200" y1="1400" x2="300" y2="1400" stroke="black" stroke-width="2"/>
+  <circle cx="200" cy="1500" r="10" fill="black"/>
+  <circle cx="300" cy="1400" r="10" fill="black"/>
+  <circle cx="200" cy="1400" r="10" fill="black"/>
+  <line x1="100" y1="1500" x2="100" y2="1600" stroke="black" stroke-width="2"/>
+  <line x1="100" y1="1500" x2="200" y2="1500" stroke="black" stroke-width="2"/>
+  <circle cx="100" cy="1600" r="10" fill="black"/>
+  <circle cx="200" cy="1500" r="10" fill="black"/>
+  <circle cx="100" cy="1500" r="10" fill="black"/>
+  <line x1="200" y1="1500" x2="200" y2="1600" stroke="black" stroke-width="2"/>
+  <line x1="200" y1="1500" x2="300" y2="1500" stroke="black" stroke-width="2"/>
+  <circle cx="200" cy="1600" r="10" fill="black"/>
+  <circle cx="300" cy="1500" r="10" fill="black"/>
+  <circle cx="200" cy="1500" r="10" fill="black"/>
+  <line x1="400" y1="1500" x2="200" y2="1300" stroke="black" stroke-width="2"/>
+  <line x1="400" y1="1500" x2="400" y2="1400" stroke="black" stroke-width="2"/>
+  <line x1="400" y1="1500" x2="300" y2="1500" stroke="black" stroke-width="2"/>
+  <circle cx="200" cy="1300" r="10" fill="black"/>
+  <circle cx="400" cy="1400" r="10" fill="black"/>
+  <circle cx="300" cy="1500" r="10" fill="black"/>
+  <circle cx="400" cy="1500" r="10" fill="black"/>
+  <line x1="300" y1="1400" x2="300" y2="1500" stroke="black" stroke-width="2"/>
+  <line x1="300" y1="1400" x2="200" y2="1500" stroke="black" stroke-width="2"/>
+  <circle cx="300" cy="1500" r="10" fill="black"/>
+  <circle cx="200" cy="1500" r="10" fill="black"/>
+  <circle cx="300" cy="1400" r="10" fill="black"/>
+  <line x1="400" y1="1400" x2="400" y2="1500" stroke="black" stroke-width="2"/>
+  <line x1="400" y1="1400" x2="300" y2="1500" stroke="black" stroke-width="2"/>
+  <circle cx="400" cy="1500" r="10" fill="black"/>
+  <circle cx="300" cy="1500" r="10" fill="black"/>
+  <circle cx="400" cy="1400" r="10" fill="black"/>
+  <line x1="500" y1="1400" x2="500" y2="1500" stroke="black" stroke-width="2"/>
+  <line x1="500" y1="1400" x2="400" y2="1500" stroke="black" stroke-width="2"/>
+  <circle cx="500" cy="1500" r="10" fill="black"/>
+  <circle cx="400" cy="1500" r="10" fill="black"/>
+  <circle cx="500" cy="1400" r="10" fill="black"/>
+  <line x1="400" y1="1500" x2="200" y2="1300" stroke="black" stroke-width="2"/>
+  <line x1="400" y1="1500" x2="400" y2="1400" stroke="black" stroke-width="2"/>
+  <line x1="400" y1="1500" x2="300" y2="1500" stroke="black" stroke-width="2"/>
+  <circle cx="200" cy="1300" r="10" fill="black"/>
+  <circle cx="400" cy="1400" r="10" fill="black"/>
+  <circle cx="300" cy="1500" r="10" fill="black"/>
+  <circle cx="400" cy="1500" r="10" fill="black"/>
+  <line x1="100" y1="1300" x2="100" y2="1400" stroke="green" stroke-width="7"/>
+  <line x1="100" y1="1300" x2="200" y2="1300" stroke="green" stroke-width="7"/>
+  <circle cx="100" cy="1400" r="10" fill="black"/>
+  <circle cx="200" cy="1300" r="10" fill="black"/>
+  <circle cx="100" cy="1300" r="10" fill="black"/>
+  <circle cx="0" cy="0" r="11" fill="purple"/>
+</svg>
