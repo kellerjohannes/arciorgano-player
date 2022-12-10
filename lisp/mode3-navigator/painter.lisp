@@ -17,26 +17,24 @@
   (setf (movements canvas) nil)
   (setf (current-origin canvas) '(0 . 0)))
 
-(defmethod add-vector-to-shape ((canvas canvas) x y)
-  (push (cons x y) (current-shape canvas)))
+(defmethod add-vector-to-shape ((canvas canvas) vec)
+  (push vec (current-shape canvas)))
 
 (defmethod push-shape ((canvas canvas))
   (push (cons (current-origin canvas) (current-shape canvas)) (shapes canvas))
   (setf (current-shape canvas) nil))
 
-(defmethod move-origin ((canvas canvas) delta-x delta-y)
+(defmethod move-origin ((canvas canvas) delta-vec)
   (with-accessors ((current-origin current-origin))
       canvas
-    (let ((new-origin (cons (+ (car current-origin) delta-x)
-                            (+ (cdr current-origin) delta-y))))
+    (let ((new-origin (vec-add current-origin delta-vec)))
       (push (cons current-origin new-origin) (movements canvas))
       (setf current-origin new-origin))))
 
 (defun calculate-absolute-coordinates (shape)
   (let ((origin (first shape)))
     (cons origin (mapcar (lambda (point)
-                           (cons (+ (car origin) (car point))
-                                 (+ (cdr origin) (cdr point))))
+                           (vec-add origin point))
                          (rest shape)))))
 
 (defun isolate-axis (shape axis)
@@ -96,24 +94,24 @@
                                              :stroke "gainsboro"
                                              :stroke-width 10)))))
 
-(defun draw-point (scene x y)
-  (svg:draw scene (:circle :cx (scale-x x) :cy (scale-y y)
+(defun draw-point (scene vec)
+  (svg:draw scene (:circle :cx (scale-x (get-x vec)) :cy (scale-y (get-y vec))
                            :r 10
                            :fill "black")))
 
-(defun draw-chord-line (scene origin-x origin-y vector-x vector-y)
-  (svg:draw scene (:line :x1 (scale-x origin-x)
-                         :y1 (scale-y origin-y)
-                         :x2 (scale-x (+ origin-x vector-x))
-                         :y2 (scale-y (+ origin-y vector-y))
+(defun draw-chord-line (scene origin vector)
+  (svg:draw scene (:line :x1 (scale-x (get-x origin))
+                         :y1 (scale-y (get-y origin))
+                         :x2 (scale-x (+ (get-x origin) (get-x vector)))
+                         :y2 (scale-y (+ (get-y origin) (get-y vector)))
                          :stroke "black"
                          :stroke-width 2)))
 
-(defun draw-movement-line (scene origin-x origin-y target-x target-y &optional highlight)
-  (svg:draw scene (:line :x1 (scale-x origin-x)
-                         :y1 (scale-y origin-y)
-                         :x2 (scale-x target-x)
-                         :y2 (scale-y target-y)
+(defun draw-movement-line (scene origin target &optional highlight)
+  (svg:draw scene (:line :x1 (scale-x (get-x origin))
+                         :y1 (scale-y (get-y origin))
+                         :x2 (scale-x (get-x target))
+                         :y2 (scale-y (get-y target))
                          :stroke (if highlight "red" "blue")
                          :stroke-width (if highlight 7 5))))
 
@@ -134,17 +132,14 @@
             for i downfrom (1- (length (movements canvas)))
         do (let ((origin (car movement))
               (vector (cdr movement)))
-          (draw-movement-line scene
-                              (car origin) (cdr origin)
-                              (car vector) (cdr vector)
-                              (if (zerop i) t))))
+          (draw-movement-line scene origin vector (if (zerop i) t))))
       (dolist (shape (shapes canvas))
         (let ((origin (first shape)))
           (dolist (vector (rest shape))
-            (draw-chord-line scene (car origin) (cdr origin) (car vector) (cdr vector)))
+            (draw-chord-line scene origin vector))
           (dolist (vector (rest shape))
-            (draw-point scene (+ (car origin) (car vector)) (+ (cdr origin) (cdr vector))))
-          (draw-point scene (car origin) (cdr origin)))))))
+            (draw-point scene (vec-add origin vector)))
+          (draw-point scene origin))))))
 
 
 

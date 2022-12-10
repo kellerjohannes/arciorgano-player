@@ -11,6 +11,27 @@
       (nth (random (length sequence)) sequence)
       nil))
 
+(defun make-vec (x y)
+  (cons x y))
+
+(defun vec-add (vec1 vec2)
+  (cons (+ (car vec1) (car vec2))
+        (+ (cdr vec1) (cdr vec2))))
+
+(defun vec-sub (vec1 vec2)
+  (cons (- (car vec1) (car vec2))
+        (- (cdr vec1) (cdr vec2))))
+
+(defun vec-mul (vec1 factor)
+  (cons (* factor (car vec1))
+        (* factor (cdr vec1))))
+
+(defun get-x (vec)
+  (car vec))
+
+(defun get-y (vec)
+  (cdr vec))
+
 (defmacro when-let (bindings &body body)
   "Bind `bindings` in parallel and execute `body`, short-circuiting on `nil`.
 
