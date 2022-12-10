@@ -72,10 +72,10 @@
            (real-dims (convert-to-ratio (+ width 2) (+ height 2))))
       (values (scale-x (car real-dims))
               (scale-y (cdr real-dims))
-              (scale-y (+ (1+ north) (* 0.5 (- (cdr real-dims) height))))
-              (scale-x (+ (1+ east) (* 0.5 (- (car real-dims) width))))
-              (scale-y (- (1- south) (* 0.5 (- (cdr real-dims) height))))
-              (scale-x (- (1- west) (* 0.5 (- (car real-dims) width))))))))
+              (scale-y (+ (+ north 0.5) (* 0.5 (- (cdr real-dims) height))))
+              (scale-x (+ (+ east 0.5) (* 0.5 (- (car real-dims) width))))
+              (scale-y (- (- south 0.5) (* 0.5 (- (cdr real-dims) height))))
+              (scale-x (- (- west 0.5) (* 0.5 (- (car real-dims) width))))))))
 
 (defparameter *x-scaling* 100)
 (defparameter *y-scaling* 100)
@@ -129,7 +129,7 @@
         ("mode3-output.svg" :if-does-not-exist :create
                             :if-exists :supersede)
       (svg:draw scene (:rect :x west :y south :width width :height height :fill "white"))
-      (draw-grid scene)
+      ;; (draw-grid scene)
       (loop for movement in (reverse (movements canvas))
             for i downfrom (1- (length (movements canvas)))
         do (let ((origin (car movement))

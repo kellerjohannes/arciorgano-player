@@ -122,8 +122,8 @@
          (attack-target-time (+ attack-origin-time #[attack-spread s]))
          (release-origin-time (+ (now) #[duration s]))
          (release-target-time (+ release-origin-time #[release-spread s])))
-    (fuzzy-trigger attack-origin-time attack-target-time key-list #'key-on attack-shape)
-    (fuzzy-trigger release-origin-time release-target-time key-list #'key-off release-shape)
+    (fuzzy-trigger attack-origin-time attack-target-time key-list #'key-on* attack-shape)
+    (fuzzy-trigger release-origin-time release-target-time key-list #'key-off* release-shape)
     key-list))
 
 (defun play-note (notename &optional duration)
@@ -155,7 +155,7 @@
   (dolist (vector shape-list)
     (add-vector-to-shape *painter* (car vector) (cdr vector)))
   (push-shape *painter*)
-  (draw *painter*)
+  (when *drawing* (draw *painter*))
   (let* ((note-list (get-shape-names origin shape-list))
          (key-list (alexandria:flatten (loop for note in note-list
                                              collect (play-note note)))))
