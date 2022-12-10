@@ -24,12 +24,13 @@
 (defun pick-next-origin-3 (origin shape &optional (target-shape shape))
   (let ((result nil))
     (dolist (shape-vector shape)
-      (dolist (target-shape-vector (cons '(0 . 0) target-shape))
+      (dolist (target-shape-vector (cons (make-vec 0 0) target-shape))
         (let ((test-vec (vec-sub shape-vector target-shape-vector)))
           (unless (missing-notes-p (move origin test-vec) target-shape)
             (push test-vec result)))))
-    (setf result (remove '(0 . 0) (remove-duplicates result :test #'equal) :test #'equal))
+    (setf result (remove (make-vec 0 0) (remove-duplicates result :test #'equal) :test #'equal))
     (let ((pick (rand-nth result)))
+      (format t "~&Moving origin by vector (~a,~a)." (get-x pick) (get-y pick))
       (move-origin *painter* pick)
       (move origin pick))))
 
@@ -104,6 +105,7 @@
                 (off-spread *current-preset*)
                 :random)
     (let ((new-shape (rand-nth *shape-selection*)))
+      (format t "~&New shape selected: ~a." new-shape)
       (at (+ (now) #[(delta *current-preset*) s])
           #'play-modulation-2
           (pick-next-origin-3 origin shape new-shape)

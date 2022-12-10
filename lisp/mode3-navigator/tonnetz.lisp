@@ -99,10 +99,10 @@
     (otherwise key-list)))
 
 (defun fuzzy-trigger (origin-time target-time key-list trigger-fun shape)
-  (format t "~&~a~&" (/ (- target-time origin-time)
+  (format t "~&Real world fading time: ~a~&" (/ (- target-time origin-time)
                       incudine.util:*sample-rate*))
   (let ((ordered-key-list (reorder-key-list key-list shape)))
-    (format t "~&~a" ordered-key-list)
+    (format t "~&Reordered key list: ~a" ordered-key-list)
     (loop for key in ordered-key-list
           for note-counter from 0
           do (at (calculate-time-shift origin-time target-time (length key-list) note-counter)
@@ -152,6 +152,9 @@
 
    When `duration' is nil a flattened list of keys is returned without
    triggering them."
+  (format t "~&Arciorgano key tabulature:~&  Origin: ~a~&  Shape: ~a"
+          origin
+          (get-shape-names origin shape-list))
   (dolist (vector shape-list)
     (add-vector-to-shape *painter* vector))
   (push-shape *painter*)
