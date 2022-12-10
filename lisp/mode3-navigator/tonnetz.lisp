@@ -137,6 +137,10 @@
             (play-key-list key-list duration)
             key-list)))))
 
+(defun get-shape-names (origin shape-list)
+  (loop for movement in (cons '(0 . 0) shape-list)
+        collect (move origin (car movement) (cdr movement))))
+
 (defun missing-notes-p (origin shape-list)
   (member nil (get-shape-names origin shape-list)))
 
@@ -167,6 +171,15 @@
 
 
 ;; Navigating the Tonnetz
+
+(defun move-1 (origin direction)
+  "Returns the pitchclass name of a neighbour of `origin', based on `direction' ('north, 'east, 'south, 'west)."
+  (let ((neighbours (cdr (assoc origin *network*))))
+    (case direction
+      (north (first neighbours))
+      (east (second neighbours))
+      (south (third neighbours))
+      (west (fourth neighbours)))))
 
 (defun lookup-direction (x y)
   "Returns a direction symbol based on relative unit coordinates."
