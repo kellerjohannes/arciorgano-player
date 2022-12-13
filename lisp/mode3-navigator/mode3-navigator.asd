@@ -1,5 +1,6 @@
 (asdf:defsystem mode3-navigator
-  :description "Generative chord progressions in mode3"
+  :description "Generative chord progressions in mode3. Created for an installation
+                at Akademie der Künste Berlin, Dezember 2022."
   :version "0.1"
   :author "Johannes Keller <johannkell@gmail.com>"
   :licence "Public Domain"
