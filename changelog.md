@@ -145,3 +145,10 @@
   when sending MIDI from Reaper, to stop all notes when pausing playback. 
 - the support of CTL messages in the Velocity bridge has been removed, it did
   not work reliably.
+
+
+## changes for version 1.61
+
+- added osc output with the path "\incudine", only for oscnkey messages. This
+  is for development purposes only, to create a GUI in Common Lisp with CLOG.
+
