@@ -291,7 +291,7 @@
 (defun swipe (&key (start 1) (end 146) (delta 1/4) (duration 1/4))
   (cond ((>= start end) nil)
     (t (key-on start duration)
-       (at (+ (now) #[delta sec])
+       (at (+ (now) (* *sample-rate* delta))
            #'swipe
            :start (1+ start)
            :end end
@@ -309,7 +309,7 @@
 
 (defun burst-random (&key (duration 10) (density 100))
   (loop repeat density do
-    (at (+ (now) #[(random (* 1.0 duration)) s])
+    (at (+ (now) (* (random (* 1.0 duration)) *sample-rate*))
     #'key-on (random 146) (random (* 0.5 duration)))))
 
 
@@ -336,7 +336,7 @@
 
 (defun burst-first ()
   (light 1)
-  (at (+ (now) #[0.5 s]) #'burst 0))
+  (at (+ (now) (* 0.5 *sample-rate*)) #'burst 0))
 
 (defun lamento-panic ()
   (panic)
