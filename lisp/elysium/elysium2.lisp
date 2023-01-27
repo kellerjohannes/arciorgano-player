@@ -191,6 +191,7 @@
     (random-on 0)
     (random-range '(1/10 . 1)))
     #'(lambda (&key (reset nil) (factor nil) (rand nil) (rand-range nil))
+
     (when reset (setf counter (bpm->sec reset)))
     (when factor (setf internal-factor factor))
     (when rand (setf random-on rand))
