@@ -19777,7 +19777,7 @@
 #X obj 78 142 outlet;
 #X obj 12 51 t l l;
 #X msg 45 77 set \$1 \$2;
-#X msg 78 117 100 0;
+#X msg 78 117 146 0;
 #X obj 121 78 r unique-trigger;
 #X obj 12 223 change;
 #X obj 12 265 s unique-trigger;
@@ -21804,7 +21804,7 @@
 #X coords 0 -1 1 1 480 240 2 10 580;
 #X restore 5 8 pd tone-generator;
 #X restore 741 765 pd tone-generator;
-#N canvas 1071 18 460 733 bridges 1;
+#N canvas 1377 58 193 485 bridges 1;
 #N canvas 1066 116 614 755 sibelius-bridge 0;
 #X obj 21 118 notein;
 #X obj 348 132 bendin;
@@ -22299,7 +22299,7 @@
 #X connect 14 0 13 1;
 #X coords 0 -1 1 1 150 60 2 0 0;
 #X restore 7 359 pd Ableton bridge;
-#N canvas 35 288 1059 741 reaper-bridge 1;
+#N canvas 35 288 1059 741 reaper-bridge 0;
 #X obj 21 96 notein;
 #X obj 39 581 + 0;
 #X msg 89 572 0;
@@ -22418,7 +22418,7 @@
 #X restore 8 425 pd reaper-bridge;
 #X restore 198 742 pd bridges;
 #X text 198 718 Communication;
-#N canvas 1259 19 347 296 osc-serial 1;
+#N canvas 1259 19 347 296 osc-serial 0;
 #N canvas 964 362 737 824 osc-sender 0;
 #X obj 16 462 list prepend \$1;
 #X symbolatom 36 129 30 0 0 0 - - - 0;
@@ -24857,7 +24857,6 @@
 #X restore 744 840 pd dev;
 #X obj 744 863 declare -path cyclone -lib cyclone;
 #X obj 744 885 declare -path comport -lib comport;
-#X text 395 33 Version 1.8 (February 9 2024);
 #N canvas 1072 475 467 504 dreyblatt-complete 0;
 #N canvas 0 0 2560 1298 dreyblatt-square-complete 0;
 #X obj 170 396 cnv 15 70 70 empty empty 1 30 40 1 30 #dcdcdc #000000 0;
@@ -26084,4 +26083,5 @@
 #X coords 0 -1 1 1 450 487 2 163 370;
 #X restore 4 3 pd dreyblatt-square-complete;
 #X restore 578 765 pd dreyblatt-complete;
+#X text 395 33 Version 1.9 (January 29 2026);
 #X coords 0 0 1 1 85 60 0;
