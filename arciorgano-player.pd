@@ -1,4 +1,4 @@
-#N canvas 315 59 1056 931 12;
+#N canvas 6 37 1056 931 12;
 #X declare -lib cyclone;
 #X declare -path cyclone -lib cyclone;
 #X declare -path comport -lib comport;
@@ -19777,7 +19777,7 @@
 #X obj 78 142 outlet;
 #X obj 12 51 t l l;
 #X msg 45 77 set \$1 \$2;
-#X msg 78 117 65 0;
+#X msg 78 117 100 0;
 #X obj 121 78 r unique-trigger;
 #X obj 12 223 change;
 #X obj 12 265 s unique-trigger;
@@ -21804,7 +21804,7 @@
 #X coords 0 -1 1 1 480 240 2 10 580;
 #X restore 5 8 pd tone-generator;
 #X restore 741 765 pd tone-generator;
-#N canvas 1377 58 252 511 bridges 1;
+#N canvas 1437 0 252 511 bridges 1;
 #N canvas 1066 116 614 755 sibelius-bridge 0;
 #X obj 21 118 notein;
 #X obj 348 132 bendin;
@@ -22299,7 +22299,7 @@
 #X connect 14 0 13 1;
 #X coords 0 -1 1 1 150 60 2 0 0;
 #X restore 7 359 pd Ableton bridge;
-#N canvas 35 288 1059 741 reaper-bridge 1;
+#N canvas 1078 608 1059 741 reaper-bridge 1;
 #X obj 21 96 notein;
 #X obj 39 581 + 0;
 #X msg 89 572 0;
@@ -22418,7 +22418,7 @@
 #X restore 8 425 pd reaper-bridge;
 #X restore 198 742 pd bridges;
 #X text 198 718 Communication;
-#N canvas 1259 19 347 272 osc-serial 1;
+#N canvas 1070 17 347 377 osc-serial 1;
 #N canvas 964 362 737 824 osc-sender 0;
 #X obj 16 462 list prepend \$1;
 #X symbolatom 36 129 30 0 0 0 - - - 0;
@@ -26083,5 +26083,5 @@
 #X coords 0 -1 1 1 450 487 2 163 370;
 #X restore 4 3 pd dreyblatt-square-complete;
 #X restore 578 765 pd dreyblatt-complete;
-#X text 395 33 Version 1.9 (January 29 2026);
+#X text 395 33 Version 1.9 (February 6 2026);
 #X coords 0 0 1 1 85 60 0;
