@@ -17,8 +17,7 @@ can simulate the sound of the organ with various sample sets.
 1. Download and install PureData: [PureData download
    site](https://puredata.info/downloads) (Please use the "vanilla"
    version)
-2. Download the latest version of the Player Patch: [Gitlab
-   project](https://gitlab.fhnw.ch/johannes.keller/arciorgano-pd-sender/-/releases)
+2. Download the latest version of the Player Patch: [Github](https://github.com/kellerjohannes/arciorgano-player/releases)
 3. Unzip all the files into a folder of your choice.
 4. Open the Patch by double clicking the file "arciorgano-player.pd".
 5. Certain features of the Player Patch need additional packages for
